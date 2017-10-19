@@ -7,10 +7,10 @@ https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-in
 from base_interface import BaseAlg
 
 class InsertionSort(BaseAlg):
-    ''' Implematation of insertion sort'''
+    '''Implementation of insertion sort'''
     @staticmethod
     def swap(array, _inx1, _inx2):
-        '''this method was intensionally made separate to evaluate conut of calls'''
+        '''this method was intensionally made separate to evaluate count of calls'''
         array[_inx1], array[_inx2] = array[_inx2], array[_inx1]
 
     @staticmethod

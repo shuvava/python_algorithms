@@ -11,10 +11,10 @@ import __main__
 DEFAULT_LENGTH = 10
 
 class BaseAlg(object, metaclass=abc.ABCMeta):
-    ''' this class implements base functionlaty on any algoruthm programm
+    ''' this class implements base functionality on any algorithm program
     '''
     def get_context(self):
-        ''' Creats excution context command line args
+        ''' Create execution context command line args
         Returns
         -------
         Object
@@ -59,7 +59,7 @@ class BaseAlg(object, metaclass=abc.ABCMeta):
         verbosity: *Boolean* - show verbose output
 
         :Returns:
-        *list of list* - List of words if file was readed of empty list
+        *list of list* - List of words if file was read of empty list
         '''
         data = []
         if not path.exists(file_name):
@@ -74,7 +74,7 @@ class BaseAlg(object, metaclass=abc.ABCMeta):
             with file:
                 lines = file.read().splitlines()
             for line in lines:
-                data.append(line.split())
+                data.append([int(s) for s in line.split()])
             return data
 
     @staticmethod
@@ -118,7 +118,7 @@ class BaseAlg(object, metaclass=abc.ABCMeta):
         raise NotImplementedError('algorithm should be implemented')
 
     def run(self):
-        ''' run alorithm and checks results'''
+        ''' run algorithm and checks results'''
         _result = '{}_results'.format(self._main)
         arr = self.get_array()
         cProfile.runctx('self.main(arr)', globals(), locals(), _result)
