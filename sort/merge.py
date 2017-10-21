@@ -1,4 +1,15 @@
-'''Merge sort implementation'''
+#!/usr/bin/env python
+# encoding: utf-8
+#
+# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
+#
+'''Merge sort
+Complexity: O(n*ln(n))
+require double size of memory
+Algorithm:
+1. Split array on a half (merge_sort) recursively till 1 elements array
+2. merge two pre sorted sub array (merge) (on the deepest level array contents just one element)
+'''
 import sys
 from base_interface import BaseAlg
 
@@ -59,5 +70,5 @@ class MergeSort(BaseAlg):
             print('------------------------------------------')
             print(_array)
 
-runner = MergeSort()
-runner.run()
+if __name__ == '__main__':
+    MergeSort().run()

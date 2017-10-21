@@ -1,6 +1,11 @@
+#!/usr/bin/env python
+# encoding: utf-8
+#
+# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
+#
 '''Insertion sort
-for j ← 2 to n
-insert key A[j] into the (already sorted) sub-array A[1 .. j-1].
+for j(index) ← 2 to n
+    insert key A[j] into the (already sorted) sub-array A[1 .. j-1].
 by pairwise key-swaps down to its right position
 https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec03.pdf
 '''
@@ -44,5 +49,5 @@ class InsertionSort(BaseAlg):
             print('------------------------------------------')
             print(_array)
 
-runner = InsertionSort()
-runner.run()
+if __name__ == '__main__':
+    InsertionSort().run()
