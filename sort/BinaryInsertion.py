@@ -4,7 +4,7 @@ on looking up the right place to insert element
 we can improve in using binary search alorithm 
 to loking for the right place 
 '''
-from base_interface import BaseAlg
+from common.base_interface import BaseAlg
 
 class BSort(BaseAlg):
     @staticmethod

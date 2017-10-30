@@ -63,6 +63,7 @@ class BaseAlg(object, metaclass=abc.ABCMeta):
         '''
         data = []
         if not path.exists(file_name):
+            data.append([])
             return data
         if self.verbosity:
             print('reading file {}'.format(file_name))
@@ -73,6 +74,9 @@ class BaseAlg(object, metaclass=abc.ABCMeta):
         else:
             with file:
                 lines = file.read().splitlines()
+                if not lines: # empty file
+                    data.append([])
+                    return data
             for line in lines:
                 data.append([int(s) for s in line.split()])
             return data
@@ -98,7 +102,9 @@ class BaseAlg(object, metaclass=abc.ABCMeta):
     def get_array(self):
         '''Generate random array or load it from file
         '''
-        _filename = self.context.file
+        _filename = ''
+        if self.context.file is not None:
+            _filename = self.context.file.strip()
         if self.context.length > 0:
             _data = self.__gen_array(self.context.length, 10 * self.context.length)
             if _filename:

@@ -11,7 +11,8 @@ Algorithm:
 2. merge two pre sorted sub array (merge) (on the deepest level array contents just one element)
 '''
 import sys
-from base_interface import BaseAlg
+
+from common.base_interface import BaseAlg
 
 class MergeSort(BaseAlg):
     ''' Implementation of merge sort
