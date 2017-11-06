@@ -1,4 +1,4 @@
-''' This class is a base implementation of any algorithm programm
+''' This class is a base implementation of any algorithm program
 '''
 import abc
 import argparse
@@ -126,7 +126,7 @@ class BaseAlg(object, metaclass=abc.ABCMeta):
     def run(self):
         ''' run algorithm and checks results'''
         _result = '{}_results'.format(self._main)
-        arr = self.get_array()
+        arr = self.get_array()# pylint: disable=W0612
         cProfile.runctx('self.main(arr)', globals(), locals(), _result)
         print('------------------------------------------')
         _stat = pstats.Stats(_result)

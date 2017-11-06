@@ -1,0 +1,9 @@
+{
+    "python.linting.pylintArgs":[
+        "--rcfile=${workspaceRoot}/.pylintrc"
+    ],
+    "python.autoComplete.extraPaths":[
+        "${workspaceRoot}/common",
+        "${workspaceRoot}/bst"
+    ]
+}

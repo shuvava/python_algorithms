@@ -11,6 +11,12 @@ Definition:
     left(i)=2i: returns index of node's left child
     right(i)=2i+1: returns index of node's right child
 '''
+#add parent directory with base module
+import os
+from sys import path
+
+path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../common')))
+
 import abc
 from base_interface import BaseAlg
 

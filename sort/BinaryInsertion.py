@@ -4,7 +4,13 @@ on looking up the right place to insert element
 we can improve in using binary search alorithm 
 to loking for the right place 
 '''
-from common.base_interface import BaseAlg
+#add parent directory with base module
+import os
+from sys import path
+
+path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../common')))
+
+from base_interface import BaseAlg
 
 class BSort(BaseAlg):
     @staticmethod

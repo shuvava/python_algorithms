@@ -11,14 +11,16 @@ Algorithm:
          put in the left array elements bigger pivot
 '''
 #add parent directory with base module
-# from sys import path
-# path.insert(0, '../common')
+import os
+from sys import path
 
-from common.base_interface import BaseAlg
+path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../common')))
+
+from base_interface import BaseAlg # pylint: disable=C0413
 
 class QuickSort(BaseAlg):
     ''' Implementation of QuickSort
-    Thomas H. Cormen Algorithms Unlocked (2013) page 67
+    Thomas H. Cormen Algorithms Unlocked (2013) page 51
     grokking-algorithms-illustrated-programmers-curious 65
     '''
     @staticmethod
@@ -77,7 +79,7 @@ class QuickSort(BaseAlg):
 
 
     def quick_sort_iterative(self, array_, start, end):
-        '''Interactive implementation of quicksort, 
+        '''Interactive implementation of quicksort,
         it use stack to store variables instead of recursive call
 
         :Parameters:
@@ -97,7 +99,7 @@ class QuickSort(BaseAlg):
                 stack_.append((left, middle - 1))
             # If items in the right of the pivot push them to the stack
             if middle + 1 < right:
-                stack_.append((middle + 1,right))
+                stack_.append((middle + 1, right))
 
     def main(self, _array):
         '''main entry point'''

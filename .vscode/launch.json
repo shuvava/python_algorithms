@@ -15,7 +15,7 @@
             "env": {},
             "envFile": "${workspaceRoot}/.env",
             "args": [
-                "-l 10"
+                "-f sort/test10.txt"
             ],
             "debugOptions": [
                 "WaitOnAbnormalExit",

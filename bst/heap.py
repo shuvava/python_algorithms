@@ -30,33 +30,43 @@ class Heap(BaseBst):
         '''
         return 0
 
-    def left(self, index):
+    def left(self, index, max_index = None):
         '''left(i)=2(i+1): returns index of node's left child
 
         :param index: index of element
         :type index: Number
+
+        :param max_index: max index value
+        :type max_index: Number
         '''
         if index < self.get_root():
             return self.get_root()
+        if max_index is None:
+            max_index = len(self._array)
         left = 2*(index) + 1
-        if left < len(self._array):
+        if left < max_index:
             return left
         return None
 
-    def right(self, index):
+    def right(self, index, max_index = None):
         '''right(i)=2i: returns index of node's right child
 
         :param index: index of element
         :type index: Number
+
+        :param max_index: max index value
+        :type max_index: Number
         '''
         if index < self.get_root():
             return self.get_root()
+        if max_index is None:
+            max_index = len(self._array)
         right = 2*(index + 1)
-        if right < len(self._array):
+        if right < max_index:
             return right
         return None
 
-    def max_heapify(self, index=None):
+    def max_heapify(self, index=None, max_index = None):
         '''correct a single violation of the heap property in a subtree at its root
         :Heap Property: *The key of a node is >= than the keys of its children*
         
@@ -68,8 +78,8 @@ class Heap(BaseBst):
         if  index is None or index < self.get_root():# fix the first element
             index = self.get_root()
         #init variables
-        left = self.left(index)
-        right = self.right(index)
+        left = self.left(index, max_index)
+        right = self.right(index, max_index)
         largest = index
 
         if left is not None and self._array[left] > self._array[index]:
@@ -78,7 +88,7 @@ class Heap(BaseBst):
             largest = right
         if largest != index:# fix heap and do recursive call
             self.swap(index, largest)
-            self.max_heapify(largest)
+            self.max_heapify(largest, max_index)
 
     def build_max_heap(self):
         '''Converts A[1…n] to a max heap
