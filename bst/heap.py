@@ -66,6 +66,13 @@ class Heap(BaseBst):
             return right
         return None
 
+    def parent(self, index):
+        '''parent(i) =i/2: returns index of node's parent 
+        '''
+        if index < self.get_root():
+            return self.get_root()
+        return int(index/2) + 1
+
     def max_heapify(self, index=None, max_index = None):
         '''correct a single violation of the heap property in a subtree at its root
         :Heap Property: *The key of a node is >= than the keys of its children*

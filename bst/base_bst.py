@@ -55,6 +55,11 @@ class BaseBst(BaseAlg, metaclass=abc.ABCMeta):
         '''Get right child of element'''
         raise NotImplementedError('algorithm should be implemented')
 
+    @abc.abstractmethod
+    def parent(self, index):
+        '''Get parent of element'''
+        raise NotImplementedError('algorithm should be implemented')
+
     def _print_tree(self, index, with_ids=False, with_values=True):
         '''Recursive function used for pretty-printing the binary tree.
         In each recursive call, a "box" of characters visually representing the

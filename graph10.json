@@ -1,0 +1,28 @@
+{
+    "graph": {
+        "directed": true,
+        "cyclic": false,
+        "type": "directed acyclic graph",
+        "label": "simple test",
+        "nodes": [
+            { "id": 7 },
+            { "id": 5 },
+            { "id": 3 },
+            { "id": 11 },
+            { "id": 8 },
+            { "id": 2 },
+            { "id": 9 },
+            { "id": 10 }
+        ],
+        "edges": [
+            {"source": 7, "targets": [11, 8] },
+            {"source": 5, "targets": [11] },
+            {"source": 3, "targets": [8, 10] },
+            {"source": 11, "targets": [2, 9] },
+            {"source": 2, "targets": [] },
+            {"source": 9, "targets": [] },
+            {"source": 10, "targets": [] },
+            {"source": 8, "targets": [9] }
+        ]
+    }
+}
