@@ -16,7 +16,7 @@ Definition:
 Max Heap Property: The key of a node is >= than the keys of its children
 (Min Heap defined analogously)
 '''
-from base_bst import BaseBst
+from base_heap import BaseBst
 
 class Heap(BaseBst):
     '''Implementation of base functionality of bst- heap

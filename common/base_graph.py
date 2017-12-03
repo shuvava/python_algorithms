@@ -81,6 +81,14 @@ class BaseGraph(object, metaclass=abc.ABCMeta):
             return [[(i, self._get_node_index(i)) for i in items] for items in data]
         return data
 
+    def get_nodes_sequence(self, indexes):
+        '''return sequence of node's id's from list of indxes
+        '''
+        nodes = self.get_nodes()
+        sequence = []
+        for inx in indexes:
+            sequence.append(nodes[inx])
+        return sequence
 
     def _read_file(self, file_name):
         ''' Reads JSON file content

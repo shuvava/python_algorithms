@@ -45,5 +45,6 @@ class TestBaseGraphMethods(unittest.TestCase):
         edges = self.graph.get_edges(True)
         self.assertIsNotNone(edges)
         self.assertEqual(edges, [[(11, 3), (8, 4)], [(11, 3)], [(8, 4), (10, 7)], [(2, 5), (9, 6)], [(9, 6)], [], [], []])
+
 if __name__ == '__main__':
     unittest.main()
