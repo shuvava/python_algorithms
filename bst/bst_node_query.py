@@ -123,3 +123,13 @@ def bst_to_list(node, arr=[]):
     bst_to_list(node.right, arr)
     return arr
 
+def bst_is_properties_valid(node):
+    if not isinstance(node, Node):
+        return True
+    if not node.is_valid:
+        return False
+    if not bst_is_properties_valid(node.left):
+        return False
+    if not bst_is_properties_valid(node.right):
+        return False
+    return True

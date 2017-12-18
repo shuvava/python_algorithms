@@ -1,2 +1,2 @@
 [MASTER]
-init-hook="sys.path.insert(0,os.path.abspath('./common'))"
+init-hook="sys.path.insert(0,os.path.abspath('./common'));sys.path.insert(0,os.path.abspath('./bst'))"

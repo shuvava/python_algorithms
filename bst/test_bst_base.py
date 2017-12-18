@@ -12,6 +12,8 @@ import os
 from sys import path
 
 from bst_base import BST
+
+__print__ = False
 # path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../common')))
 # from file_operations import read_array_file, save_array_file
 
@@ -27,15 +29,21 @@ class Unit_test_base_bst(unittest.TestCase):
         self.assertIsNotNone(bst.root.left)
         self.assertIsNotNone(bst.root.left.left)
         self.assertEqual(bst.root.left.left.value, 43)
+        self.assertEqual(bst.length , len(self.bst_data))
+
+    def test_delete_node(self):
+        bst = BST().from_list(self.bst_data)
+        bst.delete_node(bst.root.left)
+        self.assertEqual(bst.length , len(self.bst_data) - 1)
 
     def test_from_list(self):
-        bst = BST.from_list(self.bst_data)
+        bst = BST().from_list(self.bst_data)
         self.assertIsNotNone(bst.root.left)
         self.assertIsNotNone(bst.root.left.left)
         self.assertEqual(bst.root.left.left.value, 43)
 
     def test_to_list(self):
-        bst = BST.from_list(self.bst_data)
+        bst = BST().from_list(self.bst_data)
         arr = bst.to_list()
         self.assertIsNotNone(arr)
         self.assertListEqual(sorted(arr), sorted(self.bst_data), 'to list test')
@@ -49,23 +57,28 @@ class Unit_test_base_bst(unittest.TestCase):
         self.assertNotEqual(bst1.root.value, bst2.root.value)
 
     def test_bst_print(self):
-        bst = BST.from_list(self.bst_data)
+        bst = BST().from_list(self.bst_data)
         bst.print_tree()
     
     def test_bst_rank(self):
-        bst = BST.from_list(self.bst_data)
+        bst = BST().from_list(self.bst_data)
         self.assertEqual(bst.root.right.rank, 5, 'test_bst_rank')
         self.assertEqual(bst.root.rank, 9)
 
     def test_is_left_child(self):
-        bst = BST.from_list(self.bst_data)
+        bst = BST().from_list(self.bst_data)
         self.assertTrue(bst.root.left.is_left_child)
         self.assertFalse(bst.root.right.is_left_child)
 
     def test_is_right_child(self):
-        bst = BST.from_list(self.bst_data)
+        bst = BST().from_list(self.bst_data)
         self.assertTrue(bst.root.right.is_right_child)
         self.assertFalse(bst.root.left.is_right_child)
 
+    def test_is_bst_property_violated(self):
+        bst = BST().from_list(self.bst_data)
+        self.assertTrue(bst.is_valid)
+
 if __name__ == '__main__':
+    __print__ = True
     unittest.main()

@@ -23,7 +23,7 @@ class BaseBst(CommonInterface, metaclass=abc.ABCMeta):
                 self.bst = BST.generate(DEFAULT_LENGTH, 10 * DEFAULT_LENGTH)
             else:
                 _data = self._read_file(_filename)[0]
-                self.bst = BST.from_list(_data)
+                self.bst = BST().from_list(_data)
         if self.verbosity:
             _data = self.bst.to_list()
             print(_data)

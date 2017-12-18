@@ -14,6 +14,9 @@ from bst_node import Node
 from bst_node_update import bst_insert, bst_delete
 from bst_print import bst_print
 
+__print__ = False
+
+
 class Unit_test_bst_node_update(unittest.TestCase):
     def setUp(self):
         self.bst_data = [49, 46, 79, 43, 64, 83, 40, 81, 87]
@@ -31,17 +34,23 @@ class Unit_test_bst_node_update(unittest.TestCase):
         self.assertEqual(root.left.left.value, 43)
 
     def test_bst_delete(self):
-        print('--------------------test_bst_delete')
-        bst = BST.from_list(self.bst_data)
+        if __print__:
+            print('--------------------test_bst_delete')
+        bst = BST().from_list(self.bst_data)
         bst_delete(bst.root.left.left)
-        bst_print(bst.root)
+        if __print__:
+            bst_print(bst.root)
         self.assertEqual(bst.root.left.rank, 2)
+        self.assertEqual(bst.root.rank, 8)
         self.assertIsNotNone(bst.root.left.left)
         self.assertIsNone(bst.root.left.left.left)
         bst_delete(bst.root.right)
+        if __print__:
+            bst_print(bst.root)
         self.assertEqual(bst.root.rank, 7)
-        bst_print(bst.root)
-        print('--------------------test_bst_delete')
+        if __print__:
+            print('--------------------test_bst_delete')
 
 if __name__ == '__main__':
+    __print__ = True
     unittest.main()

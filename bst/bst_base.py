@@ -15,10 +15,12 @@ These are pointers unlike in a heap.
 The invariant is: for any node x,
 for all nodes y in the left subtree of x, key(y) <= key(x).
 For all nodes y in the right subtree of x key(y) >= key(x).
+
+balanced BST maintains h = O(lg n) ⇒ all operations run in O(lg n) time
 '''
 import random
 from bst_node import Node
-from bst_node_query import bst_to_list
+from bst_node_query import bst_to_list, bst_search, bst_is_properties_valid
 from bst_node_update import bst_insert, bst_delete
 from bst_print import bst_print
 
@@ -57,11 +59,12 @@ class BST(object):
 
     @root.setter
     def root(self, value):
+        '''get root of tree'''
         if value and isinstance(value, Node):
             self._root = value
 
     def add_node(self, node):
-        '''Adding node into BS'''
+        '''Adding node into BST'''
         if not isinstance(node, Node):
             node = Node(node)
         self._length += 1
@@ -73,18 +76,24 @@ class BST(object):
     def delete_node(self, node):
         '''Remove a node from BST'''
         _node = node
-        # if not isinstance(node, Node):
-        #     _node = 
-        raise NotImplementedError
+        if not isinstance(node, Node):
+             _node = bst_search(self.root, node)
+        if _node is self.root:
+            raise NotImplementedError
+        bst_delete(_node)
+        self._length -= 1
 
     def to_list(self):
         '''Converts current BST object into dict object'''
         if not self.root:
             return []
-        return bst_to_list(self.root)
+        return bst_to_list(self.root, [])
 
-    @staticmethod
-    def from_list(arr):
+    @property
+    def is_valid(self):
+        return bst_is_properties_valid(self.root)
+
+    def from_list(self, arr):
         '''Converts dict object into BST class instance
         
         :Parameters:
@@ -92,10 +101,10 @@ class BST(object):
         '''
         if not isinstance(arr, list):
             return
-        bst = BST()
+        #bst = BST()
         for item in arr:
-            bst.add_node(item)
-        return bst
+            self.add_node(item)
+        return self
 
     @staticmethod
     def generate(size, max_value=1000):
@@ -106,7 +115,7 @@ class BST(object):
         max_value: *int* max element value
         '''
         arr = gen_array(size, max_value)
-        return BST.from_list(arr)
+        return BST().from_list(arr)
 
     def print_tree(self, node = None, with_values=True):
         '''print BST
