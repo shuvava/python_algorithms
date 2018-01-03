@@ -96,7 +96,7 @@ def bst_search(item, value):
     return bst_search(node.left, value)
 
 def bst_next_larger(item, value):
-    '''find next larger value in bst
+    '''find next larger value(successor) in bst
 
         :Parameters:
         item: *Node|BST* - node of BST
@@ -114,6 +114,26 @@ def bst_next_larger(item, value):
             node = node_tmp
         return node
     return bst_next_larger(node.right, value)
+
+def bst_next_smaller(item, value):
+    '''find next smaller value(predecessor) in bst
+
+        :Parameters:
+        item: *Node|BST* - node of BST
+        value: *Number* - value to search
+
+        :return:
+         *Node|None* found node or None if not found
+    '''
+    node = _get_node(item)
+    if not isinstance(node, Node):
+        return None
+    if node.value < value:
+        node_tmp = bst_next_smaller(node.right, value)
+        if node_tmp:
+            node = node_tmp
+        return node
+    return bst_next_smaller(node.left, value)
 
 def bst_to_list(node, arr=[]):
     if not isinstance(node, Node):

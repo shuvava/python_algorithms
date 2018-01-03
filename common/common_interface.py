@@ -3,27 +3,17 @@
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
-'''
-Each node x in the binary tree has a key key(x). Nodes other than the root have a
-parent p(x). Nodes may have a left child lef t(x) and/or a right child right(x).
-
-*The invariant is*: for any node x, for all nodes y in the left subtree of x, key(y) ≤
-key(x). For all nodes y in the right subtree of x key(y) ≥ key(x).
-'''
 
 import abc
 import argparse
-import random
 import cProfile
 import pstats
 from os import path
-from base_bst import BST
 
 from file_operations import read_array_file, save_array_file, remove_file
 
 import __main__
 
-DEFAULT_LENGTH = 10
 
 class CommonInterface(object, metaclass=abc.ABCMeta):
     '''Implements interface of performace testing of BST
@@ -32,7 +22,7 @@ class CommonInterface(object, metaclass=abc.ABCMeta):
         self.context = self.get_context()
         self.verbosity = self.context.verbosity
         self._main = path.splitext(path.basename(__main__.__file__))[0]
-        self.bst = None;
+        self._data = None
 
     def get_context(self):
         ''' Create execution context command line args

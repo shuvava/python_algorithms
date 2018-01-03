@@ -11,12 +11,17 @@ import unittest
 
 from bst_base import BST
 from bst_node_query import bst_find_smaller, bst_count, \
-bst_max, bst_min, bst_search, bst_next_larger, bst_to_list
+bst_max, bst_min, bst_search, bst_next_larger, bst_next_smaller, bst_to_list
 from bst_print import bst_print
+
+__print_trees__ = False
 
 class Unit_test_bst_find(unittest.TestCase):
     def setUp(self):
         self.bst_data = [49, 46, 79, 43, 64, 83, 40, 81, 87]
+        bst = BST().from_list(self.bst_data)
+        if __print_trees__:
+            bst_print(bst.root)
 
     def test_bst_find_smaller(self):
         bst = BST().from_list(self.bst_data)
@@ -68,6 +73,28 @@ class Unit_test_bst_find(unittest.TestCase):
         self.assertIsNotNone(result)
         self.assertEqual(result.value, 83, 'test go left right by tree')
 
+    def test_next_smaller(self):
+        if __print_trees__:
+            print('test_next_smaller >>>>')
+        bst = BST().from_list(self.bst_data)
+        # test go right by tree
+        result = bst_next_smaller(bst.root, 65)
+        self.assertIsNotNone(result)
+        self.assertEqual(result.value, 64)
+        # test go right by  tree
+        result = bst_next_smaller(bst.root, 44)
+        self.assertIsNotNone(result)
+        self.assertEqual(result.value, 43)
+        # test go left right by tree
+        result = bst_next_smaller(bst.root, 63)
+        self.assertIsNotNone(result)
+        self.assertEqual(result.value, 49, 'test go left right by tree')
+        result = bst_next_smaller(bst.root, 82)
+        self.assertIsNotNone(result)
+        self.assertEqual(result.value, 81, 'test go left right by tree')
+        if __print_trees__:
+            print('<<<< test_next_smaller') 
+
     def test_to_list(self):
         bst = BST().from_list(self.bst_data)
         arr = []
@@ -76,4 +103,5 @@ class Unit_test_bst_find(unittest.TestCase):
         self.assertListEqual(sorted(arr), sorted(self.bst_data), 'to list test')
 
 if __name__ == '__main__':
+    __print_trees__ = True
     unittest.main()
