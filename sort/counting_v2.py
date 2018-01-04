@@ -9,10 +9,18 @@ Complexity: O(n);
 from sort_interface import SortInterface 
 
 def sort(_array, length, val_range):
-    _keys = [[]]*val_range
+    _keys = [None]*(val_range+1)
     for key in range(length):
-         _keys[key].append(_array[key])
-    return []
+        item = _keys[_array[key]]
+        if not item:
+             _keys[_array[key]] = [_array[key]]
+        else:
+            item.append(_array[key])
+    result = []
+    for i in range(val_range+1):
+        if _keys[i]:
+            result.extend(_keys[i])
+    return result
 
 class CountingSort(SortInterface):
     def main(self):
