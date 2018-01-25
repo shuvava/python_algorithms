@@ -4,7 +4,8 @@
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
 '''Counting sort
-Complexity: O(n);
+Complexity: O(n+k);
+  where n length of element array and k range of elements
 '''
 from sort_interface import SortInterface 
 

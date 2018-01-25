@@ -19,9 +19,9 @@ path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../commo
 from file_operations import read_array_file
 
 if __name__ == '__main__':
-    arr = read_array_file('./hyperloglog/data.txt', True)
+    arr = read_array_file('./hyperloglog/data10.txt', True)
     #hll = hyperloglog.HyperLogLog(0.01)  # accept 1% counting error
-    hll = HyperLogLogPlusPlus()
+    hll = HyperLogLogPlusPlus(p=16)
     cnt = len(arr)
     print('count = {}; distinct = {}'.format(cnt, 2103130))
     for i in arr:

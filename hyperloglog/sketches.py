@@ -360,8 +360,8 @@ def bs(number):
 
 if __name__ == '__main__':
     #arr = read_array_file('./hyperloglog/data_test.txt', True)
-    arr = read_array_file('./hyperloglog/data.txt', True)
-    a = HyperLogLogSketch(100000000,0.05)
+    arr = read_array_file('./hyperloglog/data10.txt', True)
+    a = HyperLogLogSketch(4294967296,0.01)
     cnt = len(arr)
     print('count = {}; distinct = {}'.format(cnt, 2103130))
     for i in arr:
