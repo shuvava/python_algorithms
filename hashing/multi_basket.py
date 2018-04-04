@@ -10,13 +10,15 @@ class MultiBasket:
     '''
     Calculate basket br Multiplication Method
     '''
-    def __init__(self, r, w = 16):
+    def __init__(self, m, w = 16):
         '''
+        m - count of bits of hash basket
+        w - count of bit of universe (max possible value)
         '''
         self.w = w # we use 16 bit machine
-        if r >= self.w:
+        if m >= self.w:
             raise ValueError('r should be less 16')
-        self.r = r
+        self.r = m
         self.a = get_odd_number(self.w)
 
     def get_basket(self, val):
