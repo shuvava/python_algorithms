@@ -29,4 +29,44 @@ class PolynomialRollingHash:
     by which  H can be multiplied to get the result of the division without actually 
     performing a division.
     '''
-    def __init__(self, m, w = 32):
+    def __init__(self, base=256):
+        '''
+        base = max number
+        '''
+        if base < 256:
+            base = 256
+        self.arr = []
+        self.hash = 0
+        self.base = base
+        self.prime = findLargestPrimeFactor(base)
+        self.magic = 1
+        self.mod_adjustment = self.base * self.prime
+
+    def add_symbol(self, c):
+        self.add(ord(c))
+    
+    def shift_symbol(self, c):
+        self.shift(ord(c))
+
+    def add(self, i):
+        self.hash = (self.base * self.hash + i) % self.prime
+        self.arr.append(i)
+        self._upd_magic()
+
+    def _upd_magic(self):
+        h = len(self.arr) - 1
+        if h <=0:
+            self.magic = 1
+        else:
+            self.magic = self.base**h % self.prime
+
+    def remove(self, update_magic = True):
+        self.hash = (self.hash - self.arr[0] * self.magic % self.prime) % self.prime
+        self.arr.pop(0)
+        if update_magic:
+            self._upd_magic()
+
+    def shift(self, i):
+        self.hash = ((self.hash - self.arr[0] * self.magic % self.prime) * self.base + i) % self.prime
+        self.arr.pop(0)
+        self.arr.append(i)
