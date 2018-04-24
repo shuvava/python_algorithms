@@ -47,7 +47,7 @@ class RingHash(object):
     def _GetReplicasHashes(self, node, node_hash):
         _hashes = []
         for num in range(0, self.replicas):
-            _hash = self.get_hash(str(node) + " " + num)
+            _hash = self.get_hash(str(node) + " " + str(num))
             _hashes.append(_hash)
         return _hashes
 
@@ -58,9 +58,13 @@ class RingHash(object):
             self._ring_hash.append(_hash)
 
     def _GetNextShard(self, key_hash):
+        if not self._ring_hash:
+            return None
         return next((x for x in self._ring_hash if x > key_hash), self._ring_hash[0])
 
     def _GetPrevShard(self, key_hash):
+        if not self._ring_hash:
+            return None
         r = [x for x in self._ring_hash if x < key_hash]
         if not r:
             return max(self._ring_hash)
@@ -75,17 +79,25 @@ class RingHash(object):
         nodes: *list*|*string* - list of nodes or single node
         '''
         if not isinstance(nodes, list):
-            self.AddNode([nodes])
+            return self.AddNode([nodes])
         _range = (0, RING_SIZE)
         for node in nodes:
             node_hash = self.get_hash(str(node))
-            if not self._nodes[node_hash]:
+            if node_hash not in self._nodes:
                 _hashes = self._GetReplicasHashes(node, node_hash)
-                _range = (min(_range[0], self._GetPrevShard(min(_hashes))), max(_range[1], self._GetNextShard(max(_hashes))))
+                _max = [_range[1]]
+                _min = [_range[0]]
+                _prev = self._GetPrevShard(min(_hashes))
+                if _prev:
+                    _max.append(_prev)
+                _next = self._GetNextShard(max(_hashes))
+                if _next:
+                    _min.append(_next)
+                _range = (min(_min), max(_max))
                 self._AddNode(node, node_hash, _hashes)
         
 
-        self._ring_hash = self._ring_hash.sort()
+        self._ring_hash.sort()
         return _range
 
     def Get(self, key):
