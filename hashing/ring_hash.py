@@ -26,7 +26,7 @@ class RingHash(object):
     with a hash function. To lookup the server for a given key, you hash
     the key and find that point on the circle.
     Then you scan forward until you find the first hash value for any server.
-    In practice, each server appears multiple times on the circle. 
+    In practice, each server appears multiple times on the circle. \
     These extra points are called “virtual nodes”, or “vnodes”  or replicas.
     '''
     def __init__(self, replicas_count=None, get_hash=None):
@@ -44,23 +44,31 @@ class RingHash(object):
     def Nodes(self):
         return self._nodes.values
 
-    def _GetReplicasHashes(self, node, node_hash):
+    def _GetReplicasHashes(self, node):
         _hashes = []
         for num in range(0, self.replicas):
-            _hash = self.get_hash(str(node) + " " + num)
+            _hash = self.get_hash(str(node) + " " + str(num))
             _hashes.append(_hash)
         return _hashes
 
     def _AddNode(self, node, node_hash, hashes):
         self._nodes[node_hash] = node
         for _hash in hashes:
-            self._hashMap[_hash] = (node, node_hash)
+            self._hashMap[_hash] = node_hash
             self._ring_hash.append(_hash)
+        self._ring_hash.sort()
 
     def _GetNextShard(self, key_hash):
+        '''Return next vnode for hash'''
+        if not self._ring_hash:
+            return None
         return next((x for x in self._ring_hash if x > key_hash), self._ring_hash[0])
 
     def _GetPrevShard(self, key_hash):
+        ''' return previous vnode for hash
+        '''
+        if not self._ring_hash:
+            return None
         r = [x for x in self._ring_hash if x < key_hash]
         if not r:
             return max(self._ring_hash)
@@ -75,18 +83,26 @@ class RingHash(object):
         nodes: *list*|*string* - list of nodes or single node
         '''
         if not isinstance(nodes, list):
-            self.AddNode([nodes])
-        _range = (0, RING_SIZE)
+            return self.AddNode([nodes])
         for node in nodes:
             node_hash = self.get_hash(str(node))
-            if not self._nodes[node_hash]:
-                _hashes = self._GetReplicasHashes(node, node_hash)
-                _range = (min(_range[0], self._GetPrevShard(min(_hashes))), max(_range[1], self._GetNextShard(max(_hashes))))
+            if node_hash not in self._nodes:
+                _hashes = self._GetReplicasHashes(node)
                 self._AddNode(node, node_hash, _hashes)
-        
 
-        self._ring_hash = self._ring_hash.sort()
-        return _range
+    def GetAffectedNodes(self, nodes):
+        '''
+        Return v-nodes hashes of which will be affected after added new hash
+        '''
+        if not isinstance(nodes, list):
+            return self.GetAffectedNodes([nodes])
+        shards = set()
+        _hashes = [x for node in nodes for x in self._GetReplicasHashes(node)]
+        for key_hash in _hashes:
+            shard = self._GetNextShard(key_hash)
+            if shard not in shards and shard is not None:
+                shards.add(shard)
+        return list(shards)
 
     def Get(self, key):
         key_hash = self.get_hash(key)
@@ -96,7 +112,17 @@ class RingHash(object):
     def RemoveNode(self, node):
         node_hash = self.get_hash(str(node))
         if not self._nodes[node_hash]:
-            return None
-        _range = (0, RING_SIZE)
-        _hashes = self._GetReplicasHashes(node, node_hash)
-        return _range
+            return
+        _hashes = self._GetReplicasHashes(node)
+        if not _hashes:
+            return []
+        nodes = set()
+        for _hash in _hashes:
+            if _hash in self._hashMap:
+                if _hash not in nodes:
+                    node_hash = self._hashMap[_hash]
+                    nodes.add(self._nodes[node_hash])
+                    self._ring_hash.remove(_hash)
+                    del self._hashMap[_hash]
+                    del self._nodes[node_hash]
+        return list(nodes)
