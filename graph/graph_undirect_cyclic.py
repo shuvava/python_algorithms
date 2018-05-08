@@ -1,13 +1,13 @@
 '''
 Base implementation of undirected cyclic graph
 '''
-from .graph_vertex import Vertex
+from graph_vertex import Vertex
 
 class Graph(object):
     def __init__(self):
         self.__is_directed = False
         self.__is_cyclic = True
-        self.vertexes=[]
+        self.vertexes={}
 
     @property
     def directed(self):
@@ -20,9 +20,22 @@ class Graph(object):
     def add_vertex(self, node):
         if not isinstance(node, Vertex):
             return
-        self.vertexes.append(node)
+        if node.id in self.vertexes:
+            return
+        self.vertexes[node.id] = node
+
+    def get_vertex(self, vertex):
+        if isinstance(vertex, Vertex):
+            _id = vertex.id
+        else:
+            _id = str(vertex)
+        if _id not in self.vertexes:
+            return None
+        return self.vertexes[_id]
 
     def add_adjacency(self, node_parent, node_child):
+        node_parent = self.get_vertex(node_parent)
+        node_child = self.get_vertex(node_child)
         if not isinstance(node_parent, Vertex):
             return
         if not isinstance(node_child, Vertex):

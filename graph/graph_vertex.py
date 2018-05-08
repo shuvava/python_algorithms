@@ -9,10 +9,10 @@ and a set of arcs (ordered pairs of vertices)
 class Vertex(object):
     '''node of graph
     '''
-    def __init__(self, id, adjacency_list={}, properties={}):
-        self.__id = id
-        self.__adjacency_list = adjacency_list
-        self.__properties = properties
+    def __init__(self, vertex_id, adjacency_list=None, properties=None):
+        self.__id = str(vertex_id)
+        self.__adjacency_list = adjacency_list or {}
+        self.__properties = properties or {}
 
     @property
     def id(self):
