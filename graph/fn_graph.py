@@ -4,8 +4,8 @@ from sys import path
 
 path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../common')))
 
-from graph_undirect_cyclic import Graph
-from graph_vertex import Vertex
+from undirected_cyclic import Graph
+from vertex import Vertex
 
 from file_operations import read_json_file
 

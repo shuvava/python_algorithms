@@ -1,7 +1,7 @@
 '''
 Base implementation of undirected cyclic graph
 '''
-from graph_vertex import Vertex
+from vertex import Vertex
 
 class Graph(object):
     def __init__(self):

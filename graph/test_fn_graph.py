@@ -10,8 +10,8 @@ https://docs.python.org/3/library/unittest.html
 import unittest
 import os
 
-from graph_undirect_cyclic import Graph
-from graph_vertex import Vertex
+from undirected_cyclic import Graph
+from vertex import Vertex
 from fn_graph import load_graph
 
 class Unit_test_file_operations(unittest.TestCase):
