@@ -13,6 +13,7 @@ import os
 from undirected_cyclic import Graph
 from vertex import Vertex
 from fn_graph import load_graph
+from breath_first import bfs_undirected_cyclic
 
 class Unit_test_file_operations(unittest.TestCase):
     def setUp(self):
@@ -21,11 +22,22 @@ class Unit_test_file_operations(unittest.TestCase):
     def test_load_undirected_cyclic_graph(self):
         #act
         graph = load_graph(self.undirected_cyclic_graph_file, True)
+        vertex = graph.get_vertex(0)
         #assert
         self.assertIsNotNone(graph)
         self.assertTrue(graph.cyclic)
         self.assertFalse(graph.directed)
         self.assertEqual(len(graph.vertexes), 8)
+        self.assertEqual(len(vertex.adj), 2)
+
+    def test_bfs_undirected_cyclic(self):
+        #arrange
+        graph = load_graph(self.undirected_cyclic_graph_file, True)
+        #act
+        bfs = bfs_undirected_cyclic(graph, 0)
+        self.assertIsNotNone(bfs)
+        self.assertIsNotNone(bfs[0])
+        self.assertIsNotNone(bfs[1])
 
 if __name__ == '__main__':
     unittest.main()
