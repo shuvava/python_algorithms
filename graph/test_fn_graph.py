@@ -14,6 +14,7 @@ from undirected_cyclic import Graph
 from vertex import Vertex
 from fn_graph import load_graph
 from breath_first import bfs_undirected_cyclic
+from deapth_first import dfs_undirected_cyclic
 
 class Unit_test_file_operations(unittest.TestCase):
     def setUp(self):
@@ -32,12 +33,23 @@ class Unit_test_file_operations(unittest.TestCase):
 
     def test_bfs_undirected_cyclic(self):
         #arrange
-        graph = load_graph(self.undirected_cyclic_graph_file, True)
+        graph = load_graph(self.undirected_cyclic_graph_file, False)
         #act
         bfs = bfs_undirected_cyclic(graph, 0)
+        #assert
         self.assertIsNotNone(bfs)
         self.assertIsNotNone(bfs[0])
         self.assertIsNotNone(bfs[1])
+
+    def test_dfs_undirected_cyclic(self):
+        #arrange
+        graph = load_graph(self.undirected_cyclic_graph_file, False)
+        #act
+        dfs = dfs_undirected_cyclic(graph,0)
+        #assert
+        self.assertIsNotNone(dfs)
+        self.assertIsNotNone(dfs[0])
+        self.assertIsNotNone(dfs[1])
 
 if __name__ == '__main__':
     unittest.main()

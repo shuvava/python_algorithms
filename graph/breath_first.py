@@ -1,5 +1,10 @@
 '''
 implementation of Breath-First algorithm
+Breadth-first search (BFS) is an algorithm for traversing or searching 
+tree or graph data structures. It starts at the tree root 
+(or some arbitrary node of a graph, sometimes referred to as a 'search key')
+and explores the neighbor nodes first, before moving to the next 
+level neighbors.
 '''
 from undirected_cyclic import Graph
 
@@ -14,7 +19,7 @@ def bfs_undirected_cyclic(graph, start):
     graph - instance of class of Graph type
     start - id or instance of Vertex class
 
-    *returns* all nodes reach from given ${start}
+    *returns* all nodes reach from given ${start} and their levels
     '''
     if not isinstance(graph, Graph):
         return (None, None)
