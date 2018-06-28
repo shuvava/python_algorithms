@@ -18,7 +18,7 @@
             {"source": 7, "targets": [11, 8] },
             {"source": 5, "targets": [11] },
             {"source": 3, "targets": [8, 10] },
-            {"source": 11, "targets": [2, 9] },
+            {"source": 11, "targets": [2, 9, 10] },
             {"source": 2, "targets": [] },
             {"source": 9, "targets": [] },
             {"source": 10, "targets": [] },
