@@ -164,3 +164,29 @@ def get_array(file_name=None, length=DEFAULT_LENGTH, verbosity=False):
     if verbosity:
         print(_data)
     return _data
+
+def get_min_value_id(itemA_id, itemA_val, itemB_id, itemB_val):
+    if itemA_id is None:
+        return itemB_id
+    if itemB_id is None:
+        return itemA_id
+    if itemA_val is None:
+        return itemB_id
+    if itemB_val is None:
+        return itemA_id
+    if itemA_val < itemB_val:
+        return itemA_id
+    return itemB_id
+
+def get_max_value_id(itemA_id, itemA_val, itemB_id, itemB_val):
+    if itemA_id is None:
+        return itemB_id
+    if itemB_id is None:
+        return itemA_id
+    if itemA_val is None:
+        return itemB_id
+    if itemB_val is None:
+        return itemA_id
+    if itemA_val > itemB_val:
+        return itemA_id
+    return itemB_id

@@ -12,7 +12,7 @@ import unittest
 import cProfile, pstats
 
 from bst_heap_min import MinHeap
-from bst_heap_utill import get_array, print_tree
+from bst_heap_utils import get_array, print_tree
 
 __verbose__ = False
 __stat__ = False

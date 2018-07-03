@@ -4,6 +4,7 @@
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
 from bst_heap_base import BaseHeap
+from bst_heap_utils import get_min_value_id
 
 class MinHeap(BaseHeap):
     def __init__(self, *args, **kwargs):
@@ -25,10 +26,12 @@ class MinHeap(BaseHeap):
         right = self.right(index, max_index)
         largest = index
 
-        if left is not None and self.get_value(left) < self.get_value(index):
-            largest = left
-        if right is not None and self.get_value(right) < self.get_value(largest):
-            largest = right
+        largest = get_min_value_id(left, self.get_value(left), largest, self.get_value(largest))
+        largest = get_min_value_id(right, self.get_value(right), largest, self.get_value(largest))
+        # if left is not None and self.get_value(left) < self.get_value(index):
+        #     largest = left
+        # if right is not None and self.get_value(right) < self.get_value(largest):
+        #     largest = right
         if largest != index:# fix heap and do recursive call
             self.swap(index, largest)
             self.heapify(largest, max_index)
