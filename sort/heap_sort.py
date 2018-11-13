@@ -13,14 +13,19 @@ operation; hence it takes O(log n) time
 Complexity: O(n*ln(n))
 '''
 #add parent directory with base module
+import os
 from sys import path
-path.insert(0, '../bst')
+path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../bst')))
 
-from heap import Heap
+from bst_heap_max import MaxHeap
+from bst_heap_utils import get_array
 
-class HeapSort(Heap):
+class HeapSort(MaxHeap):
     '''Implementation of Heap sort
     '''
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def heap_sort(self):
         '''Sorting Strategy:
         1. Build Max Heap from unordered array;
@@ -33,19 +38,8 @@ class HeapSort(Heap):
         children are max heaps. Run max_heapify to fix this.
         6. Go to Step 2 unless heap is empty. 
         '''
-        self.build_max_heap()
-        for index in range(len(self._array), 0, -1):
-            max_index = len(self._array)
+        self.build_heap()
+        for index in range(len(self.array), 0, -1):
+            max_index = len(self.array)
             self.swap(0, index-1)
-            self.max_heapify(0, index-1)
-
-    def main(self, _array):
-        '''main entry point'''
-        self.set(_array)
-        self.heap_sort()
-        if self.verbosity:
-            print('------------------------------------------')
-            print(_array)
-
-if __name__ == '__main__':
-    HeapSort().run()
+            self.heapify(0, index-1)
