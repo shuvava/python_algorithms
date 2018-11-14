@@ -99,7 +99,7 @@ class BaseHeap(metaclass=abc.ABCMeta):
         return None
 
     def parent(self, index):
-        '''parent(i) =i/2: returns index of node's parent 
+        '''parent(i) =i/2: returns index of node's parent
         '''
         if index <= self.root_index():
             return None
@@ -108,6 +108,8 @@ class BaseHeap(metaclass=abc.ABCMeta):
         return int(index/2) - 1
 
     def pop(self):
+        '''removes the top(root) element of heap, heapify the heap and returns removed element
+        '''
         self.swap(self.root_index(), self.length - 1)
         root = self.array.pop()
         self.heapify(self.root_index())
@@ -133,7 +135,9 @@ class BaseHeap(metaclass=abc.ABCMeta):
         self.heapify(self.root_index())
 
     def get_sorted(self):
-        _arr_sorted=[]
+        '''return sorted array from heap
+        '''
+        _arr_sorted = []
         for i in range(self.length):
             _arr_sorted.append(self.pop())
         return _arr_sorted
@@ -146,7 +150,7 @@ class BaseHeap(metaclass=abc.ABCMeta):
     def heapify(self, index=None, max_index = None):
         '''correct a single violation of the heap property in a subtree at its root
         :Heap Property: *The key of a node is >= than the keys of its children*
-        
+
         :param index: index of element (*default None == Root element of heap*)
         :type index: Number
         '''
@@ -161,7 +165,7 @@ class BaseHeap(metaclass=abc.ABCMeta):
         in general, O(l) for the nodes that are l levels above the
         leaves. We have n/4 nodes with level 1, n/8 with level 2,
         and so on till we have one root node that is lg n levels
-        above the leaves. 
+        above the leaves.
         '''
         for index in range(int(self.length/2), -1, -1):
             self.heapify(index)
