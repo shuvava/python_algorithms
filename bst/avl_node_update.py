@@ -6,10 +6,11 @@ from avl_node import AVL_Node
 from bst_node_update import bst_insert, bst_delete
 
 def rotation_left(node):
+    ''' rotate AVL subtree to left'''
     if not isinstance(node, AVL_Node):
-        return
+        return None
     if not node.left:
-        return
+        return None
     # save sate
     parent = node.parent
     left = node.left
@@ -34,10 +35,11 @@ def rotation_left(node):
     return left
 
 def rotation_right(node):
+    ''' rotate AVL subtree to right'''
     if not isinstance(node, AVL_Node):
-        return
+        return None
     if not node.right:
-        return
+        return None
     # save sate
     parent = node.parent
     right = node.right

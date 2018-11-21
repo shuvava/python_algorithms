@@ -43,7 +43,7 @@ class AVL(BST):
         '''Remove a node from BST'''
         _node = node
         if not isinstance(node, AVL_Node):
-             _node = bst_search(self.root, node)
+            _node = bst_search(self.root, node)
         if _node is self.root:
             raise NotImplementedError
         self.root = avl_delete(_node)
