@@ -1,2 +1,7 @@
 [MASTER]
 init-hook="sys.path.insert(0,os.path.abspath('./common'));sys.path.insert(0,os.path.abspath('./bst'))"
+
+[FORMAT]
+
+# Maximum number of characters on a single line.
+max-line-length=140

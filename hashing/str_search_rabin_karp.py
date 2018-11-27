@@ -27,6 +27,7 @@ def rabin_karp(s, pattern):
             return inx
     for c in s[len(pattern)+1:]:
         inx += 1
+        shash.shift_symbol(s[len(pattern) + inx-1])
         if shash.hash == phash.hash:
             if s[inx:len(pattern) + inx] == pattern:
                 return inx

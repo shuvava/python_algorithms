@@ -16,7 +16,7 @@ class Unit_test_RabinKarp(unittest.TestCase):
     def setUp(self):
         pass
 
-    def wrong_param_test(self):
+    def test_wrong_param(self):
         #arrange
         s = 'the'
         pattern = 'world'
@@ -25,17 +25,18 @@ class Unit_test_RabinKarp(unittest.TestCase):
         #assert
         self.assertEqual(result, -1)
     
-    def equal_test(self):
-            #arrange
+    def test_equal(self):
+        #arrange
         s = 'the world'
         pattern = 'the'
         #act
         result = rabin_karp(s, pattern)
         #assert
-        self.assertEqual(result, 1)
+        self.assertEqual(result, 0)
 
-    def find_test(self):
-            #arrange
+    def test_find(self):
+        #arrange
+        #s = 'uthe world'
         s = 'I love the world'
         pattern = 'the'
         #act
@@ -43,7 +44,7 @@ class Unit_test_RabinKarp(unittest.TestCase):
         #assert
         self.assertEqual(result, 7)
 
-    def not_found_test(self):
+    def test_not_found(self):
             #arrange
         s = 'I love the world'
         pattern = 'the1'

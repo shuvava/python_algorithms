@@ -20,14 +20,11 @@ def bst_insert(root_node, node):
         if not root_node.right:
             root_node.right = node
             return True
-        else:
-            return bst_insert(root_node.right, node)
-    else:
-        if not root_node.left:
-            root_node.left = node
-            return True
-        else:
-            return bst_insert(root_node.left, node)
+        return bst_insert(root_node.right, node)
+    if not root_node.left:
+        root_node.left = node
+        return True
+    return bst_insert(root_node.left, node)
 
 def bst_delete(node):
     if not isinstance(node, Node):

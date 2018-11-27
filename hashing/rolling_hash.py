@@ -19,14 +19,14 @@ class PolynomialRollingHash:
     where 
         C1..Ck - ASII code of string
         k      - max length of string
-    
-    In order to avoid manipulating huge H, H values, all math is done modulo n. 
-    Removing and adding characters simply involves adding or subtracting the first or last term. 
-    Shifting all characters by one position to the left requires multiplying 
-    the entire sum {\displaystyle H} H by a. Shifting all characters by one position to the right 
+
+    In order to avoid manipulating huge H, H values, all math is done modulo n.
+    Removing and adding characters simply involves adding or subtracting the first or last term.
+    Shifting all characters by one position to the left requires multiplying
+    the entire sum {\displaystyle H} H by a. Shifting all characters by one position to the right
     requires dividing the entire sum  H by  a. 
-    Note that in modulo arithmetic,  a can be chosen to have a multiplicative inverse a^{-1} 
-    by which  H can be multiplied to get the result of the division without actually 
+    Note that in modulo arithmetic,  a can be chosen to have a multiplicative inverse a^{-1}
+    by which  H can be multiplied to get the result of the division without actually
     performing a division.
     '''
     def __init__(self, base=256):
@@ -55,12 +55,12 @@ class PolynomialRollingHash:
 
     def _upd_magic(self):
         h = len(self.arr) - 1
-        if h <=0:
+        if h <= 0:
             self.magic = 1
         else:
             self.magic = self.base**h % self.prime
 
-    def remove(self, update_magic = True):
+    def remove(self, update_magic=True):
         self.hash = (self.hash - self.arr[0] * self.magic % self.prime) % self.prime
         self.arr.pop(0)
         if update_magic:

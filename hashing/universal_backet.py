@@ -16,7 +16,7 @@ class UniversalBasket:
     '''
     Calculate basket br Multiplication Method
     '''
-    def __init__(self, m, w = 32):
+    def __init__(self, m, w=32):
         '''
         m - count of bits of hash basket
         w - count of bit of universe (max possible value)

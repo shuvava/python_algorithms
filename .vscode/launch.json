@@ -16,7 +16,7 @@
             "envFile": "${workspaceRoot}/.env",
             "args": [
                 // "-f sort/test10.txt"
-                "-f graph10.json"
+                //"-f graph10.json"
             ],
             "debugOptions": [
                 "WaitOnAbnormalExit",
