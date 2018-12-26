@@ -59,8 +59,12 @@ def get_shortest_path(graph, start, end):
     end_vertex = graph.get_vertex(end)
     bfs = bfs_undirected_cyclic(graph, start_vertex)
     parent = bfs[1]
+    if parent is None:
+        return []
     result = [end_vertex]
     current = end_vertex
+    if current not in parent:
+        return []
     while parent[current] != start_vertex:
         current = parent[current]
         result.append(current)
