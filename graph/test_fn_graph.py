@@ -13,7 +13,7 @@ import os
 from undirected_cyclic import Graph
 from vertex import Vertex
 from fn_graph import load_graph
-from breath_first import bfs_undirected_cyclic
+from breath_first import bfs_undirected_cyclic, get_shortest_path
 from deapth_first import dfs_undirected_cyclic
 
 class Unit_test_file_operations(unittest.TestCase):
@@ -43,6 +43,17 @@ class Unit_test_file_operations(unittest.TestCase):
         self.assertEqual(bfs[0][graph.get_vertex('7')], 3)
         self.assertIsNotNone(bfs[1])
         self.assertEqual(bfs[1][graph.get_vertex('4')], graph.get_vertex('3'))
+
+    def test_get_shortest_path(self):
+        #arrange
+        graph = load_graph(self.undirected_cyclic_graph_file, False)
+        #act
+        path = get_shortest_path(graph, 0, 6)
+        #assert
+        self.assertIsNotNone(path)
+        self.assertEqual(len(path), 4)
+        self.assertEqual(path[2], graph.get_vertex('3'))
+
 
     def test_dfs_undirected_cyclic(self):
         #arrange

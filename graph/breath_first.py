@@ -42,3 +42,27 @@ def bfs_undirected_cyclic(graph, start):
         frontier = _next
         i += 1
     return (level, parent)
+
+def get_shortest_path(graph, start, end):
+    '''
+    find shortest path between two vertices of graph
+
+    graph - instance of class of Graph type
+    start - start point (id or instance of Vertex class)
+    end   - end point (id or instance of Vertex class)
+
+    *returns* shortest path between ${start} and ${end}
+    '''
+    if not isinstance(graph, Graph):
+        return None
+    start_vertex = graph.get_vertex(start)
+    end_vertex = graph.get_vertex(end)
+    bfs = bfs_undirected_cyclic(graph, start_vertex)
+    parent = bfs[1]
+    result = [end_vertex]
+    current = end_vertex
+    while parent[current] != start_vertex:
+        current = parent[current]
+        result.append(current)
+    result.append(start_vertex)
+    return result
