@@ -44,7 +44,7 @@ class PolynomialRollingHash:
 
     def add_symbol(self, c):
         self.add(ord(c))
-    
+
     def shift_symbol(self, c):
         self.shift(ord(c))
 

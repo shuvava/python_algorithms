@@ -39,7 +39,10 @@ class Unit_test_file_operations(unittest.TestCase):
         #assert
         self.assertIsNotNone(bfs)
         self.assertIsNotNone(bfs[0])
+        self.assertEqual(len(bfs[0]), 8)
+        self.assertEqual(bfs[0][graph.get_vertex('7')], 3)
         self.assertIsNotNone(bfs[1])
+        self.assertEqual(bfs[1][graph.get_vertex('4')], graph.get_vertex('3'))
 
     def test_dfs_undirected_cyclic(self):
         #arrange

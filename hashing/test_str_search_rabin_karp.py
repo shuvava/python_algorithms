@@ -24,7 +24,7 @@ class Unit_test_RabinKarp(unittest.TestCase):
         result = rabin_karp(s, pattern)
         #assert
         self.assertEqual(result, -1)
-    
+
     def test_equal(self):
         #arrange
         s = 'the world'
@@ -36,7 +36,6 @@ class Unit_test_RabinKarp(unittest.TestCase):
 
     def test_find(self):
         #arrange
-        #s = 'uthe world'
         s = 'I love the world'
         pattern = 'the'
         #act
@@ -45,7 +44,7 @@ class Unit_test_RabinKarp(unittest.TestCase):
         self.assertEqual(result, 7)
 
     def test_not_found(self):
-            #arrange
+        #arrange
         s = 'I love the world'
         pattern = 'the1'
         #act
