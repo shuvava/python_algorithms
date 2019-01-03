@@ -4,13 +4,13 @@ from sys import path
 
 path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../common')))
 
-from undirected_cyclic import Graph
+from undirected_cyclic import UndirectedGraph
 from vertex import Vertex
 
 from file_operations import read_json_file
 
 def load_undirected_cyclic_graph(data):
-    _graph = Graph()
+    _graph = UndirectedGraph()
     for _node in data['nodes']:
         properties = {k:v for k,v in _node.items() if k != 'id'}
         vertex = Vertex(_node['id'], properties=properties)

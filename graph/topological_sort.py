@@ -53,14 +53,14 @@ class TopologicalSort(BaseGraph):
         _in_degree = self.get_in_degree()
         edges = self.get_edges(True)
         sequence = []
-        next = [inx for inx, item in enumerate(_in_degree) if item == 0]
-        while next:
-             vertex = next.pop()
-             sequence.append(vertex)
-             for edge in edges[vertex]:
-                 _in_degree[edge[1]] -= 1
-                 if _in_degree[edge[1]] <=0:
-                    next.append(edge[1])
+        _next = [inx for inx, item in enumerate(_in_degree) if item == 0]
+        while _next:
+            vertex = _next.pop()
+            sequence.append(vertex)
+            for edge in edges[vertex]:
+                _in_degree[edge[1]] -= 1
+                if _in_degree[edge[1]] <=0:
+                    _next.append(edge[1])
         return sequence
 
     def main(self):

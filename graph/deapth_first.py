@@ -5,11 +5,12 @@ tree or graph data structures. One starts at the root
 (selecting some arbitrary node as the root in the case of a graph) 
 and explores as far as possible along each branch before backtracking.
 '''
-from undirected_cyclic import Graph
+from graph_base import Graph
 
-def dfs_undirected_cyclic(graph, start, visited=None):
+def dfs_undirected_cyclic(graph, start):
     '''implementation of Depth-First-search algorithm for
     undirected cyclic graph
+    - (V+E) time (V - count of vertexes; E count of edges)
 
     graph - instance of class of Graph type
     start - id or instance of Vertex class
@@ -23,7 +24,6 @@ def dfs_undirected_cyclic(graph, start, visited=None):
         return (None, None)
     level = {start_vertex: 0}
     parent = {start_vertex: None}
-    i = 1
     stack = [start_vertex]
     while stack:
         current_vertex = stack.pop()
@@ -34,5 +34,3 @@ def dfs_undirected_cyclic(graph, start, visited=None):
                 parent[child_vertex] = current_vertex
                 stack.append(child_vertex)
     return (level, parent)
-    
-

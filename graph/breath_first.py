@@ -6,7 +6,7 @@ tree or graph data structures. It starts at the tree root
 and explores the neighbor nodes first, before moving to the next 
 level neighbors.
 '''
-from undirected_cyclic import Graph
+from graph_base import Graph
 
 def bfs_undirected_cyclic(graph, start):
     '''
@@ -47,11 +47,11 @@ def get_shortest_path(graph, start, end):
     '''
     find shortest path between two vertices of graph
 
-    graph - instance of class of Graph type
-    start - start point (id or instance of Vertex class)
-    end   - end point (id or instance of Vertex class)
+    * graph - instance of class of Graph type
+    * start - start point (id or instance of Vertex class)
+    * end   - end point (id or instance of Vertex class)
 
-    *returns* shortest path between ${start} and ${end}
+    returns shortest path between ${start} and ${end}
     '''
     if not isinstance(graph, Graph):
         return None
@@ -65,8 +65,7 @@ def get_shortest_path(graph, start, end):
     current = end_vertex
     if current not in parent:
         return []
-    while parent[current] != start_vertex:
+    while parent[current] is not None:
         current = parent[current]
         result.append(current)
-    result.append(start_vertex)
     return result
