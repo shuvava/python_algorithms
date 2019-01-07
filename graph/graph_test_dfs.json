@@ -1,0 +1,23 @@
+{
+    "graph": {
+        "directed": true,
+        "cyclic": true,
+        "type": "directed cyclic graph",
+        "label": "simple test",
+        "nodes": [
+            { "id": 1, "name": "a" },
+            { "id": 2, "name": "b" },
+            { "id": 0, "name": "c" },
+            { "id": 3, "name": "d" },
+            { "id": 4, "name": "e" },
+            { "id": 5, "name": "f" }
+        ],
+        "edges": [
+            {"source": 1, "targets": [2, 3] },
+            {"source": 0, "targets": [4, 5] },
+            {"source": 3, "targets": [2] },
+            {"source": 4, "targets": [3] },
+            {"source": 2, "targets": [4] }
+        ]
+    }
+}
