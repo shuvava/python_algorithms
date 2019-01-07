@@ -14,7 +14,7 @@ from undirected_cyclic import Graph
 from vertex import Vertex
 from fn_graph import load_graph
 from breath_first import bfs_undirected_cyclic, get_shortest_path
-from deapth_first import dfs_undirected_cyclic, dfs_undirected_cyclic_b
+from deapth_first import dfs_undirected_cyclic, dfs_undirected_cyclic_b, dfs_detect_cycle
 
 class Unit_test_file_operations(unittest.TestCase):
     def setUp(self):
@@ -84,6 +84,17 @@ class Unit_test_file_operations(unittest.TestCase):
         self.assertIsNotNone(relations)
         self.assertEqual(len(relations), 4)
         self.assertTrue(graph.get_vertex(0) not in relations)
+
+    def test_detect_cycle(self):
+        #arrange
+        graph = load_graph(self.directed_cyclic_graph_file, False)
+        #act
+        result1 = dfs_detect_cycle(graph, 1)
+        result2 = dfs_detect_cycle(graph, 5)
+        #assert
+        self.assertTrue(result1)
+        self.assertFalse(result2)
+  
 
 if __name__ == '__main__':
     unittest.main()

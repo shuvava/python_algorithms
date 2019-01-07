@@ -72,3 +72,22 @@ def dfs_undirected_cyclic_b(graph, start):
                 stack.append(child_vertex)
                 break
     return (level, parent)
+
+def dfs_detect_cycle(graph, start):
+    if not isinstance(graph, Graph):
+        return (None, None)
+    start_vertex = graph.get_vertex(start)
+    if not start_vertex:
+        return (None, None)
+    level = {start_vertex: 0}
+    stack = [start_vertex]
+    while stack:
+        current_vertex = stack.pop()
+        for child_id in current_vertex.adj:
+            child_vertex = current_vertex.adj[child_id]
+            if child_vertex not in level and child_vertex:
+                level[child_vertex] = level[current_vertex] + 1
+                stack.append(child_vertex)
+            else:
+                return True
+    return False
