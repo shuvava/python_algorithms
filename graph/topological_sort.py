@@ -59,7 +59,7 @@ class TopologicalSort(BaseGraph):
             sequence.append(vertex)
             for edge in edges[vertex]:
                 _in_degree[edge[1]] -= 1
-                if _in_degree[edge[1]] <=0:
+                if _in_degree[edge[1]] <= 0:
                     _next.append(edge[1])
         return sequence
 

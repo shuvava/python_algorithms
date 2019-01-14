@@ -14,12 +14,20 @@ from undirected_cyclic import Graph
 from vertex import Vertex
 from fn_graph import load_graph
 from breath_first import bfs_undirected_cyclic, get_shortest_path
-from deapth_first import dfs_undirected_cyclic, dfs_undirected_cyclic_b, dfs_detect_cycle
+from deapth_first import (
+    dfs_undirected_cyclic,
+    dfs_undirected_cyclic_b,
+    dfs_detect_cycle,
+    topological_sort_get_sources,
+    topological_sort
+)
+
 
 class Unit_test_file_operations(unittest.TestCase):
     def setUp(self):
         self.undirected_cyclic_graph_file = os.path.abspath(os.path.join(os.path.dirname(__file__), 'graph_test.json'))
         self.directed_cyclic_graph_file = os.path.abspath(os.path.join(os.path.dirname(__file__), 'graph_test_dfs.json'))
+        self.topological_graph_file = os.path.abspath(os.path.join(os.path.dirname(__file__), 'topological_sort.json'))
 
     def test_load_undirected_cyclic_graph(self):
         #act
@@ -94,7 +102,22 @@ class Unit_test_file_operations(unittest.TestCase):
         #assert
         self.assertTrue(result1)
         self.assertFalse(result2)
-  
+
+    def test_get_graph_sources(self):
+        #arrange
+        graph = load_graph(self.topological_graph_file, False)
+        #act
+        result = topological_sort_get_sources(graph)
+        self.assertEqual(4, len(result))
+
+    def test_topological_sort(self):
+        #arrange
+        graph = load_graph(self.topological_graph_file, False)
+        #act
+        result = topological_sort(graph)
+        self.assertEqual(9, len(result))
+        print(result)
+
 
 if __name__ == '__main__':
     unittest.main()

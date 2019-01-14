@@ -91,3 +91,47 @@ def dfs_detect_cycle(graph, start):
             else:
                 return True
     return False
+
+def topological_sort_get_sources(graph):
+    '''Source = vertex with no incoming edges
+    = schedulable at beginning
+    '''
+    if not isinstance(graph, Graph):
+        return {}
+    source = {}
+    none_source = {}
+    for vertex_id in graph.vertexes:
+        vertex = graph.vertexes[vertex_id]
+        if vertex_id not in none_source:
+            source[vertex_id] = vertex
+        for child_id in vertex.adj:
+            if child_id in source:
+                del source[child_id]
+                if child_id in none_source:
+                    del none_source[child_id]
+            elif child_id not in none_source:
+                none_source[child_id] = vertex.adj[child_id]
+    return source
+
+def topological_sort(graph):
+    result = {}
+    if not isinstance(graph, Graph):
+        return result
+    sources = topological_sort_get_sources(graph)
+    dfs_list = []
+    for source in sources:
+        dfs = dfs_undirected_cyclic_b(graph, source)
+        dfs_list.append(list(dfs[0].items()))
+    have_items = True
+    max_deep = 0
+    while have_items:
+        have_items = False
+        for dfs in dfs_list:
+            if len(dfs) > 0:
+                have_items = True
+                item = dfs.pop()
+                if item[0].id not in result:
+                    result[item[0].id] = item[1]
+                elif item[0].id in result and result[item[0].id] < item[1]:
+                    result[item[0].id] = item[1]
+    return result
