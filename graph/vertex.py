@@ -12,11 +12,21 @@ class Vertex(object):
     def __init__(self, vertex_id, adjacency_list=None, properties=None):
         self.__id = str(vertex_id)
         self.__adjacency_list = adjacency_list or {}
+        self.__weights = None
+        if 'weights' in properties:
+            self.__weights = {}
+            for weight in properties['weights']:
+                self.__weights[str(weight['id'])] = weight['weight']
+            del properties['weights']
         self.__properties = properties or {}
 
     @property
     def id(self):
         return self.__id
+
+    @property
+    def weights(self):
+        return self.__weights
 
     @property
     def adj(self):
@@ -31,4 +41,4 @@ class Vertex(object):
             return
         if node.id in self.__adjacency_list:
             return
-        self.__adjacency_list[node.id]=node
+        self.__adjacency_list[node.id] = node

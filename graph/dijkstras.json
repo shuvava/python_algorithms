@@ -1,0 +1,26 @@
+{
+    "graph": {
+        "directed": true,
+        "cyclic": true,
+        "type": "directed cyclic graph",
+        "label": "dijkstra example",
+        "nodes": [
+            { "id": 1, "name": "a", "weights":[{ "id": 2, "weight": 10 }, { "id": 0, "weight": 3 }] },
+            { "id": 2, "name": "b", "weights": [{ "id": 0, "weight": 1 }, { "id": 3, "weight": 2 }]},
+            { "id": 0, "name": "c", "weights": [
+                { "id": 2, "weight": 4 },
+                { "id": 4, "weight": 2 },
+                { "id": 3, "weight": 8 }
+            ] },
+            { "id": 3, "name": "d", "weights": [{ "id": 4, "weight": 7 }] },
+            { "id": 4, "name": "e", "weights": [{ "id": 3, "weight": 9 }] }
+        ],
+        "edges": [
+            { "source": 1, "targets": [2, 0]}, 
+            { "source": 2, "targets": [0, 3]},
+            { "source": 0, "targets": [ 2, 4, 3]},
+            { "source": 3, "targets": [4]},
+            { "source": 4, "targets": [3]}
+        ]
+    }
+}

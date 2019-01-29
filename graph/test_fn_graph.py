@@ -21,6 +21,7 @@ from deapth_first import (
     topological_sort_get_sources,
     topological_sort
 )
+from dijkstras import single_path
 
 
 class Unit_test_file_operations(unittest.TestCase):
@@ -28,6 +29,7 @@ class Unit_test_file_operations(unittest.TestCase):
         self.undirected_cyclic_graph_file = os.path.abspath(os.path.join(os.path.dirname(__file__), 'graph_test.json'))
         self.directed_cyclic_graph_file = os.path.abspath(os.path.join(os.path.dirname(__file__), 'graph_test_dfs.json'))
         self.topological_graph_file = os.path.abspath(os.path.join(os.path.dirname(__file__), 'topological_sort.json'))
+        self.dijkstras = os.path.abspath(os.path.join(os.path.dirname(__file__), 'dijkstras.json'))
 
     def test_load_undirected_cyclic_graph(self):
         #act
@@ -50,6 +52,14 @@ class Unit_test_file_operations(unittest.TestCase):
         self.assertFalse(graph.directed)
         self.assertEqual(len(graph.vertexes), 6)
         self.assertEqual(len(vertex.adj), 2)
+    
+    def test_load_graph_with_weights(self):
+        #act
+        graph = load_graph(self.dijkstras, True)
+        vertex = graph.get_vertex(0)
+        #assert
+        self.assertIsNotNone(graph)
+        self.assertIsNotNone(vertex.weights)
 
     def test_bfs_undirected_cyclic(self):
         #arrange
@@ -118,6 +128,14 @@ class Unit_test_file_operations(unittest.TestCase):
         self.assertEqual(9, len(result))
         print(result)
 
+    def test_dijkstras_shortest_path(self):
+        #act
+        graph = load_graph(self.dijkstras, True)
+        result = single_path(graph, 1, 3)
+        #assert
+        self.assertIsNotNone(graph)
+        self.assertIsNotNone(result)
+        self.assertEqual(9, result[0])
 
 if __name__ == '__main__':
     unittest.main()
