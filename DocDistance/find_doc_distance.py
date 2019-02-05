@@ -22,7 +22,7 @@ DEFAULT_FILES = ['doc1.txt', 'doc2.txt']
 TRANSLATOR = str.maketrans('', '', string.punctuation)
 
 def get_context():
-    ''' Creats excution context command line args
+    ''' Create execution context command line args
     Returns
     -------
     Object

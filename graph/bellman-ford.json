@@ -1,0 +1,21 @@
+{
+    "graph": {
+        "directed": true,
+        "cyclic": true,
+        "type": "directed cyclic graph",
+        "label": "test graph for short path with negative cycle sort",
+        "nodes": [
+            { "id": 0, "name": "a", "weights":[{ "id": 1, "weight": 1 }] },
+            { "id": 1, "name": "b", "weights":[{ "id": 2, "weight": 2 }] },
+            { "id": 2, "name": "c", "weights":[{ "id": 5, "weight": -4 }, { "id": 3, "weight": 1 }] },
+            { "id": 3, "name": "d", "weights":[] },
+            { "id": 5, "name": "z", "weights":[{ "id": 1, "weight": 1 }] }
+        ],
+        "edges": [
+            {"source": 0, "targets": [1] },
+            {"source": 1, "targets": [2] },
+            {"source": 2, "targets": [5, 3] },
+            {"source": 5, "targets": [1] }
+        ]
+    }
+}
