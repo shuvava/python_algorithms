@@ -4,6 +4,7 @@
 # Copyright (c) 2019 Vladimir Shurygin.  All rights reserved.
 # was stollen from http://norvig.com/spell-correct.html
 # source code from https://github.com/norvig/pytudes
+#https://yurichev.com/blog/fuzzy_string/
 
 ################ Spelling Corrector 
 
