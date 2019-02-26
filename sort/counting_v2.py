@@ -14,7 +14,7 @@ def sort(_array, length, val_range):
     for key in range(length):
         item = _keys[_array[key]]
         if not item:
-             _keys[_array[key]] = [_array[key]]
+            _keys[_array[key]] = [_array[key]]
         else:
             item.append(_array[key])
     result = []
