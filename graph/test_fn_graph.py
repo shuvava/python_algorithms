@@ -89,8 +89,8 @@ class Unit_test_file_operations(unittest.TestCase):
         #arrange
         graph = load_graph(self.directed_cyclic_graph_file, False)
         #act
-        dfs = dfs_undirected_cyclic_b(graph, 1)
-        #dfs = bfs_undirected_cyclic(graph, 1)
+        #dfs = dfs_undirected_cyclic_b(graph, 1)
+        dfs = bfs_undirected_cyclic(graph, 1)
 
         #assert
         levels = dfs[0]
