@@ -13,13 +13,12 @@ Algorithm:
 
 def merge(a1, a2):
     i, j, result, m, n = 0, 0, [], len(a1), len(a2)
-    ra = result.append
     while i < m and j < n:
         if a1[i] <= a2[j]:
-            ra(a1[i])
+            result.append(a1[i])
             i += 1
         else:
-            ra(a2[j])
+            result.append(a2[j])
             j += 1
     result += a1[i:]
     result += a2[j:]
