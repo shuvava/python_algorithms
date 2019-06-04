@@ -8,6 +8,6 @@ Let’s say, you have a set of N elements which are partitioned into further sub
 
 ## links
 
-[Disjoint Set Union](https://www.hackerearth.com/practice/notes/disjoint-set-union-union-find/)
-[implementation](https://www.nayuki.io/page/disjoint-set-data-structure)
-[interview-problems](https://github.com/alexgolec/interview-problems/blob/master/synonymous-queries/transitivity_disjoint_set.py)
+- [Disjoint Set Union](https://www.hackerearth.com/practice/notes/disjoint-set-union-union-find/)
+- [implementation](https://www.nayuki.io/page/disjoint-set-data-structure)
+- [interview-problems](https://github.com/alexgolec/interview-problems/blob/master/synonymous-queries/transitivity_disjoint_set.py)
