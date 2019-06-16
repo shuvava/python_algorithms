@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
-'''Insertion sort(bubble sort) 
+'''Insertion sort(bubble sort)
 Complexity: O(n^2)
 for j(index) ← 2 to n
     insert key A[j] into the (already sorted) sub-array A[1 .. j-1].
