@@ -1,5 +1,5 @@
 #!/usr/bin/python
-''' find doc distnace between documents
+''' find doc distance between documents
 https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec02.pdf
 '''
 import cProfile
@@ -64,7 +64,7 @@ def read_file(file_name, verbosity=False):
         return _data
 
 def create_vector(doc_):
-    '''Create vector of the cocument
+    '''Create vector of the document
     Parameters
     ----------
     data: list
@@ -105,7 +105,7 @@ def get_vector_length(vector):
     -------
         Number length of the vector '''
     result = 0
-    for  value in vector.values():
+    for value in vector.values():
         result += value*value
     return math.sqrt(result)
 

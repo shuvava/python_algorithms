@@ -52,9 +52,9 @@ def bst_delete(node):
     else:
         # change relationship
         if next_larger.is_left_child:
-            next_larger.parent.left = None
+            next_larger.parent.left = next_larger.right
         else:
-            next_larger.parent.right = None
+            next_larger.parent.right = next_larger.right
         next_larger.parent = None
         if is_left_child:
             parent.left = next_larger

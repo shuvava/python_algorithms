@@ -44,9 +44,25 @@ def insort_right(a, x, lo=0, hi=None):
     inx = bisect_right(a, x, lo, hi)
     a.insert(inx, x)
 
+def insort_right_v2(a, x):
+    '''
+    similar to _siftdown from heapq.py
+    complicity O(n)
+    '''
+    a.append(x)
+    pos = len(a)-1
+    while pos > 0:
+        current = pos-1
+        if a[current] > a[pos]:
+            a[pos] = a[current]
+            pos = current
+            continue
+        break
+    a[pos] = x
+
 if __name__ == '__main__':
     arr = [15, 12, 10]
     arr.sort()
     print(arr)
-    insort_right(arr, 13)
+    insort_right_v2(arr, 13)
     print(arr)

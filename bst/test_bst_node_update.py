@@ -51,6 +51,26 @@ class Unit_test_bst_node_update(unittest.TestCase):
         if __print__:
             print('--------------------test_bst_delete')
 
+    def test_bst_delete_with_child(self):
+        if __print__:
+            print('--------------------test_bst_delete_with_child')
+        bst = BST().from_list(self.bst_data)
+        node = Node(82)
+        bst_insert(bst.root, node)
+        bst_delete(bst.root.left.left)
+        if __print__:
+            bst_print(bst.root)
+        self.assertEqual(bst.root.left.rank, 2)
+        self.assertEqual(bst.root.rank, 9)
+        self.assertIsNotNone(bst.root.left.left)
+        self.assertIsNone(bst.root.left.left.left)
+        bst_delete(bst.root.right)
+        if __print__:
+            bst_print(bst.root)
+        self.assertEqual(bst.root.rank, 8)
+        if __print__:
+            print('--------------------test_bst_delete_with_child')
+
 if __name__ == '__main__':
     __print__ = True
     unittest.main()

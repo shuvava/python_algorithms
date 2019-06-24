@@ -9,6 +9,7 @@ from fn_graph import load_graph
 
 def single_path(graph, start, end):
     '''implementation of dijkstra algorithm withOUT priority queue
+    O(V**2) where V count vertexes(nodes)
     '''
     if not isinstance(graph, Graph):
         return None
@@ -46,6 +47,7 @@ def single_path(graph, start, end):
 
 def dijkstra(graph, start, end):
     '''implementation of dijkstra algorithm WITH priority queue
+    O(E+V*log(V)) where E count of edges, V count of vertexes(nodes)
     '''
     if not isinstance(graph, Graph):
         return None

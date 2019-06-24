@@ -23,9 +23,9 @@ class PolynomialRollingHash:
     In order to avoid manipulating huge H, H values, all math is done modulo n.
     Removing and adding characters simply involves adding or subtracting the first or last term.
     Shifting all characters by one position to the left requires multiplying
-    the entire sum {\displaystyle H} H by a. Shifting all characters by one position to the right
-    requires dividing the entire sum  H by  a. 
-    Note that in modulo arithmetic,  a can be chosen to have a multiplicative inverse a^{-1}
+    the entire sum H by a. Shifting all characters by one position to the right
+    requires dividing the entire sum H by  a. 
+    Note that in modulo arithmetic, a can be chosen to have a multiplicative inverse a^{-1}
     by which  H can be multiplied to get the result of the division without actually
     performing a division.
     '''
