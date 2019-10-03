@@ -14,6 +14,10 @@ times due to hash collisions.
 
 Wherever a list or set is used, and space is at a premium, consider using a Bloom filter if the effect of false
 positives can be mitigated
+
+the optimal number of hash functions k is about 0.7 times
+the number of bits per element. Since k must be an integer, the smaller
+sub-optimal values are preferred
 '''
 # Shamelessly borrowed (under MIT license) from http://code.activestate.com/recipes/577686-bloom-filter/
 # About Bloom Filters:
@@ -70,6 +74,7 @@ class BloomFilterSimple():
         self.filter_size = num_words * 32
         self.num_probes = num_probes
         self.arr = array('L', [0]) * num_words # array of unsigned integers
+        self.__hash_fn = hash_generator_fn
 
         self.hash_fn = lambda key: hash_generator_fn(key, self.num_probes, self.filter_size)
 
@@ -100,6 +105,29 @@ class BloomFilterSimple():
     def add(self, key):
         for array_index, mask in self.get_probes(key):
             self.arr[array_index] |= mask
+
+    def match_template(self, bf):
+        return (self.filter_size == bf.filter_size \
+            and self.num_probes == bf.num_probes \
+            and self.__hash_fn == bf.__hash_fn)
+
+    def union(self, bfilter):
+        if self.match_template(bfilter):
+            _bf = BloomFilterSimple(self.filter_size, self.num_probes, self.__hash_fn)
+            _bf.arr = [a | b for a, b in zip(self.arr, bfilter.arr)]
+            return _bf
+        else:
+            # Union b/w two unrelated bloom filter raises this
+            raise ValueError("Mismatched bloom filters")
+
+    def intersection(self, bfilter):
+        if self.match_template(bfilter):
+            _bf = BloomFilterSimple(self.filter_size, self.num_probes, self.__hash_fn)
+            _bf.arr = [a & b for a, b in zip(self.arr, bfilter.arr)]
+            return _bf
+        else:
+            # Intersection b/w two unrelated bloom filter raises this
+            raise ValueError("Mismatched bloom filters")
 
     def count(self):
         n = countSetBitsOfList(self.arr)
@@ -134,7 +162,7 @@ class BloomFilterSimple():
         num_bits = int(ceil(real_num_bits_m))
 
         # Verified against http://en.wikipedia.org/wiki/Bloom_filter#Probability_of_false_positives
-        real_num_probes_k = (num_bits / max_elements) * log(2)
+        real_num_probes_k = (num_bits / max_elements) * log(2) # should be about 0.7 times the number of bits per element
         num_probes = int(ceil(real_num_probes_k))
 
         return BloomFilterSimple(
