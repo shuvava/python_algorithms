@@ -11,6 +11,9 @@ insert an element x into the filter, for every hash function hk we compute
 its value j = hk (x ) on the element x and set the corresponding bit j in
 the filter to one. Note, it is possible that some bits can be set multiple
 times due to hash collisions.
+
+Wherever a list or set is used, and space is at a premium, consider using a Bloom filter if the effect of false
+positives can be mitigated
 '''
 # Shamelessly borrowed (under MIT license) from http://code.activestate.com/recipes/577686-bloom-filter/
 # About Bloom Filters:
