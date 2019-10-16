@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import unittest
-from func import get_mask, set_bit, clear_bit
+from func import get_mask, set_bit, clear_bit, bit_count, numberOfTrailingZeros
 
 class TestFunc(unittest.TestCase):
     def setUp(self):
@@ -20,6 +20,15 @@ class TestFunc(unittest.TestCase):
     def test_clear_bit(self):
         val = clear_bit(7,2)
         self.assertEqual(val, 3)
+
+    def test_bit_count(self):
+        res = bit_count(1_255_279_365)
+        self.assertEqual(12, res)
+
+    def test_numberOfTrailingZeros(self):
+        res = numberOfTrailingZeros(381_344)
+        self.assertEqual(5, res)
+
 
 if __name__ == '__main__':
     unittest.main()
