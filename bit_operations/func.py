@@ -55,3 +55,18 @@ def numberOfTrailingZeros(i):
         n = n - 2
         x = y
     return n - (((x << 1)& mask32) >> 31)
+
+def highestOneBit(i):
+    '''Returns a value with at most a single one-bit, in the
+      position of the highest-order ("leftmost") one-bit in the specified
+      value.  Returns zero if the specified value has no
+      one-bits in its two's complement binary representation, that is, if it
+      is equal to zero.
+    '''
+    i |= (i >>  1)
+    i |= (i >>  2)
+    i |= (i >>  4)
+    i |= (i >>  8)
+    i |= (i >> 16)
+    i |= (i >> 32)
+    return i - (i >> 1)

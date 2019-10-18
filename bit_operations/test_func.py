@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import unittest
-from func import get_mask, set_bit, clear_bit, bit_count, numberOfTrailingZeros
+from func import get_mask, set_bit, clear_bit, bit_count, \
+    numberOfTrailingZeros, highestOneBit
 
 class TestFunc(unittest.TestCase):
     def setUp(self):
@@ -28,6 +29,10 @@ class TestFunc(unittest.TestCase):
     def test_numberOfTrailingZeros(self):
         res = numberOfTrailingZeros(381_344)
         self.assertEqual(5, res)
+
+    def test_highestOneBit(self):
+        res = highestOneBit(381_344)
+        self.assertEqual(262_144, res)
 
 
 if __name__ == '__main__':
