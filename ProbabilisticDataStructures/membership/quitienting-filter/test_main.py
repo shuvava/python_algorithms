@@ -60,5 +60,32 @@ class TestQuotientFilter(unittest.TestCase):
             self.assertFalse(key in b)
         self.assertEqual(0, len(b))
 
+    def test_iterator(self):
+        b = QuotientFilter(3, 13, hash_fn)
+        for key in mock.keys():
+            b.insert(key)
+        expected_cnt = len(mock)
+        mock_values = mock.values()
+        actual_cnt = 0
+        for key in b:
+            self.assertIn(key, mock_values)
+            actual_cnt += 1
+        self.assertEqual(actual_cnt, expected_cnt)
+
+    def test_double_size(self):
+        b = QuotientFilter(3, 13, hash_fn)
+        for key in mock.keys():
+            b.insert(key)
+        b.double_size()
+        expected_cnt = len(mock)
+        mock_values = mock.values()
+        actual_cnt = 0
+        for key in b:
+            self.assertIn(key, mock_values)
+            actual_cnt += 1
+        self.assertEqual(actual_cnt, expected_cnt)
+        for key in mock.keys():
+            self.assertTrue(key in b)
+
 if __name__ == '__main__':
     unittest.main()

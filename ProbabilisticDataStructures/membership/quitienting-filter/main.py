@@ -342,4 +342,20 @@ class QuotientFilter:
         self.MAX_SIZE = qf.MAX_SIZE
         self.MAX_INSERTIONS = qf.MAX_INSERTIONS
         self.table = qf.table
-        pass
+
+    def merge(self, qf):
+        fingerprintBits = self.REMAINDER_BITS + self.QUOTIENT_BITS
+        if fingerprintBits != qf.REMAINDER_BITS + qf.QUOTIENT_BITS:
+            raise AttributeError()
+        totalEntries = self.entries + qf.entries
+        requiredQuotientBits = self.__bitsForNumElementsWithLoadFactor(totalEntries)
+        remainderBits = fingerprintBits - requiredQuotientBits
+        if remainderBits < 1:
+            raise AssertionError('Impossible to merge not enough fingerprint bits')
+        new_qf = QuotientFilter(requiredQuotientBits, remainderBits, self.hash_fn)
+        for elt in self:
+            new_qf.insert(elt, hashed=True)
+        for elt in qf:
+            new_qf.insert(elt, hashed=True)
+        return new_qf
+
