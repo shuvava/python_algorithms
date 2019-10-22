@@ -87,5 +87,11 @@ class TestQuotientFilter(unittest.TestCase):
         for key in mock.keys():
             self.assertTrue(key in b)
 
+    def test_create(self):
+        cnt = 10**9
+        qf = QuotientFilter.create(cnt, 0.02, hash_fn)
+        self.assertEqual(24, qf.REMAINDER_BITS)
+        self.assertEqual(6, qf.QUOTIENT_BITS)
+
 if __name__ == '__main__':
     unittest.main()

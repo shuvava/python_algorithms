@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from math import log
 from bit_oprs_helper import get_table_size, get_mask, \
         is_shifted, is_continuation, is_occupied, \
         is_empty, isElementClusterStart, isElementRunStart, \
@@ -6,6 +7,7 @@ from bit_oprs_helper import get_table_size, get_mask, \
         is_occupied_clear, is_shifted_clear, is_continuation_clear, \
         get_remainder, \
         numberOfTrailingZeros, highestOneBit, bit_count
+from hash_fn import hash_fn as hash_fn_default
 
 
 class QuotientFilter:
@@ -95,8 +97,6 @@ class QuotientFilter:
                 self.visited += 1
                 return _hash
         raise StopIteration()
-
-
 
     def inc_index(self, inx):
         return (inx + 1) & self.INDEX_MASK
@@ -303,7 +303,8 @@ class QuotientFilter:
                 self[s] = updated_next
         self.entries -= 1
 
-    def __bitsForNumElementsWithLoadFactor(self, numElements):
+    @staticmethod
+    def __bitsForNumElementsWithLoadFactor(numElements):
         if numElements == 0:
             return 1
         if bit_count(numElements) == 1:
@@ -359,3 +360,20 @@ class QuotientFilter:
             new_qf.insert(elt, hashed=True)
         return new_qf
 
+    @staticmethod
+    def create(max_elements=10000, error_rate=0.1, hash_fn=None):
+        '''
+        calculator of settings for `QuotientFilter`
+        * max_elements - expected count of unique elements
+        * error_rate = desirable error rate
+        '''
+        if max_elements <= 0:
+            raise ValueError('ideal_num_elements_n must be > 0')
+        if not (0 < error_rate < 1):
+            raise ValueError('error_rate_p must be between 0 and 1 exclusive')
+        total_bits = QuotientFilter.__bitsForNumElementsWithLoadFactor(max_elements)
+        remainder_bits = int(log(max_elements/error_rate))
+        quotient_bits = total_bits-remainder_bits
+        if hash_fn is None:
+            hash_fn = hash_fn_default
+        return QuotientFilter(quotient_bits, remainder_bits, hash_fn)
