@@ -3,7 +3,7 @@
 import unittest
 from random import Random
 
-from bit_oprs_helper import bit_count
+from deps_import import bit_count
 from linear_counting import LinearCounting
 
 class TestLinearCounting(unittest.TestCase):

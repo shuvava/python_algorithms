@@ -43,7 +43,7 @@ class HyperLogLog(object):
         reg (numpy.array, optional): The internal state.
             This argument is for initializing the HyperLogLog from
             an existing one.
-        hashobj (optional): The hash function used. 
+        hashobj (optional): The hash function used.
             It must implements
             the `digest()` method similar to hashlib_ hash functions, such
             as `hashlib.sha1`.
@@ -148,7 +148,7 @@ class HyperLogLog(object):
                     precisions.")
         self.reg = np.maximum(self.reg, other.reg)
 
-    def digest(self, hashobj):
+    def digest(self):
         '''
         Returns:
             numpy.array: The current internal state.
@@ -183,7 +183,7 @@ class HyperLogLog(object):
     def __len__(self):
         '''
         Returns:
-            int: Get the size of the HyperLogLog as the size of 
+            int: Get the size of the HyperLogLog as the size of
                 `reg`.
         '''
         return len(self.reg)
@@ -193,7 +193,7 @@ class HyperLogLog(object):
         Check equivalence between two HyperLogLogs
 
         Args:
-            other (datasketch.HyperLogLog): 
+            other (datasketch.HyperLogLog):
 
         Returns:
             bool: True if both have the same internal state.
@@ -296,7 +296,7 @@ class HyperLogLogPlusPlus(HyperLogLog):
     2. A new small-cardinality estimation scheme
     3. Sparse representation (not implemented here)
 
-    This class has the same set of methods as 
+    This class has the same set of methods as
     :class:`datasketch.HyperLogLog`.
     '''
 
