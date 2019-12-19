@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 # encoding: utf-8
+'''
+See more https://docs.python.org/3.2/library/itertools.html#itertools.combinations
+'''
 from itertools import *
 
 def permutation(s):
