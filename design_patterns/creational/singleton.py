@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # encoding: utf-8
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
@@ -24,19 +24,32 @@ Python works in the following way:
     it's not initialized again, which relates to the Singleton behavior
     of having only one object and returning the same object.
 '''
+
+
 class Singleton(object):
     '''Singletone python realization'''
-    def __new__(cls):
+
+    def __new__(cls, *args, **kwargs):
         '''Object initialization
         The hasattr method (Python's special method to know if an object has
         a certain property) is used to see if the cls object has the instance
         property, which checks whether the class already has an object.
         '''
         if not hasattr(cls, 'instance'):
-            cls.instance = super(Singleton, cls).__new__(cls)
+            cls.instance = super(Singleton, cls).__new__(cls, *args, **kwargs)
         return cls.instance
 
-s = Singleton()
-print("Object created", s)
-s1 = Singleton()
-print("Object created", s1)
+
+def test_singleton():
+    s1 = Singleton()
+    print(f"Object created {s1} id={id(s1)}")
+    s2 = Singleton()
+    print(f"Object created {s2} id={id(s2)}")
+    if id(s1) == id(s2):
+        print("Same")
+    else:
+        print("Different")
+
+
+if __name__ == "__main__":
+    test_singleton()

@@ -5,6 +5,7 @@ import asyncio
 import aiohttp
 from time import perf_counter_ns
 
+
 async def task(name, work_queue):
     async with aiohttp.ClientSession() as session:
         while not work_queue.empty():
@@ -14,7 +15,8 @@ async def task(name, work_queue):
             async with session.get(url, verify_ssl=False) as response:
                 await response.text()
             et_tsk_stop = perf_counter_ns()
-            print(f"Task {name} total elapsed time: {et_tsk_stop-et_tsk_start:_} ns")
+            print(f"Task {name} total elapsed time: {et_tsk_stop - et_tsk_start:_} ns")
+
 
 async def main():
     """
@@ -42,7 +44,8 @@ async def main():
         asyncio.create_task(task("Two", work_queue)),
     )
     et_stop = perf_counter_ns()
-    print(f"\nTotal elapsed time: {et_stop-et_start:_} ns")
+    print(f"\nTotal elapsed time: {et_stop - et_start:_} ns")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
