@@ -41,9 +41,9 @@ def bst_delete(node):
     # resconnect child elements
     if children_count == 0:
         if is_left_child:
-            node.parent.left = None
+            parent.left = None
         else:
-            node.parent.right = None
+            parent.right = None
     elif children_count == 1:
         if is_left_child:
             parent.left = left or right
