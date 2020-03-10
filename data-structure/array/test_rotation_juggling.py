@@ -3,17 +3,18 @@
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
-'''
+"""
 Test of base_bst module
 https://docs.python.org/3/library/unittest.html
-'''
+"""
 import unittest
 
 from rotation_juggling import leftRotate
 
 __print__ = False
 
-class Unit_test_rotation_juggling(unittest.TestCase):
+
+class UnitTestRotationJuggling(unittest.TestCase):
     def setUp(self):
         pass
     
@@ -28,6 +29,7 @@ class Unit_test_rotation_juggling(unittest.TestCase):
             for i in range(len(arr)):
                 print ("% d" % arr[i], end=" ")
         self.assertEqual(arr, [3, 4, 5, 6, 7, 1, 2])
+
 
 if __name__ == '__main__':
     __print__ = True
