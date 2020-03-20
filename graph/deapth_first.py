@@ -1,8 +1,8 @@
-'''
+"""
 implementation of Depth-First algorithm
 Depth-first search (DFS) is an algorithm for traversing or searching
-tree or graph data structures. One starts at the root 
-(selecting some arbitrary node as the root in the case of a graph) 
+tree or graph data structures. One starts at the root
+(selecting some arbitrary node as the root in the case of a graph)
 and explores as far as possible along each branch before backtracking.
 http://web.cs.unlv.edu/larmore/Courses/CSC477/bfsDfs.pdf
 
@@ -19,11 +19,12 @@ Planarity testing.[7][8]
 Solving puzzles with only one solution, such as mazes. (DFS can be adapted to find all solutions to a maze by only including nodes on the current path in the visited set.)
 Maze generation may use a randomized depth-first search.
 Finding biconnectivity in graphs.
-'''
+"""
 from graph_base import Graph
 
+
 def dfs_undirected_cyclic(graph, start):
-    '''implementation of Depth-First-search algorithm for
+    """implementation of Depth-First-search algorithm for
     undirected cyclic graph. Def can have multiple copies on
     the stack at the same time. However, the total number of
     iterations of the innermost loop of Def cannot exceed
@@ -35,7 +36,7 @@ def dfs_undirected_cyclic(graph, start):
     start - id or instance of Vertex class
 
     *returns* all nodes reach from given ${start} and their levels
-    '''
+    """
     if not isinstance(graph, Graph):
         return (None, None)
     start_vertex = graph.get_vertex(start)
@@ -53,6 +54,7 @@ def dfs_undirected_cyclic(graph, start):
                 parent[child_vertex] = current_vertex
                 stack.append(child_vertex)
     return (level, parent)
+
 
 def dfs_undirected_cyclic_b(graph, start):
     '''implementation of Depth-First-search algorithm for
@@ -87,6 +89,7 @@ def dfs_undirected_cyclic_b(graph, start):
                 break
     return (level, parent)
 
+
 def dfs_detect_cycle(graph, start):
     if not isinstance(graph, Graph):
         return (None, None)
@@ -105,6 +108,7 @@ def dfs_detect_cycle(graph, start):
             else:
                 return True
     return False
+
 
 def topological_sort_get_sources(graph):
     '''Source = vertex with no incoming edges
@@ -126,6 +130,7 @@ def topological_sort_get_sources(graph):
             elif child_id not in none_source:
                 none_source[child_id] = vertex.adj[child_id]
     return source
+
 
 def topological_sort(graph):
     result = {}

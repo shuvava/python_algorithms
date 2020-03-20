@@ -1,9 +1,9 @@
-'''
+"""
 implementation of Breath-First algorithm
-Breadth-first search (BFS) is an algorithm for traversing or searching 
-tree or graph data structures. It starts at the tree root 
+Breadth-first search (BFS) is an algorithm for traversing or searching
+tree or graph data structures. It starts at the tree root
 (or some arbitrary node of a graph, sometimes referred to as a 'search key')
-and explores the neighbor nodes first, before moving to the next 
+and explores the neighbor nodes first, before moving to the next
 level neighbors.
 http://web.cs.unlv.edu/larmore/Courses/CSC477/bfsDfs.pdf
 
@@ -16,11 +16,12 @@ Ford–Fulkerson method for computing the maximum flow in a flow network
 Serialization/Deserialization of a binary tree vs serialization in sorted order, allows the tree to be re-constructed in an efficient manner.
 Construction of the failure function of the Aho-Corasick pattern matcher.
 Testing bipartiteness of a graph.
-'''
+"""
 from graph_base import Graph
 
+
 def bfs_undirected_cyclic(graph, start):
-    '''
+    """
     implementation of Breath-First-search algorithm for
     undirected cyclic graph
     - visit all nodes reachable from ${start}
@@ -31,7 +32,7 @@ def bfs_undirected_cyclic(graph, start):
     start - id or instance of Vertex class
 
     *returns* all nodes reach from given ${start} and their levels
-    '''
+    """
     if not isinstance(graph, Graph):
         return (None, None)
     start_vertex = graph.get_vertex(start)
@@ -54,8 +55,9 @@ def bfs_undirected_cyclic(graph, start):
         i += 1
     return (level, parent)
 
+
 def get_shortest_path(graph, start, end):
-    '''
+    """
     find shortest path between two vertices of graph
 
     * graph - instance of class of Graph type
@@ -63,7 +65,7 @@ def get_shortest_path(graph, start, end):
     * end   - end point (id or instance of Vertex class)
 
     returns shortest path between ${start} and ${end}
-    '''
+    """
     if not isinstance(graph, Graph):
         return None
     start_vertex = graph.get_vertex(start)

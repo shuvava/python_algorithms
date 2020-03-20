@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2020 Vladimir Shurygin.  All rights reserved.
 #
-'''
+"""
 Longest Palindromic Substring
 
 Solution:
@@ -23,7 +23,7 @@ Example 2:
 
 Input: "cbbd"
 Output: "bb"
-'''
+"""
 
 
 def longestPalSubstr(st: str) -> str:

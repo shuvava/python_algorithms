@@ -7,10 +7,11 @@ from heapq import heappush, heappop, heapify
 from graph_base import Graph
 from fn_graph import load_graph
 
+
 def single_path(graph, start, end):
-    '''implementation of dijkstra algorithm withOUT priority queue
+    """implementation of dijkstra algorithm withOUT priority queue
     O(V**2) where V count vertexes(nodes)
-    '''
+    """
     if not isinstance(graph, Graph):
         return None
     start_vertex = graph.get_vertex(start)
@@ -19,7 +20,7 @@ def single_path(graph, start, end):
     end_vertex = graph.get_vertex(end)
     if not end_vertex:
         return None
-    visited = {start_vertex:(0, None)}
+    visited = {start_vertex: (0, None)}
     pq = [(0, start_vertex)]
     while pq:
         pq_vertex = heappop(pq)
@@ -45,10 +46,11 @@ def single_path(graph, start, end):
     result.reverse()
     return (weight, result)
 
+
 def dijkstra(graph, start, end):
-    '''implementation of dijkstra algorithm WITH priority queue
+    """implementation of dijkstra algorithm WITH priority queue
     O(E+V*log(V)) where E count of edges, V count of vertexes(nodes)
-    '''
+    """
     if not isinstance(graph, Graph):
         return None
     start_vertex = graph.get_vertex(start)
@@ -58,7 +60,7 @@ def dijkstra(graph, start, end):
     if not end_vertex:
         return None
     visited = set()
-    pq_dict = {start_vertex.id:[0, start_vertex, None]}
+    pq_dict = {start_vertex.id: [0, start_vertex, None]}
     pq = [pq_dict[start_vertex.id]]
     while pq:
         pq_vertex = heappop(pq)
@@ -96,11 +98,10 @@ def dijkstra(graph, start, end):
     return None
 
 
-
 if __name__ == '__main__':
     _graph = load_graph('dijkstras.json', True)
-    #_result = single_path(_graph, 1, 3)
-    #_result = single_path(_graph, 2, 4)
-    #_result = dijkstra(_graph, 1, 3)
+    # _result = single_path(_graph, 1, 3)
+    # _result = single_path(_graph, 2, 4)
+    # _result = dijkstra(_graph, 1, 3)
     _result = dijkstra(_graph, 2, 4)
     print(f'path weight = {_result[0]}; path = {_result[1]}')

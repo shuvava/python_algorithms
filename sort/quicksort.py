@@ -3,29 +3,31 @@
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
-'''QuickSort
+"""QuickSort
 Complexity: O(n*ln(n)); Worst: O(n2)
 Algorithm:
     1. Partition array -> choose pivot element
          put in the left array elements smaller pivot
          put in the left array elements bigger pivot
-'''
-#add parent directory with base module
+"""
+# add parent directory with base module
 import os
 from sys import path
 
 path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../common')))
 
-from base_interface import BaseAlg # pylint: disable=C0413
+from base_interface import BaseAlg  # pylint: disable=C0413
+
 
 class QuickSort(BaseAlg):
-    ''' Implementation of QuickSort
+    """ Implementation of QuickSort
     Thomas H. Cormen Algorithms Unlocked (2013) page 51
     grokking-algorithms-illustrated-programmers-curious 65
-    '''
+    """
+
     @staticmethod
     def swap(array, _inx1, _inx2):
-        '''this method was intensionally made separate to evaluate count of calls'''
+        """this method was intensionally made separate to evaluate count of calls"""
         array[_inx1], array[_inx2] = array[_inx2], array[_inx1]
 
     @staticmethod
@@ -68,15 +70,14 @@ class QuickSort(BaseAlg):
         '''
         if end <= start:
             if self.verbosity:
-                print('end loop after {} iteration'.format(level-1))
+                print('end loop after {} iteration'.format(level - 1))
             return
         # Get pivot
         middle = self.partition(array_, start, end)
         # Sort left side of pivot
-        self.quick_sort_recursive(array_, start, middle - 1, level+1)
+        self.quick_sort_recursive(array_, start, middle - 1, level + 1)
         # Sort right side of pivot
-        self.quick_sort_recursive(array_, middle + 1, end, level+1)
-
+        self.quick_sort_recursive(array_, middle + 1, end, level + 1)
 
     def quick_sort_iterative(self, array_, start, end):
         '''Interactive implementation of quicksort,
@@ -103,11 +104,12 @@ class QuickSort(BaseAlg):
 
     def main(self, _array):
         '''main entry point'''
-        #self.quick_sort_recursive(_array, 0, len(_array)-1)
-        self.quick_sort_iterative(_array, 0, len(_array)-1)
+        # self.quick_sort_recursive(_array, 0, len(_array)-1)
+        self.quick_sort_iterative(_array, 0, len(_array) - 1)
         if self.verbosity:
             print('------------------------------------------')
             print(_array)
+
 
 if __name__ == '__main__':
     QuickSort().run()

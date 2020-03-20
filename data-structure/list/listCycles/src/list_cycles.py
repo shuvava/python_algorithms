@@ -3,9 +3,11 @@
 #
 # Copyright (c) 2019 Vladimir Shurygin.  All rights reserved.
 #
-'''
+"""
 find a cycle in a linked list
-'''
+"""
+
+
 class LinkedList(object):
     def __init__(self, value):
         self._next = None
@@ -34,12 +36,13 @@ def check_linked_list_cycle(item):
         _current = _current.next
     return _cycle
 
+
 def check_linked_list_cycle_floyd(item):
-    '''
+    """
     Floyd's algorithm. Increment one pointer by one and the other by two.
     If they are ever pointing to the same node, there is a cycle.
     Explanation: https://www.quora.com/How-does-Floyds-cycle-finding-algorithm-work
-    '''
+    """
     if not isinstance(item, LinkedList):
         return False
     slow = item
@@ -49,7 +52,7 @@ def check_linked_list_cycle_floyd(item):
             return True
         fast = fast.next.next
         slow = slow.next
-    return False 
+    return False
 
 
 if __name__ == '__main__':
@@ -62,6 +65,6 @@ if __name__ == '__main__':
     current.next = LinkedList(4)
     current = current.next
     current.next = cycle
-    #result = check_linked_list_cycle(cycled_list)
+    # result = check_linked_list_cycle(cycled_list)
     result = check_linked_list_cycle_floyd(cycled_list)
     print(f'cycle check result: {result}')

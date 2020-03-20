@@ -3,14 +3,15 @@
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
-'''Counting sort
+"""Counting sort
 Complexity: O(n+k);
   where n length of element array and k range of elements
-'''
-from sort_interface import SortInterface 
+"""
+from sort_interface import SortInterface
+
 
 def sort(_array, length, val_range):
-    _keys = [None]*(val_range+1)
+    _keys = [None] * (val_range + 1)
     for key in range(length):
         item = _keys[_array[key]]
         if not item:
@@ -18,18 +19,20 @@ def sort(_array, length, val_range):
         else:
             item.append(_array[key])
     result = []
-    for i in range(val_range+1):
+    for i in range(val_range + 1):
         if _keys[i]:
             result.extend(_keys[i])
     return result
 
+
 class CountingSort(SortInterface):
     def main(self):
-        '''main entry point'''
+        """main entry point"""
         result = sort(self._data, len(self._data), max(self._data))
         if self.verbosity:
             print('------------------------------------------')
             print(result)
+
 
 if __name__ == '__main__':
     CountingSort().run()

@@ -3,11 +3,13 @@
 #
 # Copyright (c) 2019 Vladimir Shurygin.  All rights reserved.
 #
-'''
+"""
 Disjoint-set data structure
 implements path compression
 original https://github.com/alexgolec/interview-problems/blob/master/synonymous-queries/transitivity_disjoint_set.py
-'''
+"""
+
+
 class DisjointSet:
     def __init__(self):
         self.parents = {}
@@ -37,11 +39,10 @@ class DisjointSet:
         root2 = self.get_root(item2)
         if root1 == root2:
             return False
-        
+
         # Compare sizes
         if self.sizes[root1] - self.sizes[root2] < 0:
             root1, root2 = root2, root1
         self.parents[root2] = root1
         self.sizes[root1] += self.sizes[root2]
         del self.sizes[root2]
-

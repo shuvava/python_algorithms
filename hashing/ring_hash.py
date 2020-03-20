@@ -3,24 +3,25 @@
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
-'''
+"""
 pure implementation of consistent hash based on ring hash
 https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf
 https://medium.com/@dgryski/consistent-hashing-algorithmic-tradeoffs-ef6b8e2fcae8
 https://www.akamai.com/es/es/multimedia/documents/technical-publication/consistent-hashing-and-random-trees-distributed-caching-protocols-for-relieving-hot-spots-on-the-world-wide-web-technical-publication.pdf
-'''
+"""
 
 from murmur3 import murmur3_hash
 
 # Amount of points on the ring. Must not be higher than 2**32 because we're
 # using murmur3 for hash
-RING_SIZE = 2**32
+RING_SIZE = 2 ** 32
 
 # Default amount of replicas per node
 RING_REPLICAS = 16
 
+
 class RingHash(object):
-    '''
+    """
     The basic idea is that each server is mapped to a point on
     a circle (You can think of the circle as all integers 0 ..2³²-1.)
     with a hash function. To lookup the server for a given key, you hash
@@ -28,7 +29,8 @@ class RingHash(object):
     Then you scan forward until you find the first hash value for any server.
     In practice, each server appears multiple times on the circle. \
     These extra points are called “virtual nodes”, or “vnodes”  or replicas.
-    '''
+    """
+
     def __init__(self, replicas_count=None, get_hash=None):
         if replicas_count is None:
             replicas_count = RING_REPLICAS
