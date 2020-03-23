@@ -28,6 +28,7 @@ def sort(arr):
             lkp -= 1
         inx += 1
 
+
 if __name__ == '__main__':
     arr = [6, 5, 1, 4]
     sort(arr)
