@@ -18,9 +18,9 @@ class MaxHeap(BaseHeap):
         :param index: index of element (*default None == Root element of heap*)
         :type index: Number
         '''
-        if not self.array:# empty array
+        if not self.array:  # empty array
             return
-        if  index is None or index < self.root_index():# fix the first element
+        if index is None or index < self.root_index():  # fix the first element
             index = self.root_index()
         #init variables
         left = self.left(index, max_index)

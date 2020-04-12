@@ -18,7 +18,7 @@ from sys import path
 path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../bst')))
 
 from bst_heap_max import MaxHeap
-from bst_heap_utils import get_array
+
 
 class HeapSort(MaxHeap):
     '''Implementation of Heap sort
@@ -40,6 +40,5 @@ class HeapSort(MaxHeap):
         '''
         self.build_heap()
         for index in range(len(self.array), 0, -1):
-            max_index = len(self.array)
             self.swap(0, index-1)
             self.heapify(0, index-1)
