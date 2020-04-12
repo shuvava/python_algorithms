@@ -15,7 +15,7 @@ Complexity: O(n*ln(n))
 from typing import List
 
 
-def heapify(unsorted: List[int], index: int, heap_size: int) -> List[int]:
+def heapify(unsorted: List[int], index: int, heap_size: int) -> None:
     largest = index
     left_index = 2 * index + 1
     right_index = 2 * index + 2
@@ -33,7 +33,7 @@ def heapify(unsorted: List[int], index: int, heap_size: int) -> List[int]:
 def heap_sort(unsorted: List[int]) -> None:
     """
     Pure implementation of the heap sort algorithm in Python
-    :param collection: some mutable ordered collection with heterogeneous
+    :param unsorted: some mutable ordered collection with heterogeneous
     comparable items inside
     :return: the same collection ordered by ascending
 
