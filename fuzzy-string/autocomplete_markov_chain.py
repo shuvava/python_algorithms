@@ -12,10 +12,12 @@ FIRST = {}
 SECOND = {}
 THIRD = {}
 
+
 def update_word_occurrence(word_dict, prefix, word):
     if prefix not in word_dict:
         word_dict[prefix] = Counter()
     word_dict[prefix].update([word])
+
 
 with ZipFile('big.zip') as archive, archive.open('big.txt', 'r') as f:
     #https://stackoverflow.com/questions/25735644/python-regex-for-splitting-text-into-sentences-sentence-tokenizing
@@ -31,6 +33,7 @@ with ZipFile('big.zip') as archive, archive.open('big.txt', 'r') as f:
                 update_word_occurrence(SECOND, f'{words[i-2]} {words[i-1]}', words[i])
             if i >= 3:
                 update_word_occurrence(THIRD, f'{words[i-3]} {words[i-2]} {words[i-1]}', words[i])
+
 
 def print_stat(t):
     total=float(sum(t.values()))

@@ -1,8 +1,9 @@
 '''
 Base implementation of undirected cyclic graph
 '''
-from vertex import Vertex
 from graph_base import Graph
+from vertex import Vertex
+
 
 class UndirectedGraph(Graph):
     def __init__(self):

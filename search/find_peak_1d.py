@@ -1,21 +1,24 @@
 """ Find a peak if it exists
 a peak if and only if b ≥ a and b ≥ c. Position 9 is a peak if i ≥ h.
 """
-import os
 import argparse
+import os
+
 DEFAULT_FILE = 'find_peak_1d.txt'
 
+
 def get_context():
-    ''' Creats excution context command line args
+    """ Create execution context command line args
     Returns
     -------
     Object
         object with command line arguments
-    '''
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--file", help="file name with sample data")
     parser.add_argument("-v", "--verbosity", help="increase output verbosity", action="store_true")
     return parser.parse_args()
+
 
 def read_file(file_name, verbosity=False):
     """ Reads files content and split on words
@@ -47,6 +50,7 @@ def read_file(file_name, verbosity=False):
         for line in lines:
             data.append(line.split())
         return data
+
 
 def find_a_peak_1d(arr, offset=0, verbosity=False):
     """ Finds a one dimension peak

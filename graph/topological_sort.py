@@ -24,6 +24,7 @@ path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../commo
 
 from base_graph import BaseGraph
 
+
 class TopologicalSort(BaseGraph):
     '''Implementation of topological sort
         relations between vertices can be presented as matrix N x N

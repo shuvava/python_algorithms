@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 
+
 def get_mask(bits):
     return (1 << bits) - 1
+
 
 def set_bit(value, bit):
     return value | (1<<bit)
 
+
 def clear_bit(value, bit):
     return value & ~(1<<bit)
+
 
 def bit_count(x):
     x = ((x >> 1) & 0b01010101010101010101010101010101) \
@@ -21,6 +25,7 @@ def bit_count(x):
     x = ((x >> 16)& 0b00000000000000001111111111111111) \
        + (x       & 0b00000000000000001111111111111111)
     return x
+
 
 def numberOfTrailingZeros(i):
     '''Returns the number of zero bits following the lowest-order ("rightmost")
@@ -55,6 +60,7 @@ def numberOfTrailingZeros(i):
         n = n - 2
         x = y
     return n - (((x << 1)& mask32) >> 31)
+
 
 def highestOneBit(i):
     '''Returns a value with at most a single one-bit, in the

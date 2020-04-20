@@ -3,12 +3,13 @@
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
-'''
+"""
  This module implements different ways of basketing integer values
-'''
+"""
+
 
 def get_basket_div_method(k, m):
-    '''
+    """
         Calculate basket by k mod m
 
         :Parameters:
@@ -17,5 +18,5 @@ def get_basket_div_method(k, m):
 
         :return:
          *Number* basket size
-    '''
+    """
     return k % m

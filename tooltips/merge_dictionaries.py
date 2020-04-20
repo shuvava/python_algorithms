@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+
 def merge_dictionaries(a, b):
     return {**a, **b}
+
 
 if __name__ == '__main__':
     a = { 'x': 1, 'y': 2}

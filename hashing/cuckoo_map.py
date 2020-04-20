@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-'''
+"""
 Cuckoo Hashing :
 Cuckoo hashing applies the idea of multiple-choice and relocation together and guarantees O(1) worst case lookup time!
 
@@ -14,20 +14,19 @@ Otherwise, older key displaces another key.
 This continues until the procedure finds a vacant position, or enters a cycle.
 In case of cycle, new hash functions are chosen and the whole data structure is ‘rehashed’.
 Multiple rehashes might be necessary before Cuckoo succeeds.
-'''
-
-from random import randint
-from struct import pack
+"""
 
 from fnv import fnv1a_32
+
 
 def int_to_bytes(x):
     return x.to_bytes((x.bit_length() + 7) // 8, 'big')
 
+
 class CuckooMap:
-    '''
+    """
     naive implementation (store the whole key)
-    '''
+    """
     def __init__(self, size=12, max_displacement=4):
         if size < 2:
             raise ValueError(f'size should be mode than 2')

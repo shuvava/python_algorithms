@@ -63,44 +63,44 @@ def fnva(data, hval_init, fnv_prime, fnv_size):
 
 
 def fnv0_32(data, hval_init=FNV0_32_INIT):
-    '''
+    """
     Returns the 32 bit FNV-0 hash value for the given data.
-    '''
+    """
     return fnv(data, hval_init, FNV_32_PRIME, 2 ** 32)
 
 
 def fnv1_32(data, hval_init=FNV1_32_INIT):
-    '''
+    """
     Returns the 32 bit FNV-1 hash value for the given data.
-    '''
+    """
     return fnv(data, hval_init, FNV_32_PRIME, 2 ** 32)
 
 
 def fnv1a_32(data, hval_init=FNV1_32_INIT):
-    '''
+    """
     Returns the 32 bit FNV-1a hash value for the given data.
-    '''
+    """
     return fnva(data, hval_init, FNV_32_PRIME, 2 ** 32)
 
 
 def fnv0_64(data, hval_init=FNV0_64_INIT):
-    '''
+    """
     Returns the 64 bit FNV-0 hash value for the given data.
-    '''
+    """
     return fnv(data, hval_init, FNV_64_PRIME, 2 ** 64)
 
 
 def fnv1_64(data, hval_init=FNV1_64_INIT):
-    '''
+    """
     Returns the 64 bit FNV-1 hash value for the given data.
-    '''
+    """
     return fnv(data, hval_init, FNV_64_PRIME, 2 ** 64)
 
 
 def fnv1a_64(data, hval_init=FNV1_64_INIT):
-    '''
+    """
     Returns the 64 bit FNV-1a hash value for the given data.
-    '''
+    """
     return fnva(data, hval_init, FNV_64_PRIME, 2 ** 64)
 
 

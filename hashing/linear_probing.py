@@ -14,9 +14,9 @@ from fnv import fnv1a_32
 
 
 class LinearProbing:
-    '''
+    """
     naive implementation (store the whole key)
-    '''
+    """
 
     def __init__(self, size=12):
         if size < 2:
