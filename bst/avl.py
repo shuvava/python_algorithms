@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
-'''
+"""
 An AVL tree is another balanced binary search tree.
 Named after their inventors,
 Adelson-Velskii and Landis, they were the first dynamically
@@ -18,19 +18,21 @@ For every node, require heights of left & right children to differ by at most ±
 • treat nil tree as height -1
 • each node stores its height (DATA STRUCTURE AUGMENTATION) (like subtree
 size) (alternatively, can just store difference in heights)
-'''
-from avl_node import AVL_Node
-from avl_node_update import avl_insert, avl_delete
-from bst_node_query import bst_search
-from bst_base import BST
+"""
+from bst.avl_node import AVL_Node
+from bst.avl_node_update import avl_insert, avl_delete
+from bst.bst_base import BST
+from bst.bst_node_query import bst_search
+
 
 class AVL(BST):
-    '''Implements core functionality of AVl tree'''
+    """Implements core functionality of AVl tree"""
+
     def __init__(self):
         super().__init__()
 
     def add_node(self, node):
-        '''Adding node into BST'''
+        """Adding node into BST"""
         if not isinstance(node, AVL_Node):
             node = AVL_Node(node)
         self._length += 1
@@ -40,7 +42,7 @@ class AVL(BST):
         self.root = avl_insert(self.root, node)
 
     def delete_node(self, node):
-        '''Remove a node from BST'''
+        """Remove a node from BST"""
         _node = node
         if not isinstance(node, AVL_Node):
             _node = bst_search(self.root, node)

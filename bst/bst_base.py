@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
-'''
+"""
 implement base functionality of parsing dict into tree structure
 
 :Properties:
@@ -17,15 +17,17 @@ for all nodes y in the left subtree of x, key(y) <= key(x).
 For all nodes y in the right subtree of x key(y) >= key(x).
 
 balanced BST maintains h = O(lg n) ⇒ all operations run in O(lg n) time
-'''
+"""
 import random
-from bst_node import Node
-from bst_node_query import bst_to_list, bst_search, bst_is_properties_valid
-from bst_node_update import bst_insert, bst_delete
-from bst_print import bst_print
+
+from bst.bst_node import Node
+from bst.bst_node_query import bst_to_list, bst_search, bst_is_properties_valid
+from bst.bst_node_update import bst_insert, bst_delete
+from bst.bst_print import bst_print
+
 
 def gen_array(length, max_value=1000):
-    '''Generates random array
+    """Generates random array
     Parameters
     ----------
     length: int
@@ -33,7 +35,7 @@ def gen_array(length, max_value=1000):
     Returns
     -------
         list of random elements
-    '''
+    """
     _data = []
     _i = 0
     while _i < length:
@@ -43,8 +45,9 @@ def gen_array(length, max_value=1000):
 
 
 class BST(object):
-    '''Binary search tree base functionality
-    '''
+    """Binary search tree base functionality
+    """
+
     def __init__(self):
         self._root = None
         self._length = 0
@@ -59,12 +62,12 @@ class BST(object):
 
     @root.setter
     def root(self, value):
-        '''get root of tree'''
+        """get root of tree"""
         if value and isinstance(value, Node):
             self._root = value
 
     def add_node(self, node):
-        '''Adding node into BST'''
+        """Adding node into BST"""
         if not isinstance(node, Node):
             node = Node(node)
         self._length += 1
@@ -74,7 +77,7 @@ class BST(object):
         return bst_insert(self.root, node)
 
     def delete_node(self, node):
-        '''Remove a node from BST'''
+        """Remove a node from BST"""
         _node = node
         if not isinstance(node, Node):
              _node = bst_search(self.root, node)
@@ -84,7 +87,7 @@ class BST(object):
         self._length -= 1
 
     def to_list(self):
-        '''Converts current BST object into dict object'''
+        """Converts current BST object into dict object"""
         if not self.root:
             return []
         return bst_to_list(self.root, [])
@@ -94,36 +97,36 @@ class BST(object):
         return bst_is_properties_valid(self.root)
 
     def from_list(self, arr):
-        '''Converts dict object into BST class instance
-        
+        """Converts dict object into BST class instance
+
         :Parameters:
         arr: *list* - array of int for generating BST tree
-        '''
+        """
         if not isinstance(arr, list):
             return
-        #bst = BST()
+        # bst = BST()
         for item in arr:
             self.add_node(item)
         return self
 
     @staticmethod
     def generate(size, max_value=1000):
-        '''generate random BST
-        
+        """generate random BST
+
         :Parameters:
         size: *int* - length of BST
         max_value: *int* max element value
-        '''
+        """
         arr = gen_array(size, max_value)
         return BST().from_list(arr)
 
-    def print_tree(self, node = None, with_values=True):
-        '''print BST
-        
+    def print_tree(self, node=None, with_values=True):
+        """print BST
+
         :Parameters:
         node: *Node* - start node of printing tree (*default root node*)
         with_values: *Boolean* - print value of element in array(*default True*)
-        '''
+        """
         if not node:
             node = self.root
         bst_print(node, with_values)

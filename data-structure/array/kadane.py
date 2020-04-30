@@ -12,9 +12,10 @@ the contiguous subarray [4, -1, 2, 1] has the largest sum = 6.
 
 Complexity O(n)
 """
+from typing import List
 
 
-def kadane(arr):
+def kadane(arr: List[int]) -> int:
     max_current = max_global = arr[0]
     _len = len(arr)
     for i in range(1, _len):

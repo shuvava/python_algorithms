@@ -9,7 +9,7 @@ https://en.wikipedia.org/wiki/Rolling_hash
 https://www.geeksforgeeks.org/searching-for-patterns-set-3-rabin-karp-algorithm/
 https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm
 """
-from utility import findLargestPrimeFactor
+from hashing.utility import findLargestPrimeFactor
 
 
 class PolynomialRollingHash:

@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
-'''
+"""
 Topological sort is implementation of linear order
  in which to put on the items(tasks and etc)
  The Graph show dependencies between different tasks
@@ -15,32 +15,32 @@ Terms:
    for otherwise there would be a cycle
 Complexity: O(n+m)
     where n count of vertexes; m count of edges
-'''
+"""
 #add parent directory with base module
 import os
 from sys import path
 
 path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../common')))
 
-from base_graph import BaseGraph
+from graph.graph_base import Graph
 
 
-class TopologicalSort(BaseGraph):
-    '''Implementation of topological sort
+class TopologicalSort(Graph):
+    """Implementation of topological sort
         relations between vertices can be presented as matrix N x N
         Since an adjacency matrix has n2 entries, it must be true that m <= n2 (from DAG definition)
         where n count of vertexes; m count of edges
 
-    '''
+    """
 
     def get_in_degree(self):
-        '''Create list of graph's nodes in-degree
+        """Create list of graph's nodes in-degree
             Count of vertices which depends on current one.
             Complexity: O(n+m)
 
         :Returns:
         *list* - list with in-degree of each node
-        '''
+        """
         edges = self.get_edges(True)
         _in_degree = [0] * len(edges)
         for edge_list in edges: # takes N iterations
@@ -49,8 +49,8 @@ class TopologicalSort(BaseGraph):
         return _in_degree
 
     def sort(self):
-        '''Make topological sort
-        '''
+        """Make topological sort
+        """
         _in_degree = self.get_in_degree()
         edges = self.get_edges(True)
         sequence = []
@@ -65,10 +65,11 @@ class TopologicalSort(BaseGraph):
         return sequence
 
     def main(self):
-        '''main entry point'''
+        """main entry point"""
         indexes = self.sort()
         sequence = self.get_nodes_sequence(indexes)
         print(sequence)
+
 
 if __name__ == '__main__':
     TopologicalSort().run()

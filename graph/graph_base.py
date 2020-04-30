@@ -1,8 +1,10 @@
-'''
+"""
 Base graph class
-'''
+"""
 import abc
-from vertex import Vertex
+
+from graph.vertex import Vertex
+
 
 class Graph(object, metaclass=abc.ABCMeta):
     def __init__(self, directed, cyclic):

@@ -26,8 +26,8 @@ sub-optimal values are preferred
 # https://hackernoon.com/probabilistic-data-structures-bloom-filter-5374112a7832
 
 
-from math import log, ceil
 from array import array
+from math import log, ceil
 from random import Random
 
 
@@ -62,7 +62,7 @@ def countSetBitsOfList(arr):
     return count
 
 
-class BloomFilterSimple():
+class BloomFilterSimple:
     """
     Naive implementation of bloom filter
     """

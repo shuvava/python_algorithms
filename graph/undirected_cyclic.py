@@ -1,8 +1,8 @@
-'''
+"""
 Base implementation of undirected cyclic graph
-'''
-from graph_base import Graph
-from vertex import Vertex
+"""
+from graph.graph_base import Graph
+from graph.vertex import Vertex
 
 
 class UndirectedGraph(Graph):

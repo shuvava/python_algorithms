@@ -6,8 +6,10 @@
 from hashlib import sha1
 from random import randint
 
+
 def prehash(obj):
     return int(sha1(str(obj).encode('utf8')).hexdigest(), 16)
+
 
 def get_odd_number(w):
     i_min = 2**(w-1)
@@ -17,6 +19,7 @@ def get_odd_number(w):
         return rnd
     return rnd + 1
 
+
 def isPrime(n):
     if n < 2:
         return False
@@ -25,16 +28,18 @@ def isPrime(n):
             return False
     return True
 
+
 def findLargestPrimeFactor(n):
-    '''A prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+    """A prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
     By Euclid's theorem, there are an infinite number of prime numbers. Subsets of the prime numbers may be
     generated with various formulas for primes. The first 1000 primes are listed below,
     followed by lists of notable types of prime numbers in alphabetical order,
     giving their respective first terms. 1 is neither prime nor composite.
-    '''
+    """
     while n > 2 and not isPrime(n):
         n -= 1
     return n
+
 
 def findLargestPrimeFactor_old(n):
 

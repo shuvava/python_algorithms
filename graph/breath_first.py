@@ -17,7 +17,7 @@ Serialization/Deserialization of a binary tree vs serialization in sorted order,
 Construction of the failure function of the Aho-Corasick pattern matcher.
 Testing bipartiteness of a graph.
 """
-from graph_base import Graph
+from graph.graph_base import Graph
 
 
 def bfs_undirected_cyclic(graph, start):

@@ -4,8 +4,9 @@
 # Copyright (c) 2019 Vladimir Shurygin.  All rights reserved.
 #
 from heapq import heappush, heappop, heapify
-from graph_base import Graph
-from fn_graph import load_graph
+
+from graph.fn_graph import load_graph
+from graph.graph_base import Graph
 
 
 def single_path(graph, start, end):

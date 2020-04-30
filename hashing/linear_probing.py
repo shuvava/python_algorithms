@@ -3,14 +3,14 @@
 """
 A LinearProbing hash table can be seen as a circular array that
 stores indexed values in buckets. To insert a new element x , we compute
-its key k = h(x ) using a single hash function h. If the bucket that
+its key k = h(x) using a single hash function h. If the bucket that
 corresponds to that key is non-empty and contains a different value,
 meaning a collision, we keep looking clockwise at the next buckets until
 we find a free space where we can index the element x .
 """
 from random import randint
 
-from fnv import fnv1a_32
+from hashing.fnv import fnv1a_32
 
 
 class LinearProbing:
@@ -59,4 +59,4 @@ if __name__ == '__main__':
             print('hash is full')
     val = randint(1, 1000)
     result = lp.lookup(val)
-    assert result == False, 'Should be false'
+    assert result is False, 'Should be false'

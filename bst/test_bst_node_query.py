@@ -9,12 +9,13 @@ https://docs.python.org/3/library/unittest.html
 '''
 import unittest
 
-from bst_base import BST
-from bst_node_query import bst_find_smaller, bst_count, \
-bst_max, bst_min, bst_search, bst_next_larger, bst_next_smaller, bst_to_list
-from bst_print import bst_print
+from bst.bst_base import BST
+from bst.bst_node_query import bst_find_smaller, bst_count, \
+    bst_max, bst_min, bst_search, bst_next_larger, bst_next_smaller
+from bst.bst_print import bst_print
 
 __print_trees__ = False
+
 
 class Unit_test_bst_find(unittest.TestCase):
     def setUp(self):
@@ -101,6 +102,7 @@ class Unit_test_bst_find(unittest.TestCase):
         arr = bst.to_list()
         self.assertIsNotNone(arr)
         self.assertListEqual(sorted(arr), sorted(self.bst_data), 'to list test')
+
 
 if __name__ == '__main__':
     __print_trees__ = True

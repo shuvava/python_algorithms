@@ -1,18 +1,19 @@
-#add parent directory with base module
+# add parent directory with base module
 import os
 from sys import path
 
 path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../common')))
 
-from undirected_cyclic import UndirectedGraph
-from directed_cyclic import DirectedGraph
-from vertex import Vertex
+from graph.undirected_cyclic import UndirectedGraph
+from graph.directed_cyclic import DirectedGraph
+from graph.vertex import Vertex
 
 from file_operations import read_json_file
 
+
 def __load_graph(_graph, data):
     for _node in data['nodes']:
-        properties = {k:v for k, v in _node.items() if k != 'id'}
+        properties = {k: v for k, v in _node.items() if k != 'id'}
         vertex = Vertex(_node['id'], properties=properties)
         _graph.add_vertex(vertex)
     for _edge in data['edges']:
@@ -24,10 +25,12 @@ def __load_graph(_graph, data):
         for target in targets:
             _graph.add_adjacency(vertex, target)
 
+
 def load_undirected_cyclic_graph(data):
     _graph = UndirectedGraph()
     __load_graph(_graph, data)
     return _graph
+
 
 def load_directed_cyclic_graph(data):
     _graph = DirectedGraph()

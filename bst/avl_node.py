@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
-'''
+"""
 Implements base functionality of AVL node
 extends base functionality of BST node
 
@@ -16,13 +16,14 @@ For every node, require heights of left & right children to differ by at most ±
 size) (alternatively, can just store difference in heights)
 
 insert each item into AVL tree Θ(n lg n)
-'''
+"""
 from math import fabs
-from bst_node import Node
+
+from bst.bst_node import Node
 
 
 def bst_fix_node_height(node, height):
-    '''changes height value for parent nodes during tree update'''
+    """changes height value for parent nodes during tree update"""
     if not node:
         return
     if node._height < height + 1:
@@ -46,25 +47,25 @@ class AVL_Node(Node):
 
     @property
     def height(self):
-        '''height of node = length (# edges) of longest downward path to a leaf'''
+        """height of node = length (# edges) of longest downward path to a leaf"""
         return self._height
 
     @property
     def left_height(self):
-        '''return height left sub tree'''
+        """return height left sub tree"""
         if not self.left:
             return -1
         return self.left.height
 
     @property
     def right_height(self):
-        '''return height right sub tree'''
+        """return height right sub tree"""
         if not self.right:
             return -1
         return self.right.height
 
     def set_parent(self, node):
-        '''set link to parent node'''
+        """set link to parent node"""
         if node and not isinstance(node, Node):
             return False
         if not node and self.parent:
@@ -76,7 +77,7 @@ class AVL_Node(Node):
         return True
 
     def get_is_valid(self):
-        '''check violation of AVL node properties'''
+        """check violation of AVL node properties"""
         if not super().get_is_valid():
             return False
         if fabs(self.left_height - self.right_height) < 2:

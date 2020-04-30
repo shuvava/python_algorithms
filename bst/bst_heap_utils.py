@@ -73,19 +73,19 @@ def _print_tree(heap, index, with_ids=False, with_values=True):
 
 
 def print_tree(heap, index=0, with_ids=False, with_values=True):
-    '''print BTS tree starting from index
-    
+    """print BTS tree starting from index
+
     :Parameters:
     index: *Number* - start index of printing tree
     with_ids: *Boolean* - print index of element in array (*default False*)
     with_values: *Boolean* - print value of element in array(*default True*)
-    '''
+    """
     tree_str_ = '\n' + '\n'.join(_print_tree(heap, index, with_ids, with_values)[0])
     print(tree_str_)
 
 
 def __gen_array(length, max_value=1000):
-    '''Generates random array
+    """Generates random array
     Parameters
     ----------
     length: int
@@ -93,7 +93,7 @@ def __gen_array(length, max_value=1000):
     Returns
     -------
         list of random elements
-    '''
+    """
     _data = []
     _i = 0
     while _i < length:
@@ -103,11 +103,11 @@ def __gen_array(length, max_value=1000):
 
 
 def _save_file(file_name, data, verbosity=False):
-    '''save data into file name
+    """save data into file name
 
     :Parameters:
     filename: *String* name of the file to store data
-    data: *list* data to save'''
+    data: *list* data to save"""
     if verbosity:
         print('saving into file {}'.format(file_name))
     try:
@@ -121,7 +121,7 @@ def _save_file(file_name, data, verbosity=False):
 
 
 def _read_file(file_name, verbosity=False):
-    ''' Reads files content and split on words
+    """ Reads files content and split on words
 
     :Parameters:
     file_name: *string* - full or relative path to the file
@@ -129,7 +129,7 @@ def _read_file(file_name, verbosity=False):
 
     :Returns:
     *list of list* - List of words if file was read of empty list
-    '''
+    """
     data = []
     if not path.exists(file_name):
         data.append([])
@@ -152,8 +152,8 @@ def _read_file(file_name, verbosity=False):
 
 
 def get_array(file_name=None, length=DEFAULT_LENGTH, verbosity=False):
-    '''Generate random array or load it from file
-    '''
+    """Generate random array or load it from file
+    """
     _filename = ''
     if file_name is not None:
         _filename = file_name.strip()

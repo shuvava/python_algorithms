@@ -1,8 +1,9 @@
-'''
+"""
 Base implementation of directed cyclic graph
-'''
-from vertex import Vertex
-from graph_base import Graph
+"""
+from graph.graph_base import Graph
+from graph.vertex import Vertex
+
 
 class DirectedGraph(Graph):
     def __init__(self):

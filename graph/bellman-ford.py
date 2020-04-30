@@ -3,8 +3,9 @@
 #
 # Copyright (c) 2019 Vladimir Shurygin.  All rights reserved.
 #
-from graph_base import Graph
-from fn_graph import load_graph
+from graph.fn_graph import load_graph
+from graph.graph_base import Graph
+
 
 def bellman_ford(graph, start, end):
     if not isinstance(graph, Graph):
@@ -50,7 +51,8 @@ def bellman_ford(graph, start, end):
         vertex = visited[vertex][1]
         result.append(vertex)
     result.reverse()
-    return (weight, result)
+    return weight, result
+
 
 if __name__ == '__main__':
     _graph = load_graph('bellman-ford.json', True)

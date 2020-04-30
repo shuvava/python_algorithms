@@ -1,12 +1,13 @@
-'''
+"""
 Extend functionality of avl module
 adding support of rotation of AVL tree
-'''
-from avl_node import AVL_Node
-from bst_node_update import bst_insert, bst_delete
+"""
+from bst.avl_node import AVL_Node
+from bst.bst_node_update import bst_insert, bst_delete
+
 
 def rotation_left(node):
-    ''' rotate AVL subtree to left'''
+    """ rotate AVL subtree to left"""
     if not isinstance(node, AVL_Node):
         return None
     if not node.left:
@@ -31,11 +32,11 @@ def rotation_left(node):
     node.left = right
     left.right = node
 
-
     return left
 
+
 def rotation_right(node):
-    ''' rotate AVL subtree to right'''
+    """ rotate AVL subtree to right"""
     if not isinstance(node, AVL_Node):
         return None
     if not node.right:
@@ -62,6 +63,7 @@ def rotation_right(node):
 
     return right
 
+
 def rotation(node):
     if not isinstance(node, AVL_Node):
         return
@@ -74,6 +76,7 @@ def rotation(node):
     # equal => do nothing
     return None
 
+
 def fix_avl_property(node):
     _node = node
     parent = node.parent
@@ -83,6 +86,7 @@ def fix_avl_property(node):
         _node = parent
         parent = parent.parent
     return _node
+
 
 def avl_insert(root_node, node):
     result = bst_insert(root_node, node)
@@ -97,6 +101,7 @@ def avl_insert(root_node, node):
         _node = parent
         parent = parent.parent
     return _node
+
 
 def avl_delete(node):
     parent = node.parent

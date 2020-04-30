@@ -1,9 +1,9 @@
-'''
+"""
 Extend functionality of base_bst module
 adding support of modification of BST
-'''
-from bst_node import Node
-from bst_node_query import bst_to_list, bst_next_larger
+"""
+from bst.bst_node import Node
+from bst.bst_node_query import bst_next_larger
 
 
 def bst_fix_node_rank(node, removed_items):

@@ -1,8 +1,9 @@
-'''
+"""
 Extend functionality of base_bst module
 adding support of look up specific valuer in bst
-'''
-from bst_node import Node
+"""
+from bst.bst_node import Node
+
 
 def _get_node(item):
     node = None
@@ -10,16 +11,17 @@ def _get_node(item):
         node = item
     return node
 
+
 def bst_find_smaller(item, value):
-    '''find first node which value is less or equal value
+    """find first node which value is less or equal value
 
         :Parameters:
         item: *Node|BST* - node of BST
         value: *Number* - value to search
 
         :return:
-        node: *Node|None* 
-    '''
+        node: *Node|None*
+    """
     node = _get_node(item)
     if not isinstance(node, Node):
         return None
@@ -27,8 +29,9 @@ def bst_find_smaller(item, value):
         return node
     return bst_find_smaller(node.left, value)
 
+
 def bst_count(item, value, _count = 0):
-    '''find count of nodes less or equal value in subtree
+    """find count of nodes less or equal value in subtree
 
         :Parameters:
         item: *Node|BST* - node of BST
@@ -36,7 +39,7 @@ def bst_count(item, value, _count = 0):
 
         :return:
          *Number* count of nodes
-    '''
+    """
     node = _get_node(item)
     if not isinstance(node, Node):
         return _count
@@ -48,12 +51,13 @@ def bst_count(item, value, _count = 0):
     else:
         return bst_count(node.left, value, _count)
 
+
 def bst_max(item):
-    '''find max value in bst
+    """find max value in bst
 
         :Parameters:
         item: *Node|BST* - node of BST
-    '''
+    """
     node = _get_node(item)
     if not isinstance(node, Node):
         return None
@@ -62,12 +66,13 @@ def bst_max(item):
         node = node.right
     return max_value
 
+
 def bst_min(item):
-    '''find min value in bst
+    """find min value in bst
 
         :Parameters:
         item: *Node|BST* - node of BST
-    '''
+    """
     node = _get_node(item)
     if not isinstance(node, Node):
         return None
@@ -76,8 +81,9 @@ def bst_min(item):
         node = node.left
     return min_value
 
+
 def bst_search(item, value):
-    '''find value in bst
+    """find value in bst
 
         :Parameters:
         item: *Node|BST* - node of BST
@@ -85,7 +91,7 @@ def bst_search(item, value):
 
         :return:
          *Node|None* found node or None if not found
-    '''
+    """
     node = _get_node(item)
     if not isinstance(node, Node):
         return None
@@ -95,8 +101,9 @@ def bst_search(item, value):
         return bst_search(node.right, value)
     return bst_search(node.left, value)
 
+
 def bst_next_larger(item, value):
-    '''find next larger value(successor) in bst
+    """find next larger value(successor) in bst
 
         :Parameters:
         item: *Node|BST* - node of BST
@@ -104,7 +111,7 @@ def bst_next_larger(item, value):
 
         :return:
          *Node|None* found node or None if not found
-    '''
+    """
     node = _get_node(item)
     if not isinstance(node, Node):
         return None
@@ -115,8 +122,9 @@ def bst_next_larger(item, value):
         return node
     return bst_next_larger(node.right, value)
 
+
 def bst_next_smaller(item, value):
-    '''find next smaller value(predecessor) in bst
+    """find next smaller value(predecessor) in bst
 
         :Parameters:
         item: *Node|BST* - node of BST
@@ -124,7 +132,7 @@ def bst_next_smaller(item, value):
 
         :return:
          *Node|None* found node or None if not found
-    '''
+    """
     node = _get_node(item)
     if not isinstance(node, Node):
         return None
@@ -135,13 +143,16 @@ def bst_next_smaller(item, value):
         return node
     return bst_next_smaller(node.left, value)
 
-def bst_to_list(node, arr=[]):
+
+def bst_to_list(node, arr=None):
+    if arr is None: arr = []
     if not isinstance(node, Node):
         return arr
     arr.append(node.value)
     bst_to_list(node.left, arr)
     bst_to_list(node.right, arr)
     return arr
+
 
 def bst_is_properties_valid(node):
     if not isinstance(node, Node):

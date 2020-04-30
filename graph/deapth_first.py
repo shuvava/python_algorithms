@@ -20,7 +20,7 @@ Solving puzzles with only one solution, such as mazes. (DFS can be adapted to fi
 Maze generation may use a randomized depth-first search.
 Finding biconnectivity in graphs.
 """
-from .graph_base import Graph
+from graph.graph_base import Graph
 
 
 def dfs_undirected_cyclic(graph, start):

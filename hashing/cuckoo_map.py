@@ -16,7 +16,7 @@ In case of cycle, new hash functions are chosen and the whole data structure is 
 Multiple rehashes might be necessary before Cuckoo succeeds.
 """
 
-from fnv import fnv1a_32
+from hashing.fnv import fnv1a_32
 
 
 def int_to_bytes(x):

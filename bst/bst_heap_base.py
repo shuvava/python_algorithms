@@ -13,6 +13,7 @@ Max Heap Property: The key of a node is >= than the keys of its children
 '''
 import abc
 
+
 class BaseHeap(metaclass=abc.ABCMeta):
     '''Abstract implementation of heap class
     '''

@@ -10,9 +10,10 @@ Algorithm:
          put in the left array elements smaller pivot
          put in the left array elements bigger pivot
 """
+from typing import List
 
 
-def partition(A, start_inx, end_inx):
+def partition(A: List[int], start_inx: int, end_inx: int) -> int:
     """Rearranges the elements of array[start:end] so that every element in
         array[start:pivot] is less than or equal to array[pivot] and every element in
         array[pivot:end] is greater than array[pivot]. Returns the index pivot to the caller
@@ -27,7 +28,7 @@ def partition(A, start_inx, end_inx):
     return pivot
 
 
-def quicksort(A, start_inx, end_inx):
+def quicksort(A: List[int], start_inx: int, end_inx: int) -> List[int]:
     if end_inx <= start_inx:
         return
     middle = partition(A, start_inx, end_inx)

@@ -1,17 +1,18 @@
-'''
+"""
 console print of BST
-'''
+"""
 
-from bst_node import Node
+from bst.bst_node import Node
+
 
 def _print_tree(node, with_values=True):
-    '''Recursive function used for pretty-printing the binary tree.
+    """Recursive function used for pretty-printing the binary tree.
     In each recursive call, a "box" of characters visually representing the
     current subtree is constructed line by line. Each line is padded with
     whitespaces to ensure all lines have the same length. The box, its width,
     and the start-end positions of its root (used for drawing branches) are
     sent up to the parent call, which then combines left and right sub-boxes
-    to build a bigger box etc.'''
+    to build a bigger box etc."""
     if not isinstance(node, Node):
         return [], 0, 0, 0
     if with_values:
@@ -68,13 +69,13 @@ def _print_tree(node, with_values=True):
     return new_box, len(new_box[0]), new_root_start, new_root_end
 
 
-def bst_print(node = None, with_values=True):
-    '''print BST
-    
+def bst_print(node=None, with_values=True):
+    """print BST
+
     :Parameters:
     node: *Node* - start node of printing tree (*default root node*)
     with_values: *Boolean* - print value of element in array(*default True*)
-    ''' 
+    """
     if not isinstance(node, Node):
         return ''
     tree_str_ = '\n' + '\n'.join(_print_tree(node, with_values)[0])

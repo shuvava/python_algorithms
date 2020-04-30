@@ -3,14 +3,15 @@
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
-from bst_heap_base import BaseHeap
-from bst_heap_utils import get_min_value_id
+from bst.bst_heap_base import BaseHeap
+from bst.bst_heap_utils import get_min_value_id
+
 
 class MinHeap(BaseHeap):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def heapify(self, index=None, max_index = None):
+    def heapify(self, index=None, max_index=None):
         '''correct a single violation of the heap property in a subtree at its root
         :Heap Property: *The key of a node is <= than the keys of its children*
         
