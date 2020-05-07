@@ -8,16 +8,18 @@ Test of base_bst module
 https://docs.python.org/3/library/unittest.html
 '''
 import unittest
-from ring_hash import RingHash
+
+from hashing.ring_hash import RingHash
 
 __print__ = False
+
 
 class Unit_test_RingHash(unittest.TestCase):
     def setUp(self):
         pass
 
     def test_next(self):
-        #arrange
+        # arrange
         rhash = RingHash(2)
         rhash._ring_hash = [3, 6, 9]
         #act

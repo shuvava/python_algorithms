@@ -28,12 +28,12 @@ def bit_count(x):
 
 
 def numberOfTrailingZeros(i):
-    '''Returns the number of zero bits following the lowest-order ("rightmost")
+    """Returns the number of zero bits following the lowest-order ("rightmost")
     one-bit in the two's complement binary representation of the specified
     value.  Returns 64 if the specified value has no
     one-bits in its two's complement representation, in other words if it is
     equal to zero.
-    '''
+    """
     mask32 = 0b11111111111111111111111111111111
     if i == 0: return 64
     n = 63
@@ -63,12 +63,12 @@ def numberOfTrailingZeros(i):
 
 
 def highestOneBit(i):
-    '''Returns a value with at most a single one-bit, in the
+    """Returns a value with at most a single one-bit, in the
       position of the highest-order ("leftmost") one-bit in the specified
       value.  Returns zero if the specified value has no
       one-bits in its two's complement binary representation, that is, if it
       is equal to zero.
-    '''
+    """
     i |= (i >>  1)
     i |= (i >>  2)
     i |= (i >>  4)

@@ -18,7 +18,7 @@ def search(nums: List[int], target: int) -> int:
     low = 0
     high = _len - 1
     while low <= high:
-        mid = ((high + low) >> 1)
+        mid: int = ((high + low) >> 1)
         if nums[mid] == target:
             return mid
         if nums[mid] > target:
@@ -30,6 +30,7 @@ def search(nums: List[int], target: int) -> int:
 
 if __name__ == '__main__':
     test_cases = [
+        ([1, 3, 5, 9], 9, 3),
         ([1, 3, 5, 9], 5, 2),
     ]
     cnt = 0
