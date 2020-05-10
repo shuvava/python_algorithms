@@ -16,7 +16,8 @@ Finding the bridges of a graph.
 Generating words in order to plot the limit set of a group.
 Finding strongly connected components.
 Planarity testing.[7][8]
-Solving puzzles with only one solution, such as mazes. (DFS can be adapted to find all solutions to a maze by only including nodes on the current path in the visited set.)
+Solving puzzles with only one solution, such as mazes.
+(DFS can be adapted to find all solutions to a maze by only including nodes on the current path in the visited set.)
 Maze generation may use a randomized depth-first search.
 Finding biconnectivity in graphs.
 """

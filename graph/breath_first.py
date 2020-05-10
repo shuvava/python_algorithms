@@ -10,10 +10,12 @@ http://web.cs.unlv.edu/larmore/Courses/CSC477/bfsDfs.pdf
 Breadth-first search can be used to solve many problems in graph theory, for example:
 
 Copying garbage collection, Cheney's algorithm
-Finding the shortest path between two nodes u and v, with path length measured by number of edges (an advantage over depth-first search)[9]
+Finding the shortest path between two nodes u and v,
+with path length measured by number of edges (an advantage over depth-first search)[9]
 (Reverse) Cuthill–McKee mesh numbering
 Ford–Fulkerson method for computing the maximum flow in a flow network
-Serialization/Deserialization of a binary tree vs serialization in sorted order, allows the tree to be re-constructed in an efficient manner.
+Serialization/Deserialization of a binary tree vs serialization in sorted order,
+allows the tree to be re-constructed in an efficient manner.
 Construction of the failure function of the Aho-Corasick pattern matcher.
 Testing bipartiteness of a graph.
 """

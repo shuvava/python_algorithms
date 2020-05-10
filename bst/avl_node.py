@@ -30,6 +30,7 @@ def bst_fix_node_height(node, height):
         node._height = height + 1
         bst_fix_node_height(node.parent, height + 1)
 
+
 def bst_fix_node_height_decrease(node, is_left):
     if not node:
         return
