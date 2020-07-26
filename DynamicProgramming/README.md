@@ -41,7 +41,8 @@ Like Divide and Conquer, Dynamic Programming combines solutions to sub-problems.
 # Difference between greedy algorithm and dynamic programming
 ## Greedy Algorithms
 
-      It work in stages, in each stage a decision is made that is good at that point, without bothering about the future. This means that some local best is chosen.              "It assumes local good selection makes global optimal solution".
+      It work in stages, in each stage a decision is made that is good at that point,
+       without bothering about the future. This means that some local best is chosen.              "It assumes local good selection makes global optimal solution".
 
 The two basic properties of optimal greedy algorithms are:
 

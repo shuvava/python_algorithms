@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-'''
+"""
 Custom iterator example
 taken from https://www.ics.uci.edu/~pattis/ICS-33/lectures/iterators.txt
-'''
+"""
 
 __author__ = 'Vladimir Shurygin'
 __copyright__ = 'Copyright 2019, Algorithms'
@@ -33,8 +33,9 @@ class Countdown:
             self.n -= 1  # self.n -= 1
             return answer  # return self.n+1
 
+
 if __name__ == '__main__':
     cd = Countdown(10)
-    for i in  cd:
+    for i in cd:
         print(f'{i}, ', end='')
     print('blastoff')

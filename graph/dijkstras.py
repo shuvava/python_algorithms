@@ -9,7 +9,7 @@ from graph.fn_graph import load_graph
 from graph.graph_base import Graph
 
 
-def single_path(graph, start, end):
+def single_path(graph: Graph, start, end):
     """implementation of dijkstra algorithm withOUT priority queue
     O(V**2) where V count vertexes(nodes)
     """
@@ -45,7 +45,7 @@ def single_path(graph, start, end):
         vertex = visited[vertex][1]
         result.append(vertex.id)
     result.reverse()
-    return (weight, result)
+    return weight, result
 
 
 def dijkstra(graph, start, end):

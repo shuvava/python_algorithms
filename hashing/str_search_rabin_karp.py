@@ -6,9 +6,10 @@
 '''
 https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm
 '''
-from rolling_hash import PolynomialRollingHash
+from .rolling_hash import PolynomialRollingHash
 
-def rabin_karp(s, pattern):
+
+def rabin_karp(s: str, pattern: str) -> int:
     '''
     s - string where search
     pattern - string to search

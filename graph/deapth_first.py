@@ -21,10 +21,13 @@ Solving puzzles with only one solution, such as mazes.
 Maze generation may use a randomized depth-first search.
 Finding biconnectivity in graphs.
 """
+from typing import Dict, Any
+
 from graph.graph_base import Graph
+from graph.vertex import Vertex
 
 
-def dfs_undirected_cyclic(graph, start):
+def dfs_undirected_cyclic(graph: Graph, start: Vertex):
     """implementation of Depth-First-search algorithm for
     undirected cyclic graph. Def can have multiple copies on
     the stack at the same time. However, the total number of
@@ -39,10 +42,10 @@ def dfs_undirected_cyclic(graph, start):
     *returns* all nodes reach from given ${start} and their levels
     """
     if not isinstance(graph, Graph):
-        return (None, None)
+        return None, None
     start_vertex = graph.get_vertex(start)
     if not start_vertex:
-        return (None, None)
+        return None, None
     level = {start_vertex: 0}
     parent = {start_vertex: None}
     stack = [start_vertex]
@@ -54,12 +57,12 @@ def dfs_undirected_cyclic(graph, start):
                 level[child_vertex] = level[current_vertex] + 1
                 parent[child_vertex] = current_vertex
                 stack.append(child_vertex)
-    return (level, parent)
+    return level, parent
 
 
-def dfs_undirected_cyclic_b(graph, start):
-    '''implementation of Depth-First-search algorithm for
-    undirected cyclic graph. 
+def dfs_undirected_cyclic_b(graph: Graph, start: Vertex):
+    """implementation of Depth-First-search algorithm for
+    undirected cyclic graph.
     No vertex can be on the stack in more than one place.
     The size of S is thus not more than n.
     The time complexity is O(n + m).
@@ -69,12 +72,12 @@ def dfs_undirected_cyclic_b(graph, start):
     start - id or instance of Vertex class
 
     *returns* all nodes reach from given ${start} and their levels
-    '''
+    """
     if not isinstance(graph, Graph):
-        return (None, None)
+        return None, None
     start_vertex = graph.get_vertex(start)
     if not start_vertex:
-        return (None, None)
+        return None, None
     level = {start_vertex: 0}
     parent = {start_vertex: None}
     stack = [start_vertex]
@@ -88,15 +91,15 @@ def dfs_undirected_cyclic_b(graph, start):
                 stack.append(current_vertex)
                 stack.append(child_vertex)
                 break
-    return (level, parent)
+    return level, parent
 
 
-def dfs_detect_cycle(graph, start):
+def dfs_detect_cycle(graph: Graph, start: Vertex) -> bool:
     if not isinstance(graph, Graph):
-        return (None, None)
+        return None
     start_vertex = graph.get_vertex(start)
     if not start_vertex:
-        return (None, None)
+        return None
     level = {start_vertex: 0}
     stack = [start_vertex]
     while stack:
@@ -111,10 +114,10 @@ def dfs_detect_cycle(graph, start):
     return False
 
 
-def topological_sort_get_sources(graph):
-    '''Source = vertex with no incoming edges
+def topological_sort_get_sources(graph: Graph) -> Dict[Any, Vertex]:
+    """Source = vertex with no incoming edges
     = schedulable at beginning
-    '''
+    """
     if not isinstance(graph, Graph):
         return {}
     source = {}
@@ -133,7 +136,7 @@ def topological_sort_get_sources(graph):
     return source
 
 
-def topological_sort(graph):
+def topological_sort(graph: Graph) -> Dict[Any, Vertex]:
     result = {}
     if not isinstance(graph, Graph):
         return result
@@ -143,7 +146,6 @@ def topological_sort(graph):
         dfs = dfs_undirected_cyclic_b(graph, source)
         dfs_list.append(list(dfs[0].items()))
     have_items = True
-    max_deep = 0
     while have_items:
         have_items = False
         for dfs in dfs_list:

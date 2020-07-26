@@ -2,6 +2,7 @@
 Base graph class
 """
 import abc
+from typing import Optional
 
 from graph.vertex import Vertex
 
@@ -20,14 +21,14 @@ class Graph(object, metaclass=abc.ABCMeta):
     def cyclic(self):
         return self.__is_cyclic
 
-    def add_vertex(self, node):
+    def add_vertex(self, node: Vertex) -> None:
         if not isinstance(node, Vertex):
             return
         if node.id in self.vertexes:
             return
         self.vertexes[node.id] = node
 
-    def get_vertex(self, vertex):
+    def get_vertex(self, vertex: Vertex) -> Optional[Vertex]:
         if isinstance(vertex, Vertex):
             _id = vertex.id
         else:

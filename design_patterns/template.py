@@ -1,4 +1,3 @@
-
 #!interpreter [optional-arg]
 # -*- coding: utf-8 -*-
 
@@ -9,24 +8,27 @@
 
 # Futures
 from __future__ import print_function
-# […]
-
-# Built-in/Generic Imports
-import os
-import sys
-# […]
-
-# Libs
-import pandas as pd # Or any other
-# […]
 
 # Own modules
-from {path} import {class}
+from
+
+# […]
+# Built-in/Generic Imports
+# […]
+# Libs
+# […]
+{path}
+import
+
+{
+
+
+class }
 # […]
 
 __author__ = '{author}'
 __copyright__ = 'Copyright {year}, {project_name}'
-__credits__ = ['{credit_list}']
+__credits__ =['{credit_list}']
 __license__ = '{license}'
 __version__ = '{mayor}.{minor}.{rel}'
 __maintainer__ = '{maintainer}'

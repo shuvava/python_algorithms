@@ -13,18 +13,18 @@ Algorithm:
 from typing import List
 
 
-def partition(A: List[int], start_inx: int, end_inx: int) -> int:
+def partition(a: List[int], start_inx: int, end_inx: int) -> int:
     """Rearranges the elements of array[start:end] so that every element in
         array[start:pivot] is less than or equal to array[pivot] and every element in
         array[pivot:end] is greater than array[pivot]. Returns the index pivot to the caller
     """
     pivot = inx = start_inx
     while inx < end_inx:
-        if A[inx] <= A[end_inx]:
-            A[pivot], A[inx] = A[inx], A[pivot]
+        if a[inx] <= a[end_inx]:
+            a[pivot], a[inx] = a[inx], a[pivot]
             pivot += 1
         inx += 1
-    A[pivot], A[end_inx] = A[end_inx], A[pivot]
+    a[pivot], a[end_inx] = a[end_inx], a[pivot]
     return pivot
 
 

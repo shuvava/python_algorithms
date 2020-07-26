@@ -7,7 +7,7 @@
 Given an integer, write a function to determine if it is a power of two.
 
 Intuition
-The idea behind both solutions will be the same: a power of two in binary representation is one 1-bit, followed by some zeros:
+a power of two in binary representation is one 1-bit, followed by some zeros:
 
 1 = (00000001)
 2 = (00000010)

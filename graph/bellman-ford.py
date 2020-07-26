@@ -7,7 +7,7 @@ from graph.fn_graph import load_graph
 from graph.graph_base import Graph
 
 
-def bellman_ford(graph, start, end):
+def bellman_ford(graph: Graph, start, end):
     if not isinstance(graph, Graph):
         return None
     start_vertex = graph.get_vertex(start)

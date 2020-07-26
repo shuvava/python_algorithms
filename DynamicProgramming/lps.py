@@ -9,10 +9,14 @@ Longest Palindromic Substring
 Solution:
     The time complexity can be reduced by storing results of subproblems.
     We maintain a boolean table[n][n] that is filled in bottom up manner.
-    The value of table[i][j] is true, if the substring is palindrome, otherwise false. To calculate table[i][j], we first check the value of table[i+1][j-1], if the value is true and str[i] is same as str[j], then we make table[i][j] true. Otherwise, the value of table[i][j] is made false.
+    The value of table[i][j] is true, if the substring is palindrome, otherwise false.
+    To calculate table[i][j], we first check the value of table[i+1][j-1],
+    if the value is true and str[i] is same as str[j], then we make table[i][j] true.
+    Otherwise, the value of table[i][j] is made false.
     https://www.geeksforgeeks.org/longest-palindrome-substring-set-1/
 
-Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+Given a string s, find the longest palindromic substring in s.
+You may assume that the maximum length of s is 1000.
 
 Example 1:
 

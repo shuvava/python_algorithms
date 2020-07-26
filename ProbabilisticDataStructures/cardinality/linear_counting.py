@@ -10,7 +10,7 @@ only 1 bit per element which is feasible for most cases.
 from math import log
 from random import Random
 
-from deps_import import bit_count
+from .deps_import import bit_count
 
 
 def get_probes(key, num_probes, filter_size):

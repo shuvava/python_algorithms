@@ -20,9 +20,10 @@ Construction of the failure function of the Aho-Corasick pattern matcher.
 Testing bipartiteness of a graph.
 """
 from graph.graph_base import Graph
+from graph.vertex import Vertex
 
 
-def bfs_undirected_cyclic(graph, start):
+def bfs_undirected_cyclic(graph: Graph, start: Vertex):
     """
     implementation of Breath-First-search algorithm for
     undirected cyclic graph
@@ -36,10 +37,10 @@ def bfs_undirected_cyclic(graph, start):
     *returns* all nodes reach from given ${start} and their levels
     """
     if not isinstance(graph, Graph):
-        return (None, None)
+        return None, None
     start_vertex = graph.get_vertex(start)
     if not start_vertex:
-        return (None, None)
+        return None, None
     level = {start_vertex: 0}
     parent = {start_vertex: None}
     i = 1
@@ -55,10 +56,10 @@ def bfs_undirected_cyclic(graph, start):
                     _next.append(child_vertex)
         frontier = _next
         i += 1
-    return (level, parent)
+    return level, parent
 
 
-def get_shortest_path(graph, start, end):
+def get_shortest_path(graph: Graph, start: Vertex, end: Vertex):
     """
     find shortest path between two vertices of graph
 
