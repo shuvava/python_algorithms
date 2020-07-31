@@ -77,7 +77,7 @@ def dijkstra(graph, start, end):
                 path.append(vertex)
                 vertex = pq_dict[vertex][2]
             path.reverse()
-            return (weight, path)
+            return weight, path
         visited.add(vertex.id)
         pq_changed = False
         # process edges of current vertex
