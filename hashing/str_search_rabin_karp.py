@@ -3,17 +3,17 @@
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
-'''
+"""
 https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm
-'''
+"""
 from .rolling_hash import PolynomialRollingHash
 
 
 def rabin_karp(s: str, pattern: str) -> int:
-    '''
+    """
     s - string where search
     pattern - string to search
-    '''
+    """
     if len(s) < len(pattern):
         return -1
     phash = PolynomialRollingHash(256)

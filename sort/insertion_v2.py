@@ -20,7 +20,7 @@ def sort(arr: List[int]) -> None:
     inx = 1
     while inx < _len:
         lkp = inx - 1
-        tmp_inx = inx
+        tmp_inx: int = inx
         while lkp >= 0:
             if arr[tmp_inx] < arr[lkp]:
                 arr[tmp_inx], arr[lkp] = arr[lkp], arr[tmp_inx]

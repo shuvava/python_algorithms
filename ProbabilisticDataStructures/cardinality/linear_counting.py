@@ -43,9 +43,9 @@ def get_flag(probe):
 
 class LinearCounting:
     def __init__(self, filter_size):
-        num_words = (filter_size + 31) // 32 # allign to word size
+        num_words = (filter_size + 31) // 32  # allign to word size
         self.filter_size = num_words * 32
-        self.table = [0] * num_words # array of unsigned integers
+        self.table = [0] * num_words  # array of unsigned integers
         self.hash_fn = lambda key: get_probes(key, 1, self.filter_size)
 
     def get_probes(self, key):

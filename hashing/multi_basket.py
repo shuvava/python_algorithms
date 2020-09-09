@@ -4,18 +4,20 @@
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
 
-from utility import get_odd_number
+from .utility import get_odd_number
+
 
 class MultiBasket:
-    '''
+    """
     Calculate basket br Multiplication Method
-    '''
-    def __init__(self, m, w = 16):
-        '''
+    """
+
+    def __init__(self, m, w=16):
+        """
         m - count of bits of hash basket
         w - count of bit of universe (max possible value)
-        '''
-        self.w = w # we use 16 bit machine
+        """
+        self.w = w  # we use 16 bit machine
         if m >= self.w:
             raise ValueError('r should be less 16')
         self.r = m

@@ -28,17 +28,17 @@ def partition(a: List[int], start_inx: int, end_inx: int) -> int:
     return pivot
 
 
-def quicksort(A: List[int], start_inx: int, end_inx: int) -> List[int]:
+def quicksort(arr: List[int], start_inx: int, end_inx: int) -> List[int]:
     if end_inx <= start_inx:
-        return
-    middle = partition(A, start_inx, end_inx)
-    quicksort(A, start_inx, middle - 1)
-    quicksort(A, middle + 1, end_inx)
-    return A
+        return []
+    middle = partition(arr, start_inx, end_inx)
+    quicksort(arr, start_inx, middle - 1)
+    quicksort(arr, middle + 1, end_inx)
+    return arr
 
 
 if __name__ == '__main__':
-    arr = [6, 5, 3, 2, 8, 10, 9]
-    print(arr)
-    result = quicksort(arr, 0, len(arr) - 1)
+    _arr = [6, 5, 3, 2, 8, 10, 9]
+    print(_arr)
+    result = quicksort(_arr, 0, len(_arr) - 1)
     print(result)

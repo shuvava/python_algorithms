@@ -3,17 +3,18 @@
 #
 # Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
 #
-'''Counting sort
+"""Counting sort
 Complexity: O(n+k);
   where n length of element array and k range of elements
-'''
-#add parent directory with base module
+"""
+# add parent directory with base module
 import os
 from sys import path
 
 path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../common')))
 
-from base_interface import BaseAlg # pylint: disable=C0413
+from base_interface import BaseAlg  # pylint: disable=C0413
+
 
 class CountingSort(BaseAlg):
     ''' Implementation of Counting Sort

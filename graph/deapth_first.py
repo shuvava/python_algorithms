@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 implementation of Depth-First algorithm
 Depth-first search (DFS) is an algorithm for traversing or searching
@@ -96,10 +97,10 @@ def dfs_undirected_cyclic_b(graph: Graph, start: Vertex):
 
 def dfs_detect_cycle(graph: Graph, start: Vertex) -> bool:
     if not isinstance(graph, Graph):
-        return None
+        return False
     start_vertex = graph.get_vertex(start)
     if not start_vertex:
-        return None
+        return False
     level = {start_vertex: 0}
     stack = [start_vertex]
     while stack:

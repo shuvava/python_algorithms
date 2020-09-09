@@ -6,11 +6,11 @@ def get_mask(bits):
 
 
 def set_bit(value, bit):
-    return value | (1<<bit)
+    return value | (1 << bit)
 
 
 def clear_bit(value, bit):
-    return value & ~(1<<bit)
+    return value & ~(1 << bit)
 
 
 def bit_count(x):
@@ -39,13 +39,13 @@ def numberOfTrailingZeros(i):
     n = 63
     y = i & mask32
     if y != 0:
-        n = n -32
+        n = n - 32
         x = y
     else:
         x = i >> 32
     y = (x << 16) & mask32
     if y != 0:
-        n = n -16
+        n = n - 16
         x = y
     y = (x << 8) & mask32
     if y != 0:
@@ -59,7 +59,7 @@ def numberOfTrailingZeros(i):
     if y != 0:
         n = n - 2
         x = y
-    return n - (((x << 1)& mask32) >> 31)
+    return n - (((x << 1) & mask32) >> 31)
 
 
 def highestOneBit(i):

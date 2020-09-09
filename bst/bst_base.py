@@ -26,12 +26,13 @@ from bst.bst_node_update import bst_insert, bst_delete
 from bst.bst_print import bst_print
 
 
-def gen_array(length, max_value=1000):
+def gen_array(length, max_value: int = 1000):
     """Generates random array
     Parameters
     ----------
     length: int
         the length of random array
+    max_value: int
     Returns
     -------
         list of random elements
@@ -71,7 +72,7 @@ class BST(object):
         if not isinstance(node, Node):
             node = Node(node)
         self._length += 1
-        if self.root == None:
+        if self.root is None:
             self.root = node
             return
         return bst_insert(self.root, node)
@@ -80,7 +81,7 @@ class BST(object):
         """Remove a node from BST"""
         _node = node
         if not isinstance(node, Node):
-             _node = bst_search(self.root, node)
+            _node = bst_search(self.root, node)
         if _node is self.root:
             raise NotImplementedError
         bst_delete(_node)

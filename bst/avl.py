@@ -36,7 +36,7 @@ class AVL(BST):
         if not isinstance(node, AVL_Node):
             node = AVL_Node(node)
         self._length += 1
-        if self.root == None:
+        if self.root is None:
             self.root = node
             return
         self.root = avl_insert(self.root, node)

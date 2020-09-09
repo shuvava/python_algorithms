@@ -12,17 +12,17 @@ class MinHeap(BaseHeap):
         super().__init__(*args, **kwargs)
 
     def heapify(self, index=None, max_index=None):
-        '''correct a single violation of the heap property in a subtree at its root
+        """correct a single violation of the heap property in a subtree at its root
         :Heap Property: *The key of a node is <= than the keys of its children*
-        
+
         :param index: index of element (*default None == Root element of heap*)
         :type index: Number
-        '''
-        if not self.array:# empty array
+        """
+        if not self.array:  # empty array
             return
-        if  index is None or index < self.root_index():# fix the first element
+        if index is None or index < self.root_index():  # fix the first element
             index = self.root_index()
-        #init variables
+        # init variables
         left = self.left(index, max_index)
         right = self.right(index, max_index)
         largest = index
@@ -33,6 +33,6 @@ class MinHeap(BaseHeap):
         #     largest = left
         # if right is not None and self.get_value(right) < self.get_value(largest):
         #     largest = right
-        if largest != index:# fix heap and do recursive call
+        if largest != index:  # fix heap and do recursive call
             self.swap(index, largest)
             self.heapify(largest, max_index)

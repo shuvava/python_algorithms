@@ -6,7 +6,7 @@ bucket sort prerequisites:
    must be very good and must produce ordered hash:
      if the i < j then hash(i) < hash(j)
 
-cket sort is actually very good considering that counting sort is reasonably
+bucket sort is actually very good considering that counting sort is reasonably
  equal to its upper bound and counting sort
 
 https://javarevisited.blogspot.com/2017/01/bucket-sort-in-java-with-example.html#ixzz5qyOq0oJo

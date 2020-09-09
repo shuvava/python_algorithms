@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import unittest
-from random import Random
 
 from deps_import import bit_count
 from linear_counting import LinearCounting
+
 
 class TestLinearCounting(unittest.TestCase):
     def setUp(self):
@@ -26,6 +26,7 @@ class TestLinearCounting(unittest.TestCase):
         for val in self.test_set:
             lc.add(val)
         self.assertLess(abs(10 - len(lc)), 3)
+
 
 if __name__ == '__main__':
     unittest.main()

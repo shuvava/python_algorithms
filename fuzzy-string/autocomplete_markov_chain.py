@@ -20,17 +20,17 @@ def update_word_occurrence(word_dict, prefix, word):
 
 
 with ZipFile('big.zip') as archive, archive.open('big.txt', 'r') as f:
-    #https://stackoverflow.com/questions/25735644/python-regex-for-splitting-text-into-sentences-sentence-tokenizing
-    SENTENCES = re.split(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s', f.read().decode('utf-8'))
+    # https://stackoverflow.com/questions/25735644/python-regex-for-splitting-text-into-sentences-sentence-tokenizing
+    SENTENCES = re.split(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=[.?])\s', f.read().decode('utf-8'))
     for sentence in SENTENCES:
         words = re.findall(r'\w+', sentence.lower())
         if len(words) == 0:
             continue
         for i in range(len(words)):
             if i >= 1:
-                update_word_occurrence(FIRST, words[i-1], words[i])
+                update_word_occurrence(FIRST, words[i - 1], words[i])
             if i >= 2:
-                update_word_occurrence(SECOND, f'{words[i-2]} {words[i-1]}', words[i])
+                update_word_occurrence(SECOND, f'{words[i - 2]} {words[i - 1]}', words[i])
             if i >= 3:
                 update_word_occurrence(THIRD, f'{words[i-3]} {words[i-2]} {words[i-1]}', words[i])
 
