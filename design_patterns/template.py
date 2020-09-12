@@ -10,21 +10,14 @@
 from __future__ import print_function
 
 # Own modules
-from
+# from
 
 # […]
 # Built-in/Generic Imports
 # […]
 # Libs
 # […]
-{path}
-import
-
-{
-
-
-class }
-# […]
+# import
 
 __author__ = '{author}'
 __copyright__ = 'Copyright {year}, {project_name}'
