@@ -5,6 +5,11 @@ def get_mask(bits):
     return (1 << bits) - 1
 
 
+def get_bit(value: int, bit: int) -> bool:
+    """return True if bit is set or False in opposite case"""
+    return True if value & (1 << bit) > 0 else False
+
+
 def set_bit(value, bit):
     return value | (1 << bit)
 
