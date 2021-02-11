@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 # encoding: utf-8
 #
 # Copyright (c) 2020 Vladimir Shurygin.  All rights reserved.

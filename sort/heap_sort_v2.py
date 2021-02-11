@@ -33,8 +33,9 @@ def heapify(unsorted: List[int], index: int, heap_size: int) -> None:
 def heap_sort(unsorted: List[int]) -> None:
     """
     Pure implementation of the heap sort algorithm in Python
-    :param unsorted: some mutable ordered collection with heterogeneous
-    comparable items inside
+
+    :param unsorted: some mutable ordered collection with heterogeneous comparable items inside
+
     :return: the same collection ordered by ascending
 
     Examples:

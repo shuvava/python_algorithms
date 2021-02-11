@@ -7,7 +7,7 @@
 Complexity: O(n+k);
   where n length of element array and k range of elements
 """
-from .sort_interface import SortInterface
+from sort_interface import SortInterface
 
 
 def sort(_array, length, val_range):

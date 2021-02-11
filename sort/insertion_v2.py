@@ -32,6 +32,6 @@ def sort(arr: List[int]) -> None:
 
 
 if __name__ == '__main__':
-    arr = [6, 5, 1, 4]
-    sort(arr)
-    print(arr)
+    _arr = [6, 5, 1, 4]
+    sort(_arr)
+    print(_arr)
