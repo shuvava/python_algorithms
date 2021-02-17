@@ -4,7 +4,7 @@
 
 def print_capitalize():
     s = "programming is awesome"
-    print(s.title()) # Programming Is Awesome
+    print(s.title())  # Programming Is Awesome
 
 
 if __name__ == '__main__':

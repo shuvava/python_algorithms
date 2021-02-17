@@ -61,14 +61,14 @@ class RingHash(object):
         self._ring_hash.sort()
 
     def _GetNextShard(self, key_hash):
-        '''Return next vnode for hash'''
+        """Return next vnode for hash"""
         if not self._ring_hash:
             return None
         return next((x for x in self._ring_hash if x > key_hash), self._ring_hash[0])
 
     def _GetPrevShard(self, key_hash):
-        ''' return previous vnode for hash
-        '''
+        """ return previous vnode for hash
+        """
         if not self._ring_hash:
             return None
         r = [x for x in self._ring_hash if x < key_hash]
@@ -77,13 +77,13 @@ class RingHash(object):
         return max(r)
 
     def AddNode(self, nodes):
-        '''
+        """
         Add new node(s) to ring hash
 
         Parameters:
 
         nodes: *list*|*string* - list of nodes or single node
-        '''
+        """
         if not isinstance(nodes, list):
             return self.AddNode([nodes])
         for node in nodes:
@@ -93,9 +93,9 @@ class RingHash(object):
                 self._AddNode(node, node_hash, _hashes)
 
     def GetAffectedNodes(self, nodes):
-        '''
+        """
         Return v-nodes hashes of which will be affected after added new hash
-        '''
+        """
         if not isinstance(nodes, list):
             return self.GetAffectedNodes([nodes])
         shards = set()

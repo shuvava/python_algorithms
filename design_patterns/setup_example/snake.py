@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # encoding: utf-8
 import argparse
+
 import pkg_resources
 
 parser = argparse.ArgumentParser(description='Print snake.')
@@ -23,7 +24,7 @@ cute_snake = r"""
                    /     /           _-~      ~-_         |   |
                   (      (        _-~    _--_    ~-_     _/   |
                    \      ~-____-~    _-~    ~-_    ~-_-~    /
-                     ~-_           _-~          ~-_       _-~ 
+                     ~-_           _-~          ~-_       _-~
                         ~--______-~                ~-___-~
 """
 normal_snake = r"""
@@ -49,6 +50,7 @@ fancy_snake = r"""
                                                      ':..___.:'
 """
 
+
 def get_snakes():
     snakes = {}
     for entry_point in pkg_resources.iter_entry_points('snake_types'):
@@ -59,6 +61,7 @@ def get_snakes():
 def main():
     snake_type = args.type or 'normal'
     print(get_snakes()[snake_type])
+
 
 if __name__ == '__main__':
     main()

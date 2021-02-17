@@ -7,4 +7,4 @@ def palindrome(a):
 
 
 if __name__ == '__main__':
-    print(palindrome('mom')) # True
+    print(palindrome('mom'))  # True

@@ -53,5 +53,5 @@ def permute(nums: List[int]) -> List[List[int]]:
 
 if __name__ == '__main__':
     data = [1, 2, 3]
-    res = permute(data)
-    print(res)
+    _res = permute(data)
+    print(_res)

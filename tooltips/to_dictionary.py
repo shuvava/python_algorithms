@@ -7,6 +7,6 @@ def to_dictionary(keys, values):
 
 
 if __name__ == '__main__':
-    keys = ["a", "b", "c"]
-    values = [2, 3, 4]
-    print(to_dictionary(keys, values)) # {'a': 2, 'c': 4, 'b': 3}
+    _keys = ["a", "b", "c"]
+    _values = [2, 3, 4]
+    print(to_dictionary(_keys, _values))  # {'a': 2, 'c': 4, 'b': 3}

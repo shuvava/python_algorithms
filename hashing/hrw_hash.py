@@ -51,7 +51,7 @@ def int_to_float(value: int) -> float:
 class Node:
     """Class representing a node that is assigned keys as part of a weighted rendezvous hash."""
 
-    def __init__(self, name: str, seed, weight) -> None:
+    def __init__(self, name: str, seed: int, weight: int) -> None:
         self.name, self.seed, self.weight = name, seed, weight
 
     def __str__(self):
