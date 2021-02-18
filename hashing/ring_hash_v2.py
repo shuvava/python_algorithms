@@ -39,6 +39,10 @@ class RingHash:
     Then you scan forward until you find the first hash value for any server.
     In practice, each server appears multiple times on the circle. \
     These extra points are called “virtual nodes”, or “vnodes”  or replicas.
+
+    Node look up take O(log(n)) time.
+    ring hash should be used if number of nodes quite stable, in other case
+    highest random weight (HRW) hashing preferable
     """
 
     def __init__(self, nodes=None, replicas_cnt=None, hash_fn=None):
@@ -51,8 +55,9 @@ class RingHash:
 
         Examples:
         >>> from hashing.ring_hash_v2 import RingHash
-        >>> hash = RingHash([3, 6, 9], 1)
-        >>> node_id = hash.get(3)
+        >>> ring = RingHash([3, 6, 9], 1)
+        >>> node1 = ring.get(3)
+        >>> node2 = ring.get(100)
         """
         self._keys = []
         self._nodes = {}
@@ -134,7 +139,7 @@ class RingHash:
         self._keys = sorted(self._ring.keys())
         return node
 
-    def get(self, key: str, res_type: Optional[RingObjectType] = None):
+    def get(self, key: Optional[str, int], res_type: Optional[RingObjectType] = None):
         """getting node for given key"""
         node_id = self._get_node_id(key)
         if res_type is None:
