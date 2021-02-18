@@ -55,7 +55,7 @@ class Node:
         self.name, self.seed, self.weight = name, seed, weight
 
     def __str__(self):
-        return "[" + self.name + " (" + str(self.seed) + ", " + str(self.weight) + ")]"
+        return f"[{self.name} ({str(self.seed)}, {str(self.weight)})]"
 
     def compute_weighted_score(self, key):
         hash_2 = murmur3_hash(str(key), 0xFFFFFFFF & self.seed)
@@ -67,7 +67,7 @@ class Node:
 def determine_responsible_node(nodes: List[Node], key: str) -> Node:
     """Determines which node, of a set of nodes of various weights, is responsible for the provided key.
     Examples:
-        >>> import hrw_hash as wrh
+        >>> import hashing.hrw_hash as wrh
         >>> node1 = wrh.Node("node1", 123, 100)
         >>> node2 = wrh.Node("node2", 567, 200)
         >>> node3 = wrh.Node("node3", 789, 300)
