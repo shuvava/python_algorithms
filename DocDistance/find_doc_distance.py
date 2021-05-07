@@ -1,7 +1,7 @@
 #!/usr/bin/python
-''' find doc distance between documents
+""" find doc distance between documents
 https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec02.pdf
-'''
+"""
 import argparse
 import cProfile
 import math
@@ -21,21 +21,21 @@ TRANSLATOR = str.maketrans('', '', string.punctuation)
 
 
 def get_context():
-    ''' Create execution context command line args
+    """ Create execution context command line args
     Returns
     -------
     Object
-        object with command line arguments '''
+        object with command line arguments """
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f', '--files', \
-                        dest='files', action='store', nargs='+', \
+    parser.add_argument('-f', '--files',
+                        dest='files', action='store', nargs='+',
                         default=DEFAULT_FILES, help='file name with sample data')
     parser.add_argument('-v', '--verbosity', help='increase output verbosity', action='store_true')
     return parser.parse_args()
 
 
 def read_file(file_name, verbosity=False):
-    ''' Reads files content and split on words
+    """ Reads files content and split on words
 
     Parameters
     ----------
@@ -47,7 +47,7 @@ def read_file(file_name, verbosity=False):
     Returns
     -------
     List
-        List of words if file was readed of empty list '''
+        List of words if file was readed of empty list """
     _data = []
     if not os.path.exists(file_name):
         return _data
@@ -65,7 +65,7 @@ def read_file(file_name, verbosity=False):
 
 
 def create_vector(doc_):
-    '''Create vector of the document
+    """Create vector of the document
     Parameters
     ----------
     data: list
@@ -73,7 +73,7 @@ def create_vector(doc_):
     Returns
     -------
         dict
-            a vector of the document '''
+            a vector of the document """
     result = {}
     for word_ in doc_:
         result[word_] = result.get(word_, 0) + 1
@@ -81,7 +81,7 @@ def create_vector(doc_):
 
 
 def get_dot_product(vector1, vector2):
-    '''The dot product operation multiplies two vectors to give a scalar number (not a vector).
+    """The dot product operation multiplies two vectors to give a scalar number (not a vector).
     Parameters
     ----------
     vector1: dict
@@ -91,7 +91,7 @@ def get_dot_product(vector1, vector2):
     Returns
     -------
         Number
-            The dot product of vectors'''
+            The dot product of vectors"""
     result = 0
     for key, value in vector1.items():
         result += value * vector2.get(key, 0)
@@ -99,14 +99,14 @@ def get_dot_product(vector1, vector2):
 
 
 def get_vector_length(vector):
-    '''Calculate length of vector
+    """Calculate length of vector
     Parameters
     ----------
     vector: dict
         Vector
     Returns
     -------
-        Number length of the vector '''
+        Number length of the vector """
     result = 0
     for value in vector.values():
         result += value * value
@@ -114,7 +114,7 @@ def get_vector_length(vector):
 
 
 def main():
-    '''Main calculation function'''
+    """Main calculation function"""
     context = get_context()
     main_doc_vector = None
 

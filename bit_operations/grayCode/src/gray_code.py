@@ -30,11 +30,11 @@ def get_context():
     Object
         object with command line arguments """
     parser = argparse.ArgumentParser()
-    parser.add_argument("-n1", "--number1", \
-                        help="sample number", \
+    parser.add_argument("-n1", "--number1",
+                        help="sample number",
                         dest="number1", type=int, default=random.randrange(1, MAX_VALUE))
-    parser.add_argument("-n2", "--number2", \
-                        help="sample number", \
+    parser.add_argument("-n2", "--number2",
+                        help="sample number",
                         dest="number2", type=int, default=random.randrange(1, MAX_VALUE))
     return parser.parse_args()
 

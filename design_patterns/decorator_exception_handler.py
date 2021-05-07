@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-'''
+"""
 https://habr.com/ru/post/474278/
 usage
 ```py
@@ -8,19 +8,18 @@ class Math(object):
     @property
     def exception_handlers(self):
         return {
-            ZeroDivisionError: lambda e: 'devision on zero is forbidden'
+            ZeroDivisionError: lambda e: 'division on zero is forbidden'
         }
 
     @ProcessException(exception_handlers)
     def divide(self, a, b):
         return a // b
 ```
-'''
-
-from inspect import iscoroutinefunction
+"""
 
 from asyncio import QueueEmpty, QueueFull
 from concurrent.futures import TimeoutError
+from inspect import iscoroutinefunction
 
 
 class ProcessException(object):

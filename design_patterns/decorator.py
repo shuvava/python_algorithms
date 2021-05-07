@@ -11,14 +11,14 @@ __version__ = '0.0.1'
 __status__ = 'dev'
 
 
-class Track_Calls:
+class TrackCalls:
     def __init__(self, f):
         self._f = f
         self._calls = 0
 
     def __call__(self, *args, **kargs):  # bundle arbitrary arguments to this call
         self._calls += 1
-        return self._f(*args, **kargs)  # unbundle arbitrary arguments to call f
+        return self._f(*args, **kargs)  # unbounded arbitrary arguments to call f
 
     def called(self):
         return self._calls
@@ -51,7 +51,7 @@ def track_calls(f):
     return call
 
 
-@Track_Calls
+@TrackCalls
 def factorial(n):
     if n == 0:
         return 1
@@ -59,7 +59,7 @@ def factorial(n):
         return n * factorial(n - 1)
 
 
-# which is equvalent to
+# which is equivalent to
 def factorial_test(n):
     if n == 0:
         return 1
@@ -67,7 +67,7 @@ def factorial_test(n):
         return n * factorial_test(n - 1)
 
 
-factorial_test = Track_Calls(factorial_test)
+factorial_test = TrackCalls(factorial_test)
 
 if __name__ == '__main__':
     res = factorial(3)

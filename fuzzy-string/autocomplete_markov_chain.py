@@ -2,7 +2,7 @@
 # encoding: utf-8
 #
 # Copyright (c) 2019 Vladimir Shurygin.  All rights reserved.
-# was stollen from https://yurichev.com/blog/markov/
+# was stolen from https://yurichev.com/blog/markov/
 
 import re
 from collections import Counter
@@ -21,7 +21,7 @@ def update_word_occurrence(word_dict, prefix, word):
 
 with ZipFile('big.zip') as archive, archive.open('big.txt', 'r') as f:
     # https://stackoverflow.com/questions/25735644/python-regex-for-splitting-text-into-sentences-sentence-tokenizing
-    SENTENCES = re.split(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=[.?])\s', f.read().decode('utf-8'))
+    SENTENCES = re.split(r"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=[.?])\s", f.read().decode('utf-8'))
     for sentence in SENTENCES:
         words = re.findall(r'\w+', sentence.lower())
         if len(words) == 0:
@@ -36,13 +36,13 @@ with ZipFile('big.zip') as archive, archive.open('big.txt', 'r') as f:
 
 
 def print_stat(t):
-    total=float(sum(t.values()))
+    total = float(sum(t.values()))
     for pair in t.most_common(5):
         print('%s %d%%' % (pair[0], (float(pair[1])/total)*100))
 
 
 if __name__ == '__main__':
-    test='i can tell'
+    test = 'i can tell'
     #test='who did this'
     #test='she was a'
     #test='he was a'

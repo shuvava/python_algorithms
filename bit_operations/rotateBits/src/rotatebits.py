@@ -29,17 +29,17 @@ def rotate(n, r):
 
 
 def get_context():
-    ''' Create execution context command line args
+    """ Create execution context command line args
     Returns
     -------
     Object
-        object with command line arguments '''
+        object with command line arguments """
     parser = argparse.ArgumentParser()
-    parser.add_argument("-n", "--number", \
-                        help="sample number", \
+    parser.add_argument("-n", "--number",
+                        help="sample number",
                         dest="number", type=int, default=random.randrange(1, MAX_VALUE))
-    parser.add_argument("-r", "--rotate", \
-                        help="rotate bits", \
+    parser.add_argument("-r", "--rotate",
+                        help="rotate bits",
                         dest="rotate", type=int, default=random.randrange(1, MAX_BIT))
     return parser.parse_args()
 

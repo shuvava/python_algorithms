@@ -71,8 +71,8 @@ def get_context():
     Object
         object with command line arguments """
     parser = argparse.ArgumentParser()
-    parser.add_argument("-n", "--number", \
-                        help="fibonacci level", \
+    parser.add_argument("-n", "--number",
+                        help="fibonacci level",
                         dest="number", type=int, default=random.randrange(0, 24))
     return parser.parse_args()
 
