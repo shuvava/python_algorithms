@@ -75,7 +75,28 @@ class NodeState(Enum):
 
 
 def topological_sort(numCourses: int, prerequisites: List[List[int]]) -> List[int]:
-    """topological sort"""
+    """topological sort
+    Geneal algorithm:
+        L ← Empty list that will contain the sorted nodes
+        while exists nodes without a permanent mark do
+            select an unmarked node n
+            visit(n)
+
+        function visit(node n)
+            if n has a permanent mark then
+                return
+            if n has a temporary mark then
+                stop   (not a DAG)
+
+            mark n with a temporary mark
+
+            for each node m with an edge from n to m do
+                visit(m)
+
+            remove temporary mark from n
+            mark n with a permanent mark
+            add n to head of L
+    """
     # Create the adjacency list representation of the graph
     adj_list = defaultdict(list)
     # A pair [a, b] in the input represents edge from b --> a
@@ -118,7 +139,7 @@ def topological_sort(numCourses: int, prerequisites: List[List[int]]) -> List[in
 
     #     Complexity Analysis
     #         Time Complexity: O(V+E) where V represents the number of vertices and
-    #         EE represents the number of edges.
+    #         E represents the number of edges.
     #          Essentially we iterate through each node and each vertex in the graph once and only once.
     #     Space Complexity: O(V+E).
     #         We use the adjacency list to represent our graph initially.
