@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '''Singletone pattern
 we override the __new__ method
 (Python's special method to instantiate objects) to control the object creation.

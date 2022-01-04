@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2021 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2021-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 """
 append element to sorted list
 """

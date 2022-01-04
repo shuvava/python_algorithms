@@ -1,8 +1,8 @@
 #!/usr/bin/env python3ß
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 """
 https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec07.pdf
 Algorithm:
@@ -19,6 +19,7 @@ imagine each value like integer in base b
 """
 from sort_interface import SortInterface
 
+
 def get_offset_code(item, offset):
     ''' get internal index of char in range 0..37
     where 0 is out of range or wrong number
@@ -33,19 +34,20 @@ def get_offset_code(item, offset):
         return 0
     _chr = item[offset]
     _ascii_code = ord(_chr)
-    if _ascii_code > 64 and _ascii_code < 91: # letters
+    if _ascii_code > 64 and _ascii_code < 91:  # letters
         return _ascii_code - 64 + 10
-    if _ascii_code > 47 and _ascii_code < 58: # numbers
+    if _ascii_code > 47 and _ascii_code < 58:  # numbers
         return _ascii_code - 47
     # unknown symbol
     return 0
 
+
 def sort(_array, length, offset=0, key_len=2, val_range=37):
     '''Counting sort algorithm
     '''
-    if offset >= key_len: # max deep of sorting reached
+    if offset >= key_len:  # max deep of sorting reached
         return _array
-    _keys = [None]*(val_range+1)
+    _keys = [None] * (val_range + 1)
     for key in range(length):
         inx = get_offset_code(_array[key], offset)
         item = _keys[inx]
@@ -54,11 +56,12 @@ def sort(_array, length, offset=0, key_len=2, val_range=37):
         else:
             item.append(_array[key])
     result = []
-    for i in range(val_range+1):
+    for i in range(val_range + 1):
         if _keys[i]:
-            _sorted_arr = sort(_keys[i], len(_keys[i]), offset+1, key_len)
+            _sorted_arr = sort(_keys[i], len(_keys[i]), offset + 1, key_len)
             result.extend(_sorted_arr)
     return result
+
 
 class RadixSort(SortInterface):
     def main(self):
@@ -68,6 +71,7 @@ class RadixSort(SortInterface):
         if self.verbosity:
             print('------------------------------------------')
             print(result)
+
 
 if __name__ == '__main__':
     RadixSort().run()

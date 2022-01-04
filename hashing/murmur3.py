@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 """
 Non cryptographic hash function converting string into integer (hash)
 https://en.wikipedia.org/wiki/MurmurHash

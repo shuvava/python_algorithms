@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 """
 Topological sort is implementation of linear order
  in which to put on the items(tasks and etc)
@@ -16,7 +16,7 @@ Terms:
 Complexity: O(n+m)
     where n count of vertexes; m count of edges
 """
-#add parent directory with base module
+# add parent directory with base module
 import os
 from sys import path
 
@@ -43,8 +43,8 @@ class TopologicalSort(Graph):
         """
         edges = self.get_edges(True)
         _in_degree = [0] * len(edges)
-        for edge_list in edges: # takes N iterations
-            for edge in edge_list: # takes M iterations
+        for edge_list in edges:  # takes N iterations
+            for edge in edge_list:  # takes M iterations
                 _in_degree[edge[1]] += 1
         return _in_degree
 

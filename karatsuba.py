@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ (c) 2017 Vladimir Shurygin.  All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 """
 https://courses.csail.mit.edu/6.006/spring11/exams/notes3-karatsuba
 https://brilliant.org/wiki/karatsuba-algorithm/
@@ -32,14 +36,14 @@ def karatsuba(x, y):
     x_L = int(x % (10 ** m))
 
     y_H = int(floor(y / 10 ** m))
-    y_L = int(y % (10**m))
+    y_L = int(y % (10 ** m))
 
     # recursive steps
-    a = karatsuba(x_H,y_H)
-    d = karatsuba(x_L,y_L)
-    e = karatsuba(x_H + x_L, y_H + y_L) -a -d
+    a = karatsuba(x_H, y_H)
+    d = karatsuba(x_L, y_L)
+    e = karatsuba(x_H + x_L, y_H + y_L) - a - d
 
-    return int(a*(10**(m*2)) + e*(10**m) + d)
+    return int(a * (10 ** (m * 2)) + e * (10 ** m) + d)
 
 
 if __name__ == "__main__":

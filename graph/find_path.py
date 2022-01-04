@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '''
 Find shortest path in graph
 '''
@@ -13,8 +13,9 @@ path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../commo
 
 from base_graph import BaseGraph
 
+
 class FindPathGraph(BaseGraph):
-    def find_all_paths(self, start_index, end_index, _path = []):
+    def find_all_paths(self, start_index, end_index, _path=[]):
         '''Finds all possible ways between vertexes of graph 
 
         :Parameters:
@@ -25,10 +26,10 @@ class FindPathGraph(BaseGraph):
         :Returns:
         *list* all possible paths
         '''
-        _path = _path + [start_index] # create new copy of path
+        _path = _path + [start_index]  # create new copy of path
         if start_index == end_index:
             return [_path]
-        if start_index> self.get_nodes_len():
+        if start_index > self.get_nodes_len():
             return []
         paths = []
         edges = self.get_edges(True)
@@ -47,6 +48,7 @@ class FindPathGraph(BaseGraph):
         for path_inx in paths_inx:
             paths.append(self.get_nodes_sequence(path_inx))
         print(paths)
+
 
 if __name__ == '__main__':
     FindPathGraph().run()

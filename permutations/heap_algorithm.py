@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2020 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2020-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 """
 Heap's algorithm
 https://en.wikipedia.org/wiki/Heap%27s_algorithm
@@ -37,7 +37,7 @@ def all_perms(elements: List[int], n: int):
             for hp in all_perms(elements, n - 1):
                 yield hp
             if n % 2 == 0:
-                elements[i], elements[n-1] = elements[n-1], elements[i]
+                elements[i], elements[n - 1] = elements[n - 1], elements[i]
             else:
                 elements[0], elements[n - 1] = elements[n - 1], elements[0]
         for hp in all_perms(elements, n - 1):

@@ -1,30 +1,29 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import os
 from sys import path
 
 path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../common')))
 from file_operations import read_array_file
 
-
 import struct, copy
 from hashlib import sha1
 import numpy as np
+
 try:
     from .hyperloglog_const import _thresholds, _raw_estimate, _bias
 except ImportError:
     # For Python 2
     from hyperloglog_const import _thresholds, _raw_estimate, _bias
 
-
 # Get the number of bits starting from the first non-zero bit to the right
-_bit_length = lambda bits : bits.bit_length()
+_bit_length = lambda bits: bits.bit_length()
 # For < Python 2.7
 if not hasattr(int, 'bit_length'):
-    _bit_length = lambda bits : len(bin(bits)) - 2 if bits > 0 else 0
+    _bit_length = lambda bits: len(bin(bits)) - 2 if bits > 0 else 0
 
 
 class HyperLogLog(object):
@@ -106,7 +105,7 @@ class HyperLogLog(object):
         '''
         # Digest the hash object to get the hash value
         hv = struct.unpack(self._struct_fmt_str,
-                self.hashobj(b).digest()[:self._hash_range_byte])[0]
+                           self.hashobj(b).digest()[:self._hash_range_byte])[0]
         # Get the index of the register using the first p bits of the hash
         reg_index = hv & (self.m - 1)
         # Get the rest of the hash
@@ -114,7 +113,7 @@ class HyperLogLog(object):
         # Update the register
         self.reg[reg_index] = max(self.reg[reg_index], self._get_rank(bits))
         if reg_index == 0:
-            print('b={};bits={};rank={};reg={}'.format(b, bits,self._get_rank(bits),self.reg[reg_index]))
+            print('b={};bits={};rank={};reg={}'.format(b, bits, self._get_rank(bits), self.reg[reg_index]))
 
     def count(self):
         '''
@@ -124,7 +123,7 @@ class HyperLogLog(object):
             int: The estimated cardinality.
         '''
         # Use HyperLogLog estimation function
-        e = self.alpha * float(self.m ** 2) / np.sum(2.0**(-self.reg))
+        e = self.alpha * float(self.m ** 2) / np.sum(2.0 ** (-self.reg))
         # Small range correction
         if e <= (5.0 / 2.0) * self.m:
             num_zero = self.m - np.count_nonzero(self.reg)
@@ -259,10 +258,10 @@ class HyperLogLog(object):
         offset = size
         try:
             h.reg = np.array(struct.unpack_from('%dB' % h.m,
-                buf, offset), dtype=np.int8)
+                                                buf, offset), dtype=np.int8)
         except TypeError:
             h.reg = np.array(struct.unpack_from('%dB' % h.m,
-                buffer(buf), offset), dtype=np.int8)
+                                                buffer(buf), offset), dtype=np.int8)
         return h
 
     def __getstate__(self):
@@ -280,10 +279,10 @@ class HyperLogLog(object):
         offset = size
         try:
             self.reg = np.array(struct.unpack_from('%dB' % self.m,
-                buf, offset), dtype=np.int8)
+                                                   buf, offset), dtype=np.int8)
         except TypeError:
             self.reg = np.array(struct.unpack_from('%dB' % self.m,
-                buffer(buf), offset), dtype=np.int8)
+                                                   buffer(buf), offset), dtype=np.int8)
 
 
 class HyperLogLogPlusPlus(HyperLogLog):
@@ -310,7 +309,7 @@ class HyperLogLogPlusPlus(HyperLogLog):
     def _estimate_bias(self, e, p):
         bias_vector = _bias[p - 4]
         estimate_vector = _raw_estimate[p - 4]
-        nearest_neighbors = np.argsort((e - estimate_vector)**2)[:6]
+        nearest_neighbors = np.argsort((e - estimate_vector) ** 2)[:6]
         return np.mean(bias_vector[nearest_neighbors])
 
     def count(self):
@@ -321,20 +320,21 @@ class HyperLogLogPlusPlus(HyperLogLog):
             if lc <= self._get_threshold(self.p):
                 return lc
         # Use HyperLogLog estimation function
-        e = self.alpha * float(self.m ** 2) / np.sum(2.0**(-self.reg))
+        e = self.alpha * float(self.m ** 2) / np.sum(2.0 ** (-self.reg))
         if e <= 5 * self.m:
             return e - self._estimate_bias(e, self.p)
         else:
             return e
 
+
 if __name__ == '__main__':
-    #arr = read_array_file('./hyperloglog/data_test.txt', True)
+    # arr = read_array_file('./hyperloglog/data_test.txt', True)
     hll = HyperLogLogPlusPlus(p=12)
     arr = read_array_file('./hyperloglog/data10.txt', True)
     cnt = len(arr)
     print('count = {}; distinct = {}'.format(cnt, 2103130))
     for i in arr:
-        #print(i[0])
+        # print(i[0])
         hll.update(str(i[0]).encode('utf8'))
     estimation = hll.count()
     print(estimation)

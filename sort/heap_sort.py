@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '''
 Implementation Heap sort
 Running time:
@@ -12,9 +12,10 @@ operation; hence it takes O(log n) time
 
 Complexity: O(n*ln(n))
 '''
-#add parent directory with base module
+# add parent directory with base module
 import os
 from sys import path
+
 path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../bst')))
 
 from bst_heap_max import MaxHeap
@@ -23,6 +24,7 @@ from bst_heap_max import MaxHeap
 class HeapSort(MaxHeap):
     '''Implementation of Heap sort
     '''
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -40,5 +42,5 @@ class HeapSort(MaxHeap):
         '''
         self.build_heap()
         for index in range(len(self.array), 0, -1):
-            self.swap(0, index-1)
-            self.heapify(0, index-1)
+            self.swap(0, index - 1)
+            self.heapify(0, index - 1)

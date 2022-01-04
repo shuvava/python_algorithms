@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '''
 Test of base_bst module
 https://docs.python.org/3/library/unittest.html
@@ -15,6 +15,7 @@ from bst_print import bst_print
 
 __print_trees__ = False
 
+
 def create_left_heavy_tree(avl_data):
     arr = [item for item in avl_data]
     item = arr.pop(0)
@@ -26,6 +27,7 @@ def create_left_heavy_tree(avl_data):
         node = AVL_Node(item)
         parent.left = node
     return (root, node)
+
 
 def create_right_heavy_tree(avl_data):
     arr = [item for item in avl_data]
@@ -184,7 +186,8 @@ class Unit_test_avl_node_update(unittest.TestCase):
             bst_print(new_root)
         self.assertTrue(new_root.is_valid)
         if __print_trees__:
-            print('<<<< test_avl_delete') 
+            print('<<<< test_avl_delete')
+
 
 if __name__ == '__main__':
     __print_trees__ = True

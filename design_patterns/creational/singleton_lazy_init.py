@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '''Singletone pattern
 '''
+
+
 class Singleton:
     __instance = None
 
@@ -20,6 +22,7 @@ class Singleton:
             cls.__instance = Singleton()
         return cls.__instance
 
-s = Singleton() ## class initialized, but object not created
-print("Object created", Singleton.getInstance()) # Object gets created here
-s1 = Singleton() ## instance already created
+
+s = Singleton()  ## class initialized, but object not created
+print("Object created", Singleton.getInstance())  # Object gets created here
+s1 = Singleton()  ## instance already created

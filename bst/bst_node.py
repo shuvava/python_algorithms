@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 """
 class implements base functionality of node of BST
 
@@ -36,6 +36,7 @@ def bst_fix_node_level(node, level):
 
 class Node:
     """base functionality of BST"""
+
     def __init__(self, value):
         self._value = value
         self._parent = None

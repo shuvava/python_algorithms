@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '''
 Test of base_bst module
 https://docs.python.org/3/library/unittest.html
@@ -10,9 +10,9 @@ https://docs.python.org/3/library/unittest.html
 import unittest
 
 from avl import AVL
-from bst_print import bst_print
 
 __print__ = False
+
 
 class Unit_test_AVL(unittest.TestCase):
     def setUp(self):
@@ -22,7 +22,7 @@ class Unit_test_AVL(unittest.TestCase):
         bst = AVL()
         for node in self.bst_data:
             bst.add_node(node)
-        self.assertEqual(bst.length , len(self.bst_data))
+        self.assertEqual(bst.length, len(self.bst_data))
         self.assertEqual(bst.root.value, 49)
 
     def test_delete_node(self):
@@ -34,7 +34,7 @@ class Unit_test_AVL(unittest.TestCase):
         bst.delete_node(bst.root.left)
         if __print__:
             bst.print_tree()
-        self.assertEqual(bst.length , len(self.bst_data) - 1)
+        self.assertEqual(bst.length, len(self.bst_data) - 1)
         if __print__:
             print('<<<< test_delete_node')
 

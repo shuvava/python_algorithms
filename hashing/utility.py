@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 from hashlib import sha1
 from random import randint
 
@@ -12,8 +12,8 @@ def prehash(obj):
 
 
 def get_odd_number(w):
-    i_min = 2**(w-1)
-    i_max = 2**w
+    i_min = 2 ** (w - 1)
+    i_max = 2 ** w
     rnd = randint(i_min, i_max)
     if rnd % 2 == 0:
         return rnd
@@ -23,7 +23,7 @@ def get_odd_number(w):
 def isPrime(n):
     if n < 2:
         return False
-    for i in range(2, int(n**0.5) + 1):
+    for i in range(2, int(n ** 0.5) + 1):
         if n % i == 0:
             return False
     return True
@@ -42,7 +42,6 @@ def findLargestPrimeFactor(n):
 
 
 def findLargestPrimeFactor_old(n):
-
     prime_factor = 1
     i = 2
     while i <= n / i:

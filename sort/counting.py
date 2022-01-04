@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 """Counting sort
 Complexity: O(n+k);
   where n length of element array and k range of elements
@@ -38,7 +38,7 @@ class CountingSort(BaseAlg):
         _keys = [0] * val_range
         # COUNT-KEYS-EQUAL
         for inx in range(0, length):
-            key = _array[inx]-1
+            key = _array[inx] - 1
             _keys[key] = _keys[key] + 1
         # COUNT-KEYS-LESS
         # equal = _keys[0]
@@ -63,9 +63,9 @@ class CountingSort(BaseAlg):
         result = [0] * length
         for inx in range(0, length):
             key = _array[inx]
-            _inx = _keys[key-1]-1
+            _inx = _keys[key - 1] - 1
             result[_inx] = _array[inx]
-            _keys[key-1] = _keys[key-1] - 1
+            _keys[key - 1] = _keys[key - 1] - 1
         return result
 
     def main(self, _array):

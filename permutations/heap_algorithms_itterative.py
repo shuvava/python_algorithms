@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2020 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2020-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 """
 Heap's algorithm
 https://en.wikipedia.org/wiki/Heap%27s_algorithm
@@ -14,7 +14,7 @@ from typing import List
 def all_perms(elements: List[int]):
     n = len(elements)
     # c is an encoding of the stack state.
-    c = [0]*n
+    c = [0] * n
     # i acts similarly to the stack pointer
     i = 0
     yield elements[:]

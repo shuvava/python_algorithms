@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 """
 https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm
 """
@@ -26,9 +26,9 @@ def rabin_karp(s: str, pattern: str) -> int:
     if shash.hash == phash.hash:
         if s[:len(pattern)] == pattern:
             return inx
-    for c in s[len(pattern)+1:]:
+    for c in s[len(pattern) + 1:]:
         inx += 1
-        shash.shift_symbol(s[len(pattern) + inx-1])
+        shash.shift_symbol(s[len(pattern) + inx - 1])
         if shash.hash == phash.hash:
             if s[inx:len(pattern) + inx] == pattern:
                 return inx

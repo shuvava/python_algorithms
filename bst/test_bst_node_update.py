@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '''
 Test of base_bst module
 https://docs.python.org/3/library/unittest.html
@@ -70,6 +70,7 @@ class Unit_test_bst_node_update(unittest.TestCase):
         self.assertEqual(bst.root.rank, 8)
         if __print__:
             print('--------------------test_bst_delete_with_child')
+
 
 if __name__ == '__main__':
     __print__ = True

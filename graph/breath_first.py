@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2019-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 """
 implementation of Breath-First algorithm
 Breadth-first search (BFS) is an algorithm for traversing or searching

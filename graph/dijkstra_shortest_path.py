@@ -1,8 +1,6 @@
-# !/usr/bin/env python3
-# encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 """
 Dijkstra algorithm find shortest path in graph Shortest paths in graphs without negative edges.
 """
@@ -13,7 +11,6 @@ from sys import path
 path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../bst')))
 
 from undirected_cyclic import Graph
-from vertex import Vertex
 from bst_heap_min import MinHeap
 
 

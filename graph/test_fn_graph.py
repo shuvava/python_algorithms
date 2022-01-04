@@ -1,41 +1,38 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '''
 Test of base_bst module
 https://docs.python.org/3/library/unittest.html
 '''
-import unittest
 import os
+import unittest
 
-from undirected_cyclic import Graph
-from vertex import Vertex
-from fn_graph import load_graph
 from breath_first import bfs_undirected_cyclic, get_shortest_path
 from deapth_first import (
-    dfs_undirected_cyclic,
-    dfs_undirected_cyclic_b,
     dfs_detect_cycle,
     topological_sort_get_sources,
     topological_sort
 )
 from dijkstras import single_path
+from fn_graph import load_graph
 
 
 class Unit_test_file_operations(unittest.TestCase):
     def setUp(self):
         self.undirected_cyclic_graph_file = os.path.abspath(os.path.join(os.path.dirname(__file__), 'graph_test.json'))
-        self.directed_cyclic_graph_file = os.path.abspath(os.path.join(os.path.dirname(__file__), 'graph_test_dfs.json'))
+        self.directed_cyclic_graph_file = os.path.abspath(
+            os.path.join(os.path.dirname(__file__), 'graph_test_dfs.json'))
         self.topological_graph_file = os.path.abspath(os.path.join(os.path.dirname(__file__), 'topological_sort.json'))
         self.dijkstras = os.path.abspath(os.path.join(os.path.dirname(__file__), 'dijkstras.json'))
 
     def test_load_undirected_cyclic_graph(self):
-        #act
+        # act
         graph = load_graph(self.undirected_cyclic_graph_file, True)
         vertex = graph.get_vertex(0)
-        #assert
+        # assert
         self.assertIsNotNone(graph)
         self.assertTrue(graph.cyclic)
         self.assertFalse(graph.directed)
@@ -43,30 +40,30 @@ class Unit_test_file_operations(unittest.TestCase):
         self.assertEqual(len(vertex.adj), 2)
 
     def test_load_directed_cyclic_graph(self):
-        #act
+        # act
         graph = load_graph(self.directed_cyclic_graph_file, True)
         vertex = graph.get_vertex(0)
-        #assert
+        # assert
         self.assertIsNotNone(graph)
         self.assertTrue(graph.cyclic)
         self.assertFalse(graph.directed)
         self.assertEqual(len(graph.vertexes), 6)
         self.assertEqual(len(vertex.adj), 2)
-    
+
     def test_load_graph_with_weights(self):
-        #act
+        # act
         graph = load_graph(self.dijkstras, True)
         vertex = graph.get_vertex(0)
-        #assert
+        # assert
         self.assertIsNotNone(graph)
         self.assertIsNotNone(vertex.weights)
 
     def test_bfs_undirected_cyclic(self):
-        #arrange
+        # arrange
         graph = load_graph(self.undirected_cyclic_graph_file, False)
-        #act
+        # act
         bfs = bfs_undirected_cyclic(graph, 0)
-        #assert
+        # assert
         self.assertIsNotNone(bfs)
         self.assertIsNotNone(bfs[0])
         self.assertEqual(len(bfs[0]), 8)
@@ -75,24 +72,23 @@ class Unit_test_file_operations(unittest.TestCase):
         self.assertEqual(bfs[1][graph.get_vertex('4')], graph.get_vertex('3'))
 
     def test_get_shortest_path(self):
-        #arrange
+        # arrange
         graph = load_graph(self.undirected_cyclic_graph_file, False)
-        #act
+        # act
         path = get_shortest_path(graph, 0, 6)
-        #assert
+        # assert
         self.assertIsNotNone(path)
         self.assertEqual(len(path), 4)
         self.assertEqual(path[2], graph.get_vertex('3'))
 
-
     def test_dfs_directed_cyclic(self):
-        #arrange
+        # arrange
         graph = load_graph(self.directed_cyclic_graph_file, False)
-        #act
-        #dfs = dfs_undirected_cyclic_b(graph, 1)
+        # act
+        # dfs = dfs_undirected_cyclic_b(graph, 1)
         dfs = bfs_undirected_cyclic(graph, 1)
 
-        #assert
+        # assert
         levels = dfs[0]
         relations = dfs[1]
         self.assertIsNotNone(dfs)
@@ -104,38 +100,39 @@ class Unit_test_file_operations(unittest.TestCase):
         self.assertTrue(graph.get_vertex(0) not in relations)
 
     def test_detect_cycle(self):
-        #arrange
+        # arrange
         graph = load_graph(self.directed_cyclic_graph_file, False)
-        #act
+        # act
         result1 = dfs_detect_cycle(graph, 1)
         result2 = dfs_detect_cycle(graph, 5)
-        #assert
+        # assert
         self.assertTrue(result1)
         self.assertFalse(result2)
 
     def test_get_graph_sources(self):
-        #arrange
+        # arrange
         graph = load_graph(self.topological_graph_file, False)
-        #act
+        # act
         result = topological_sort_get_sources(graph)
         self.assertEqual(4, len(result))
 
     def test_topological_sort(self):
-        #arrange
+        # arrange
         graph = load_graph(self.topological_graph_file, False)
-        #act
+        # act
         result = topological_sort(graph)
         self.assertEqual(9, len(result))
         print(result)
 
     def test_dijkstras_shortest_path(self):
-        #act
+        # act
         graph = load_graph(self.dijkstras, True)
         result = single_path(graph, 1, 3)
-        #assert
+        # assert
         self.assertIsNotNone(graph)
         self.assertIsNotNone(result)
         self.assertEqual(9, result[0])
+
 
 if __name__ == '__main__':
     unittest.main()

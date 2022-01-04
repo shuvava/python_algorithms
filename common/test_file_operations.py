@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '''
 Test of base_bst module
 https://docs.python.org/3/library/unittest.html
 '''
-import unittest
 import os
-from sys import path
+import unittest
 
 from file_operations import *
+
 
 class Unit_test_file_operations(unittest.TestCase):
     def setUp(self):
@@ -48,6 +48,7 @@ class Unit_test_file_operations(unittest.TestCase):
         os.remove(tmp_file)
         self.assertIsNotNone(tmp_arr)
         self.assertListEqual(arr, tmp_arr)
+
 
 if __name__ == '__main__':
     unittest.main()

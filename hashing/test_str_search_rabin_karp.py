@@ -1,56 +1,59 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '''
 Test of base_bst module
 https://docs.python.org/3/library/unittest.html
 '''
 import unittest
+
 from str_search_rabin_karp import rabin_karp
 
 __print__ = False
+
 
 class Unit_test_RabinKarp(unittest.TestCase):
     def setUp(self):
         pass
 
     def test_wrong_param(self):
-        #arrange
+        # arrange
         s = 'the'
         pattern = 'world'
-        #act
+        # act
         result = rabin_karp(s, pattern)
-        #assert
+        # assert
         self.assertEqual(result, -1)
 
     def test_equal(self):
-        #arrange
+        # arrange
         s = 'the world'
         pattern = 'the'
-        #act
+        # act
         result = rabin_karp(s, pattern)
-        #assert
+        # assert
         self.assertEqual(result, 0)
 
     def test_find(self):
-        #arrange
+        # arrange
         s = 'I love the world'
         pattern = 'the'
-        #act
+        # act
         result = rabin_karp(s, pattern)
-        #assert
+        # assert
         self.assertEqual(result, 7)
 
     def test_not_found(self):
-        #arrange
+        # arrange
         s = 'I love the world'
         pattern = 'the1'
-        #act
+        # act
         result = rabin_karp(s, pattern)
-        #assert
+        # assert
         self.assertEqual(result, -1)
+
 
 if __name__ == '__main__':
     __print__ = True

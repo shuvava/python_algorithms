@@ -1,18 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import abc
-import random
-#add parent directory with base module
+# add parent directory with base module
 import os
+import random
 from sys import path
 
 path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../common')))
 from common_interface import CommonInterface
 
 DEFAULT_LENGTH = 10
+
 
 def gen_array(length, max_value=1000):
     '''Generates random array
@@ -30,6 +31,7 @@ def gen_array(length, max_value=1000):
         _data.append(random.randrange(1, max_value))
         _i += 1
     return _data
+
 
 class SortInterface(CommonInterface, metaclass=abc.ABCMeta):
     def get_data(self):

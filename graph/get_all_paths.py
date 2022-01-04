@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2019 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2019-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 class Node:
@@ -14,6 +14,7 @@ class Node:
         if not isinstance(item, Node):
             return
         self.adj.add(item)
+
 
 def build_tree(board_len):
     tree = []
@@ -33,11 +34,12 @@ def build_tree(board_len):
         inx += 1
     return tree
 
+
 def find_path(start, end, paths, visited, path):
     visited.add(start.id)
     path.append(start.id)
     if start == end:
-        #print(path)
+        # print(path)
         paths.append(list(path))
     else:
         for node in start.adj:
@@ -45,6 +47,7 @@ def find_path(start, end, paths, visited, path):
                 find_path(node, end, paths, visited, path)
     path.pop()
     visited.remove(start.id)
+
 
 def find_all_paths(start, end):
     '''https://www.geeksforgeeks.org/find-paths-given-source-destination/
@@ -54,6 +57,7 @@ def find_all_paths(start, end):
     path = []
     find_path(start, end, paths, visited, path)
     return paths
+
 
 if __name__ == '__main__':
     _tree = build_tree(4)

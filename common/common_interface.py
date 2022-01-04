@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+import __main__
 import abc
 import argparse
 import cProfile
@@ -12,12 +13,11 @@ from os import path
 
 from file_operations import read_array_file, save_array_file, remove_file
 
-import __main__
-
 
 class CommonInterface(object, metaclass=abc.ABCMeta):
     '''Implements interface of performace testing of BST
     '''
+
     def __init__(self):
         self.context = self.get_context()
         self.verbosity = self.context.verbosity
@@ -32,12 +32,12 @@ class CommonInterface(object, metaclass=abc.ABCMeta):
             object with command line arguments '''
         parser = argparse.ArgumentParser()
         parser.add_argument("-f", "--file", help="file name with sample data")
-        parser.add_argument("-l", "--length",\
-            help="length of array of sample data",\
-            dest="length", type=int,\
-            default=0)
-        parser.add_argument('-v', '--verbosity',\
-            help='increase output verbosity', action='store_true')
+        parser.add_argument("-l", "--length", \
+                            help="length of array of sample data", \
+                            dest="length", type=int, \
+                            default=0)
+        parser.add_argument('-v', '--verbosity', \
+                            help='increase output verbosity', action='store_true')
         return parser.parse_args()
 
     def _save_file(self, file_name, data):
@@ -71,7 +71,7 @@ class CommonInterface(object, metaclass=abc.ABCMeta):
     def run(self):
         ''' run algorithm and checks results'''
         _result = '{}_results'.format(self._main)
-        self.get_data()# pylint: disable=W0612
+        self.get_data()  # pylint: disable=W0612
         cProfile.runctx('self.main()', globals(), locals(), _result)
         print('------------------------------------------')
         _stat = pstats.Stats(_result)

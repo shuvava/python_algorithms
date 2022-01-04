@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 """
 Implementation of binary search tree (BST) - HEAP
 Definition:
@@ -11,7 +11,7 @@ Definition:
     left(i)=2i: returns index of node's left child
     right(i)=2i+1: returns index of node's right child
 """
-#add parent directory with base module
+# add parent directory with base module
 import os
 from sys import path
 
@@ -20,9 +20,11 @@ path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../commo
 import abc
 from base_interface import BaseAlg
 
+
 class BaseBst(BaseAlg, metaclass=abc.ABCMeta):
     '''Implementation of base functionality of bst- heap
     '''
+
     def __init__(self, array_=None):
         super().__init__()
         if array_ is not None and isinstance(array_, list):

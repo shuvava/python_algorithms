@@ -1,34 +1,36 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '''
 base functionality of graph
  - read from file
  - write to file
  - generate
 '''
+import __main__
 import abc
 import argparse
 import cProfile
+import json
 import pstats
 from os import path
-import json
-import __main__
 
 DEFAULT_LENGTH = 10
+
 
 class BaseGraph(object, metaclass=abc.ABCMeta):
     '''Implementation of base functionality
     '''
+
     def get_context(self):
         ''' Create execution context command line args
         '''
         parser = argparse.ArgumentParser()
         parser.add_argument("-f", "--file", help="file name with sample data")
-        parser.add_argument('-v', '--verbosity',\
-            help='increase output verbosity', action='store_true')
+        parser.add_argument('-v', '--verbosity', \
+                            help='increase output verbosity', action='store_true')
         return parser.parse_args()
 
     def __init__(self):
@@ -47,7 +49,7 @@ class BaseGraph(object, metaclass=abc.ABCMeta):
 
     def _nodes(self):
         return self.graph['nodes']
-    
+
     def get_nodes_len(self):
         return len(self._nodes())
 
@@ -71,12 +73,12 @@ class BaseGraph(object, metaclass=abc.ABCMeta):
                 return inx
         return None
 
-    def get_edges(self, with_index = False):
+    def get_edges(self, with_index=False):
         '''returns list of edges for node id
         '''
         edges = self.graph['edges']
         nodes = self.get_nodes()
-        data = [edge['targets'] for node in nodes for edge in edges if edge['source']==node]
+        data = [edge['targets'] for node in nodes for edge in edges if edge['source'] == node]
         if with_index:
             return [[(i, self._get_node_index(i)) for i in items] for items in data]
         return data
@@ -118,7 +120,7 @@ class BaseGraph(object, metaclass=abc.ABCMeta):
         if self.context.file is None:
             return
         _filename = self.context.file.strip()
-        self.graph  = self._read_file(_filename)['graph']
+        self.graph = self._read_file(_filename)['graph']
         if self.verbosity:
             print(self.graph)
 
@@ -130,7 +132,7 @@ class BaseGraph(object, metaclass=abc.ABCMeta):
     def run(self):
         ''' run algorithm and checks results'''
         _result = '{}_results'.format(self._main)
-        self.get_graph()# pylint: disable=W0612
+        self.get_graph()  # pylint: disable=W0612
         cProfile.runctx('self.main()', globals(), locals(), _result)
         print('------------------------------------------')
         _stat = pstats.Stats(_result)

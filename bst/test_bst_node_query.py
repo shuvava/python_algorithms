@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '''
 Test of base_bst module
 https://docs.python.org/3/library/unittest.html
@@ -94,7 +94,7 @@ class Unit_test_bst_find(unittest.TestCase):
         self.assertIsNotNone(result)
         self.assertEqual(result.value, 81, 'test go left right by tree')
         if __print_trees__:
-            print('<<<< test_next_smaller') 
+            print('<<<< test_next_smaller')
 
     def test_to_list(self):
         bst = BST().from_list(self.bst_data)

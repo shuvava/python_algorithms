@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2019 Vladimir Shurygin.  All rights reserved.
-# was stollen from http://norvig.com/spell-correct.html
-# source code from https://github.com/norvig/pytudes
-# https://yurichev.com/blog/fuzzy_string/
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2019-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 """
 The Levenshtein distance is a string metric for measuring difference between two
 sequences. Informally, the Levenshtein distance between two words is

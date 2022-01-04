@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
-#
-# Copyright (c) 2017 Vladimir Shurygin.  All rights reserved.
-#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 '''Merge sort
 Complexity: O(n*ln(n))
 require double size of memory
@@ -35,6 +35,7 @@ def msort(x):
     result += y[i:]
     result += z[j:]
     return result
+
 
 class MergeSorted:
 
@@ -96,6 +97,7 @@ class MergeSorted:
             dest[k] = working[k]
 
         return inversions
+
 
 msorted = MergeSorted()
 
