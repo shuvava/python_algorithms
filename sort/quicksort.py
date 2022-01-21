@@ -32,7 +32,7 @@ class QuickSort(BaseAlg):
 
     @staticmethod
     def partition(array_, start, end):
-        '''Rearranges the elements of array[start:end] so that every element in
+        """Rearranges the elements of array[start:end] so that every element in
         array[start:pivot] is less than or equal to array[pivot] and every element in
         array[pivot:end] is greater than array[pivot]. Returns the index pivot to the caller
 
@@ -40,7 +40,7 @@ class QuickSort(BaseAlg):
         array_: *list* - array of elements to sort
         start: *number* - start index of left array
         end: *number* - end right array
-        '''
+        """
         # Pivot first element in the array
         pivot = array_[start]
         left = start + 1
@@ -59,7 +59,7 @@ class QuickSort(BaseAlg):
         return right
 
     def quick_sort_recursive(self, array_, start, end, level=0):
-        '''The procedure for quicksort assumes that we can call a procedure
+        """The procedure for quicksort assumes that we can call a procedure
         PARTITION(array, p, r) that partitions the subarray A[p..r], returning the
         index q where it has placed the pivot.
 
@@ -67,7 +67,7 @@ class QuickSort(BaseAlg):
         array_: *list* - array of elements to sort
         start: *number* - start index of left array
         end: *number* - end right array
-        '''
+        """
         if end <= start:
             if self.verbosity:
                 print('end loop after {} iteration'.format(level - 1))
@@ -80,14 +80,14 @@ class QuickSort(BaseAlg):
         self.quick_sort_recursive(array_, middle + 1, end, level + 1)
 
     def quick_sort_iterative(self, array_, start, end):
-        '''Interactive implementation of quicksort,
+        """Interactive implementation of quicksort,
         it use stack to store variables instead of recursive call
 
         :Parameters:
         array_: *list* - array of elements to sort
         start: *number* - start index of left array
         end: *number* - end right array
-        '''
+        """
         stack_ = []
         stack_.append((start, end))
 
@@ -103,7 +103,7 @@ class QuickSort(BaseAlg):
                 stack_.append((middle + 1, right))
 
     def main(self, _array):
-        '''main entry point'''
+        """main entry point"""
         # self.quick_sort_recursive(_array, 0, len(_array)-1)
         self.quick_sort_iterative(_array, 0, len(_array) - 1)
         if self.verbosity:

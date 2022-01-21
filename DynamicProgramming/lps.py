@@ -36,7 +36,7 @@ def longestPalSubstr(st: str) -> str:
     # table[i][j] will be false if substring
     # str[i..j] is not palindrome. Else
     # table[i][j] will be true
-    table = [[0 for x in range(n)] for y in range(n)]
+    table = [[0 for _ in range(n)] for _ in range(n)]
 
     # All substrings of length 1 are
     # palindromes
