@@ -3,8 +3,8 @@
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-'''Singletone pattern
-'''
+"""Singletone pattern
+"""
 
 
 class Singleton:

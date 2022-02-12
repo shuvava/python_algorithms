@@ -3,7 +3,7 @@
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #  Copyright (c) 2017-2022 Vladimir Shurygin. All rights reserved.
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-'''
+"""
 The Monostate Singleton pattern
 Singleton design pattern says that there should be one and only one
 object of a class. However, as per Alex Martelli, typically
@@ -12,11 +12,11 @@ He suggests that developers should be bothered about the state and
 behavior rather than the identity. As the concept is based on
 all objects sharing the same state, it is also known as
 the Monostate pattern.
-'''
+"""
 
 
 class Singleton:
-    '''
+    """
     The Monostate pattern can be achieved in a very simple way in Python.
     In the following code, we assign the __dict__ variable
     (a special variable of Python) with the __shared_state class variable.
@@ -25,7 +25,7 @@ class Singleton:
     the created instances. So when we create two instances, 'b' and 'b1',
     we get two different objects unlike Singleton where we have just one object.
     However, the object states, b.__dict__ and b1.__dict__ are the same.
-    '''
+    """
     __shared_state = {'1': '2'}
 
     def __init__(self):
