@@ -4,11 +4,8 @@
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #  Copyright (c) 2022 Vladimir Shurygin. All rights reserved.
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ (c) 2020 Vladimir Shurygin.  All rights reserved.
-# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 """
-Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num
+Given a non-negative integer number num. For every number i in the range 0 ≤ i ≤ num
 calculate the number of 1's in their binary representation and return them as an array.
 
 Example 1:
@@ -28,7 +25,7 @@ x =  (1001011101)_2 = 605
 x' = (100101110)_2 = 302
 
 
-We can see that x' is differ than xx by one bit, because x'
+We can see that x' is differed than xx by one bit, because x'
  can be considered as the result of removing the least significant bit of x.
 Thus, we have the following transition function of pop count P(x):
 P(x)=P(x/2)+(x mod 2)
