@@ -45,6 +45,21 @@ The term **degree** is used to describe the number of children a node has; there
   cities
   are farther than others. The connections “weigh” more
 
+## Graph representations
+
+![graph data structure](./graph_data_structure.png)
+
+### Incidence matrix
+
+An incidence matrix uses a matrix in which the height is the number of nodes in the graph and the width
+is the number of edges. Each row represents a node’s relationship with a specific edge.
+If a node is not connected by a specific edge, the value 0 is stored.
+If a node is connected by a specific edge as the receiving node in the case of a directed graph,
+the value -1 is stored. If a node is connected by a specific edge as an outgoing node or connected
+in an undirected graph, the value 1 is stored. An incidence matrix can be used to represent both
+directed and undirected graphs
+![graphincidence_matrix](./graph_incidence_matrix.png)
+
 ## Links
 
 - [6-006-introduction-to-algorithms-2011-lec14](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec14.pdf)
